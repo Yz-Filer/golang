@@ -27,8 +27,6 @@ go build -gcflags "-N -l" -tags "gtk_3_12 gtk_3_14 gtk_3_16 gtk_3_18 gtk_3_20 gt
 ## 1.2 gtk.Applicationを使うべきなの？
 サンプルコードなどを検索すると、「gtk.Init」を使ってる物と「gtk.Application」を使ってる物があるため、違いを聞いてみました。  
 > gtk.Initは古いGTKのバージョンで使用されていましたが、現在ではgtk.Applicationの使用が推奨されています。
-
-  
 > | 機能 | gtk.Init | gtk.Application |
 > | --- | --- | --- | 
 > | 初期化 | GTKの基本的な機能を初期化 | アプリケーション全体のライフサイクルを管理 |
@@ -41,7 +39,6 @@ go build -gcflags "-N -l" -tags "gtk_3_12 gtk_3_14 gtk_3_16 gtk_3_18 gtk_3_20 gt
 ## 1.3 gtk.ApplicationWindowを使うべきなの？
 「gtk.Init」のサンプルコードでは、「gtk.Window」を使ってる例が多いように思いましたが、「gtk.Application」では「gtk.ApplicationWindow」を使ってる物があるため、違いを聞いてみました。
 > 基本的にはgtk.ApplicationWindowを使用することを推奨します。
-
 > | 機能 | gtk.Window | gtk.ApplicationWindow | 
 > | --- | --- | --- | 
 > | 基本機能 | ウィンドウの基本的な要素を提供 | gtk.Windowの機能を拡張 | 
