@@ -9,4 +9,4 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
 対象OSはWindowsとなります。
 
 ## コンテンツ
-[1.](01/README.md)
+[1. Simple windowの作成](01/README.md)
