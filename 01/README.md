@@ -53,6 +53,9 @@ go build -gcflags "-N -l" -tags "gtk_3_12 gtk_3_14 gtk_3_16 gtk_3_18 gtk_3_20 gt
 ## 1.4 Gladeでメインウィンドウを作成
 Gladeで「トップレベル」を「GtkApplicationWindow」にし、ラベルを貼り付けたウィンドウを作成後、ファイル名「01_MainWindow.glade」で保存します。  
 ![glade](glade.jpg)    
+作成したファイルは、
+[ここ](glade/01_MainWindow.glade)
+に置いてます。  
 
 ## 1.5 gladeファイルをリソースに埋め込み、コードから参照する
 「.glade」ファイルはテキスト形式であるため、誤って削除したり編集したりするとアプリケーションが起動できなくなる可能性があります。そのため、実行ファイルに埋め込むことにします。  
