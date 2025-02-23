@@ -109,5 +109,6 @@ Gladeで「トップレベル」を「GtkApplicationWindow」にし、ラベル�
 > ```go
 > window, err := createObjectFromGlade[*gtk.Window](windowGlade, "main_window")
 > ```
-
+今回使用した関数は、以下に置いてます。
+[](01_library.go)
 
