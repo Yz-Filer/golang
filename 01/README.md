@@ -13,7 +13,7 @@ UI作成は基本的にgladeを使います。
 - go言語 & gotk3
 - MSYS2（gtk3, gladeに必要）
 - gtk3
-- glade（gtkのUIをGUIで作成するツール）
+- glade（gtk3のUIをGUIで作成するツール）
 
 コンパイルオプション  
 - コンソールに出力しているので、「-H=windowsgui」は使わないで下さい。
