@@ -90,12 +90,12 @@ D:\TEST
 - Adwaita/cursors
   - alias.cur, copy.cur, default.cur, dnd-ask.cur, dnd-copy.cur, dnd-link.cur, dnd-move.cur, dnd-no-drop.cur, dnd-none.cur, move.cur, no-drop.cur, not-allowed.cur, wait.ani
 - Adwaita/scalable
-  - 全ディレクトリ
+  - 全ディレクトリと全ファイル
 - Adwaita/symbolic
   - actionsディレクトリの以下のファイル
     - bookmark-new-symbolic.svg, folder-new-symbolic.svg. object-flip-horizontal-symbolic.svg, object-flip-vertical-symbolic.svg, object-rotate-left-symbolic.svg, object-rotate-right-symbolic.svg, object-select-symbolic.svg
 - Adwaita/symbolic-up-to-32
-  - 全ディレクトリ
+  - 全ディレクトリと全ファイル
   
 マウスカーソルやアイコン表示のために、以下も必要です。  
 `/mingw64/lib/gdk-pixbuf-2.0/`を実行ファイルディレクトリ配下の「lib」ディレクトリ配下へコピー
