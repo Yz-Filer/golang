@@ -162,7 +162,7 @@ D:\test
 ├─01_SimpleWindow.go
 └─01_library.go
 </pre>  
-「icon.ico」はフリー素材をImageMagickで「.ico」にした物を使いましたが、再配布可能かどうか分からなかったので置いてません。  
+「icon.ico」はフリー素材をImageMagickで「.ico」にした物を使いましたが、再配布可能かどうか分からなかったのでここには置いてません。  
 参考までに、画像ファイルをImageMagickで変換するコマンドは以下のようになります。  
 > ImageMagick で複数のサイズを含む ICO ファイルを作成するには、-define icon:auto-resize オプションを使用します。
 > ```
