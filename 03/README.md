@@ -94,7 +94,7 @@ D:\TEST
    </pre>
    
    ![](image/dialog1.jpg)  
-   上が標準テーマで下がsimplewaita + Win11-darkです。  
+   上が標準テーマで下がsimplewaitaテーマ + Win11-darkアイコンテーマです。  
    ![](image/dialog2.jpg)    
 
 > [!NOTE] 
