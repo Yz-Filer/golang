@@ -12,15 +12,17 @@ bashの依存モジュールを調査する方法をGeminiに聞いてみまし�
 > ldd /usr/bin/bash
 > ```
 今回は、MSYS2上で以下のようなコマンドを使ってgtkが使用してそうなファイルの依存モジュールを調査しました。  
-※環境によっては、指定パスが異なるかもしれません  
-※「libgtk-3-0.dll」部分は「libgdk_pixbuf-2.0-0.dll」などgtkに関連しそうな複数のライブラリを指定して調査しました。
+> [!NOTE]  
+> 環境によっては、指定パスが異なるかもしれません  
+> 「libgtk-3-0.dll」部分は「libgdk_pixbuf-2.0-0.dll」などgtkに関連しそうな複数のライブラリを指定して調査しました。
 ```bash
 ldd /mingw64/bin/libgtk-3-0.dll | grep "/mingw64"
 ```
 
 ## 2.2 依存モジュールを配置する
 調査結果より、実行ファイルと同じディレクトリに以下のファイルが必要なことが分かりました。  
-※作成するアプリによっては増える可能性があるので、コンソールにgtkからのエラーが出力されたら都度対処することになります。
+> [!CAUTION]
+> 作成するアプリによっては増える可能性があるので、コンソールにgtkからのエラーが出力されたら都度対処することになります。
 <pre>
 D:\TEST
 ├─gdbus.exe
@@ -84,18 +86,19 @@ D:\TEST
         └─Adwaita
             └全ファイル(※)
 </pre>
-※結構ファイル数があるので、以下のファイルを最低限コピーして、コンソールにgtkのエラーが出たら対処するという方法もあります。
-- Adwaitaディレクトリ
-  - icon-theme.cache, index.theme
-- Adwaita/cursors
-  - alias.cur, copy.cur, default.cur, dnd-ask.cur, dnd-copy.cur, dnd-link.cur, dnd-move.cur, dnd-no-drop.cur, dnd-none.cur, move.cur, no-drop.cur, not-allowed.cur, wait.ani
-- Adwaita/scalable
-  - 全ディレクトリと全ファイル
-- Adwaita/symbolic
-  - actionsディレクトリの以下のファイル
-    - bookmark-new-symbolic.svg, folder-new-symbolic.svg. object-flip-horizontal-symbolic.svg, object-flip-vertical-symbolic.svg, object-rotate-left-symbolic.svg, object-rotate-right-symbolic.svg, object-select-symbolic.svg
-- Adwaita/symbolic-up-to-32
-  - 全ディレクトリと全ファイル
+> [!TIP]
+> 結構ファイル数があるので、以下のファイルを最低限コピーして、コンソールにgtkのエラーが出たら対処するという方法もあります。
+> - Adwaitaディレクトリ
+>   - icon-theme.cache, index.theme
+> - Adwaita/cursors
+>   - alias.cur, copy.cur, default.cur, dnd-ask.cur, dnd-copy.cur, dnd-link.cur, dnd-move.cur, dnd-no-drop.cur, dnd-none.cur, move.cur, no-drop.cur, not-allowed.cur, wait.ani
+> - Adwaita/scalable
+>   - 全ディレクトリと全ファイル
+> - Adwaita/symbolic
+>   - actionsディレクトリの以下のファイル
+>     - bookmark-new-symbolic.svg, folder-new-symbolic.svg. object-flip-horizontal-symbolic.svg, object-flip-vertical-symbolic.svg, object-rotate-left-symbolic.svg, object-rotate-right-symbolic.svg, object-select-symbolic.svg
+> - Adwaita/symbolic-up-to-32
+>   - 全ディレクトリと全ファイル
   
 マウスカーソルやアイコン表示のために、以下も必要です。  
 `/mingw64/lib/gdk-pixbuf-2.0/`を実行ファイルディレクトリ配下の「lib」ディレクトリ配下へコピー
