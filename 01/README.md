@@ -134,11 +134,23 @@ Windows上では、複数起動が可能であったり、他アプリのシグ�
 > 	os.Exit(1)
 > }
 > defer windows.CloseHandle(mutex)
-> 
-> // ミューテックスの所有権を取得
-> acquired, err := windows.WaitForSingleObject(mutex, 0)
-> if err != nil {
-> 	fmt.Println("ミューテックス取得に失敗:", err)
-> 	os.Exit(1)
-> }
 > ```
+ミューテックス作成でエラーになった場合は、既にアプリが起動しているため、終了します。
+
+## 1.7 プログラムの流れ
+- `CreateMutex`でミューテックスを作成
+- `ApplicationNew`でアプリケーションを作成
+- `application.Connect("startup", func() {})`でアプリケーション起動時の処理を記述
+- `application.Connect("activate", func() {})`でアプリケーションアクティブ時の処理を記述
+  - メインウィンドウを作成（gladeから読み込み）
+  - メインウィンドウのシグナル処理を記述（今回は最小化、最大化、閉じる、破棄を記述）
+  - `window.SetApplication(application)`でアプリケーションとメインウィンドウを紐づける
+  - `window1.ShowAll()`でメインウィンドウを表示
+- `application.Connect("shutdown", func() {})`でアプリケーション終了時の処理を記述
+- `os.Exit(application.Run(os.Args))`でアプリケーションの実行
+
+作成したコードは、
+[ここ](01_SimpleWindow.go)
+に置いてます。  
+
+## 1.8 実行
