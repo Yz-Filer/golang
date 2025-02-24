@@ -118,7 +118,7 @@ Linux環境では、「gtk.Application」作成時に以下のようにすれば
 ```
 gtk.ApplicationNew(appID, glib.APPLICATION_FLAGS_NONE)
 ```
-Windows上では、複数起動が可能であったり、他アプリのシグナルを受信したりします。  
+Windows上では、複数起動が可能であったり、他アプリのシグナルを受信したりなどの不具合が発生しました。  
 通常のアプリでは多重起動しても問題ないと思うのですが、タスクトレイに格納するようなアプリや、設定ファイルを複数アプリから参照することを考慮してないアプリなどで問題が起こる可能性があります。  
 そのため、gtkの機能を使わずに多重起動防止をする必要があります。
 > ミューテックスは、排他制御を行うための仕組みです。これを利用することで、同時に複数のプロセスが同じリソースにアクセスするのを防ぎます。
@@ -152,6 +152,22 @@ Windows上では、複数起動が可能であったり、他アプリのシグ�
 作成したコードは、
 [ここ](01_SimpleWindow.go)
 に置いてます。  
+フォルダ構成は、ソースが「d:\test」にある場合、以下のようになります。  
+<pre>
+D:\test
+├─glade
+│  └─01_MainWindow.glade
+├─resources
+│  └─icon.ico
+├─01_SimpleWindow.go
+└─01_library.go
+</pre>  
+「icon.ico」はフリー素材をImageMagickで「.ico」にした物を使いましたが、再配布可能かどうか分からなかったので置いてません。  
+参考までに、画像ファイルをImageMagickで変換するコマンドは以下のようになります。  
+> ImageMagick で複数のサイズを含む ICO ファイルを作成するには、-define icon:auto-resize オプションを使用します。
+> ```
+> convert input.png -define icon:auto-resize=16,32,48,64 output.ico
+> ```
 
 ## 1.8 実行
 起動画面  
