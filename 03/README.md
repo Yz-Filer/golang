@@ -79,6 +79,7 @@ D:\TEST
    ![](image/dialog1.jpg)  
    上が標準テーマで下がダウンロードしたテーマです。  
    ![](image/dialog2.jpg)    
+
 > [!NOTE] 
 > 「settings.ini」は、「gtk-application-prefer-dark-theme」「gtk-theme-name」「gtk-icon-theme-name」の全てを別行で記載可能です。  
 > また、先頭に「#」を記載するとコメントになります。
