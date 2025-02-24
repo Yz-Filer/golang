@@ -1,4 +1,4 @@
-# 1. Simple windowの作成
+# 1. gotk3を使って、Simple windowを作成する
 「Hello, world!」を表示するアプリを作成します。  
   
 ![Simple window](window.jpg)  
