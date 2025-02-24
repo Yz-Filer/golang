@@ -65,7 +65,7 @@ D:\TEST
 └─zlib1.dll
 </pre>
 glib-2.0は必須だそうです。  
-`/mingw64/share/glib-2.0/schemas`を実行ファイルの「share/glib-2.0」ディレクトリ配下へコピー
+`/mingw64/share/glib-2.0/schemas`を実行ファイルディレクトリ配下の「share/glib-2.0」ディレクトリ配下へコピー
 <pre>
 D:\TEST
 └─share
@@ -76,7 +76,7 @@ D:\TEST
 
 ## 2.3 マウスカーソルやアイコンを表示出来るようにする
 マウスカーソルやアイコンの画像ファイルも必要です。  
-`/mingw64/share/icons/Adwaita`を実行ファイルの「share/icons」ディレクトリ配下へコピー
+`/mingw64/share/icons/Adwaita`を実行ファイルディレクトリ配下の「share/icons」ディレクトリ配下へコピー
 <pre>
 D:\TEST
 └─share
@@ -98,7 +98,7 @@ D:\TEST
   - 全ディレクトリ
   
 マウスカーソルやアイコン表示のために、以下も必要です。  
-`/mingw64/lib/gdk-pixbuf-2.0/`を実行ファイルの「lib」ディレクトリ配下へコピー
+`/mingw64/lib/gdk-pixbuf-2.0/`を実行ファイルディレクトリ配下の「lib」ディレクトリ配下へコピー
 <pre>
 D:\TEST
 └─lib
