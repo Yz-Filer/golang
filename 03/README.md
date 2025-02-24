@@ -10,12 +10,13 @@ D:\TEST
         └─settings.ini
 </pre>
 
-1. 標準テーマ（Adwaita）  
+1. 標準テーマ（Adwaita）
+   ![](image/window1.jpg)
    settings.iniを作成しないか、以下の内容を記載
    ```
    [Settings]
    ```
-1. 標準テーマ（Adwaita）をダークテーマへ変更  
+1. ダークテーマ（Adwaita）  
    以下の内容を記載
    ```
    [Settings]
