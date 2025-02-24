@@ -98,3 +98,6 @@ D:\TEST
 > [!NOTE] 
 > 「settings.ini」は、「gtk-application-prefer-dark-theme」「gtk-theme-name」「gtk-icon-theme-name」の全てを別行で記載可能です。  
 > また、先頭に「#」を記載するとコメントになります。
+
+> [!CAUTION]  
+> Win11-darkへのディレクトリ構成変更の対応が正しいかどうかは分かりません。
