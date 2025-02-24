@@ -114,7 +114,7 @@ Gladeで「トップレベル」を「GtkApplicationWindow」にし、ラベル�
 に置いてます。  
 
 ## 1.6 多重起動防止
-Linux環境では、「gtk.Application」作成時に以下のようにすれば、多重起動防止となるようなのですが、Windows上では上手くいきません。  
+Linux環境では、「gtk.Application」作成時に以下のようにすれば、多重起動防止となるようなのですが、Windows上では上手くいきませんでした。  
 ```
 gtk.ApplicationNew(appID, glib.APPLICATION_FLAGS_NONE)
 ```
