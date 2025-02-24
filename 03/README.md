@@ -67,7 +67,7 @@ D:\TEST
    3.1で使った「settings.ini」に以下の内容を記載します。
    ```
    [Settings]
-   gtk-icon-theme-name = ダウンロードしたテーマ名
+   gtk-icon-theme-name = アイコンテーマのディレクトリ名
    ```
    「Win11 icon theme」をダウンロード・解凍して出来た「Win11-dark」ディレクトリを配置してみましたが、エラーになりました。  
    AdwaitaディレクトリとWin11-darkディレクトリを比較したところ、Adwaita側には、「scalable」ディレクトリがあり、その配下に以下の4つのディレクトリがありました。
