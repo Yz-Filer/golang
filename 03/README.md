@@ -69,14 +69,13 @@ D:\TEST
    gtk-icon-theme-name = ダウンロードしたテーマ名
    ```
    「Win11 icon theme」をダウンロード・解凍して出来た「Win11-dark」ディレクトリを配置してみましたが、エラーになりました。  
-   そこで、Adwaitaディレクトリを別名でコピーして、そこに上書きしてみるとエラーが出なくなりました。
-   AdwaitaディレクトリとWin11-darkディレクトリを比較したところ、Adwaita側には、「scalable」ディレクトリがあり、以下の4つのディレクトリがありました。
+   AdwaitaディレクトリとWin11-darkディレクトリを比較したところ、Adwaita側には、「scalable」ディレクトリがあり、その配下に以下の4つのディレクトリがありました。
     - devices
     - mimetypes
     - places
     - status
    
-   Win11-darkディレクトリ配下に「scalable」ディレクトリを作成し、上記4つのディレクトリの中にある「scalable」もしくは「48」など数字が大きいディレクトリをコピーして上記4つの名前のディレクトリ名に変更しました。
+   Win11-darkディレクトリ配下に「scalable」ディレクトリを作成し、Win11-darkディレクトリ直下の4つのディレクトリ名の中にある「scalable」もしくは「48」など数字が大きいディレクトリをコピーして元の名前のディレクトリ名に変更しました。
    その結果、エラーが出なくなったので、アイコンテーマで何かエラーが出たらAdwaitaのディレクトリ構成に準拠するように変更すればある程度なんとかなりそうに思います。
 
    <pre>
@@ -84,11 +83,15 @@ D:\TEST
    └─share
        └─icons
            └─Win11-dark
-             └─scalable
+               └─scalable
+                   ├─devices
+                   ├─mimetypes
+                   ├─places
+                   └─status
    </pre>
    
    ![](image/dialog1.jpg)  
-   上が標準テーマで下がダウンロードしたテーマです。  
+   上が標準テーマで下がsimplewaita + Win11-darkです。  
    ![](image/dialog2.jpg)    
 
 > [!NOTE] 
