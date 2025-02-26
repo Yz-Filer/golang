@@ -45,17 +45,15 @@ Geminiに聞きながら、どこに気をつけるべきかを整理したい�
 
 ## 4.4 マルチスレッドで気をつける
 「故意にマルチスレッドで・・・」と記載しましたが、goルーチンを使った場合がこれにあたります。  
-以下のコードはGemini作成のコードを抜粋した物ですが、「*」をつけた所でクラッシュする可能性があります。  
-GUIアプリでgoルーチン内でエラーハンドリングをした時、ついついメッセージダイアログを使ってしまいます。  
-また、「defer dialog.Destroy()」とかも見落としがちです。  
-チャネル受信側も同様で、メッセージ表示や破棄などで注意が必要となります。
+以下のコードはGemini作成のコードを抜粋した物ですが、「`*`」をつけた行でクラッシュする可能性があります。  
+
 ```
 // 処理を行うGoルーチン
 go func() {
 	err := myfunc()
 	if err != nil {
 		// エラーメッセージを表示
-		dialog := gtk.MessageDialogNe(・・・)    // *
+		dialog := gtk.MessageDialogNew(・・・)    // *
 		defer dialog.Destroy()                  // *
 		dialog.Run()                            // *
 
@@ -70,15 +68,20 @@ go func() {
 	err := <-resultCh
 	if err != nil {
 		// エラーメッセージを表示
-		dialog := gtk.MessageDialogNe(・・・)    // *
+		dialog := gtk.MessageDialogNew(・・・)    // *
 		defer dialog.Destroy()                  // *
 		dialog.Run()                            // *
 		return
 	}
 	// 正常終了メッセージを表示
-	dialog := gtk.MessageDialogNe(・・・)      // *
+	dialog := gtk.MessageDialogNew(・・・)      // *
 	defer dialog.Destroy()                    // *
 	dialog.Run()                              // *
 	close(resultCh)
 }()
 ```
+
+GUIアプリのgoルーチン内でエラーハンドリングをした時、ついついメッセージダイアログを使ってしまいます。  
+また、「defer dialog.Destroy()」とかも見落としがちです。  
+チャネル受信側も同様で、メッセージ表示や破棄などで注意が必要となります。  
+「`*`」の行はglib.IdleAddを使ってクラッシュしないようにする必要があります。
