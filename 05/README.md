@@ -48,3 +48,6 @@ window1.SetDecorated(false)
 
 ![](./image/window_multi.jpg)  
 ![](./image/console.jpg)  
+
+[ここ](01_SimpleWindow.go)  
+
