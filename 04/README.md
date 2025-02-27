@@ -136,4 +136,4 @@ for gtk.EventsPending() {
 
 </br>
 
-「[5. 半透明の付箋もどき](../05/README.md)  」へ  
+「[5. 半透明の付箋もどき](../05/README.md)」へ  
