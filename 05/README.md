@@ -52,7 +52,65 @@ window1.SetDecorated(false)
 ![](./image/window_multi.jpg)  
 ![](./image/console.jpg)  
 
+## 5.3 ウィンドウをマウスで動かしたい
+ウィンドウをマウスでドラッグして動かす方法を聞いてみました。  
+※Geminiの回答コードでは、イベントから座標を取得する部分が動かなかったので`e.MotionVal()`を使うように修正してます。  
+
+> ```
+> var dragging bool
+> var offsetX, offsetY int
+> 
+> //-----------------------------------------------------------
+> // マウスボタンを押したときのイベントハンドラ
+> //-----------------------------------------------------------
+> window1.Connect("button-press-event", func(win *gtk.ApplicationWindow, event *gdk.Event) {
+> 	e := gdk.EventButtonNewFromEvent(event)
+> 	if e.Button() == gdk.BUTTON_PRIMARY {
+> 		dragging = true
+> 		x, y := e.MotionVal()
+> 		offsetX = int(x)
+> 		offsetY = int(y)
+> 	}
+> })
+> 
+> //-----------------------------------------------------------
+> // マウスを移動したときのイベントハンドラ
+> //-----------------------------------------------------------
+> window1.Connect("motion-notify-event", func(win *gtk.ApplicationWindow, event *gdk.Event) {
+> 	if dragging {
+> 		e := gdk.EventMotionNewFromEvent(event)
+> 		x, y := e.MotionVal()
+> 		dx := int(x) - offsetX
+> 		dy := int(y) - offsetY
+> 		winX, winY := win.GetPosition()
+> 		win.Move(winX+dx, winY+dy)
+> 	}
+> })
+> 
+> //-----------------------------------------------------------
+> // マウスボタンを離したときのイベントハンドラ
+> //-----------------------------------------------------------
+> window1.Connect("button-release-event", func(win *gtk.ApplicationWindow, event *gdk.Event) {
+> 	e := gdk.EventButtonNewFromEvent(event)
+> 	if e.Button() == gdk.BUTTON_PRIMARY {
+> 		dragging = false
+> 	}
+> })
+> ```
+
+
+
 作成したコードは、
 [ここ](05_SimpleWindow_no_header.go)
 に置いてます。  
 
+## 5.4 おわりに
+以上で、ウィンドウを半透明にして、マウスで移動させるアプリが出来ました。  
+付箋アプリにするには、  
+
+- モーダルウィンドウにして、複数起動出来るようにする。  
+- ダブルクリックしたら、表示する文字列を編集する画面を表示する。  
+- 右クリックメニューで「新規」「編集」「はがす」などを選べるようにする。
+- 開始/終了時にウィンドウ位置、色、文字列などをRead/Writeする。  
+
+などの機能を足せばちゃんとしたアプリになりそうです。  
