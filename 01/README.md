@@ -1,7 +1,7 @@
 # 1. gotk3を使って、Simple windowを作成する
 「Hello, world!」を表示するアプリを作成します。  
   
-![Simple window](window.jpg)  
+![Simple window](image/window.jpg)  
 
 UI作成は基本的にgladeを使います。  
 文章中で確認している相手はGeminiです。  
@@ -49,7 +49,7 @@ go build -gcflags "-N -l" -tags "gtk_3_12 gtk_3_14 gtk_3_16 gtk_3_18 gtk_3_20 gt
 
 ## 1.4 Gladeでメインウィンドウを作成
 Gladeで「トップレベル」を「GtkApplicationWindow」にし、ラベルを貼り付けたウィンドウを作成後、ファイル名「01_MainWindow.glade」で保存します。  
-![glade](glade.jpg)    
+![glade](image/glade.jpg)    
 作成したファイルは、
 [ここ](glade/01_MainWindow.glade)
 に置いてます。  
@@ -171,9 +171,9 @@ D:\test
 
 ## 1.8 実行
 起動画面  
-![Simple window](window.jpg)  
+![Simple window](image/window.jpg)  
 コンソールへの表示結果  
-![output](console.jpg)  
+![output](image/console.jpg)  
 「ウィンドウのクローズが試みられました」の部分は、ウィンドウ右上の「×」ボタンを押した時の処理になります。  
 ここに「本当に終了しても良いですか？」とかを確認してキャンセルするような処理を追加することが出来ます。
 
