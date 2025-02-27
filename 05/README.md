@@ -49,5 +49,7 @@ window1.SetDecorated(false)
 ![](./image/window_multi.jpg)  
 ![](./image/console.jpg)  
 
-[ここ](01_SimpleWindow.go)  
+作成したコードは、
+[ここ](05_SimpleWindow_no_header.go)
+に置いてます。  
 
