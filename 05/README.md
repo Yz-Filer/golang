@@ -41,7 +41,7 @@ window1.SetDecorated(false)
 残念ながら`SetOpacity()`では透明になりませんでした。（ウィンドウの色を変えるとか追加で何か必要なのかもしれません）  
 `OverrideBackgroundColor()`は、`RGBAParse()`が存在しなかったので、調べてみた所`gdk.NewRGBA()`に置き換えることで上手くいきました。  
 
-```
+```go
 color := gdk.NewRGBA(1.0, 0.97, 0.82, 0.8)
 window1.OverrideBackgroundColor(gtk.STATE_FLAG_NORMAL, color)
 window1.SetDecorated(false)
@@ -56,7 +56,7 @@ window1.SetDecorated(false)
 ウィンドウをマウスでドラッグして動かす方法を聞いてみました。  
 ※Geminiの回答コードでは、イベントから座標を取得する部分が動かなかったので`e.MotionVal()`を使うように修正してます。  
 
-> ```
+> ```go
 > var dragging bool
 > var offsetX, offsetY int
 > 
