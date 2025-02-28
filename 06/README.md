@@ -40,3 +40,14 @@ gladeにて以下のようにメニューを作成してファイル名「06_Men
 >   ```go
 >   icon.SetVisible(true)
 >   ```
+
+作成したコードは、
+[ここ](06_TaskTray.go)
+に置いてます。 
+
+## 6.3 実行画面
+メインウィンドウ  
+![](image/window.jpg)  
+最小化ボタンか閉じるボタンを押すとタスクトレイに格納(左図)され、アイコンを右クリックをするとメニューが表示(右図)されます。  
+![](image/taskbar_icon.jpg)　　![](image/taskbar_menu.jpg)  
+![](image/console.jpg)
