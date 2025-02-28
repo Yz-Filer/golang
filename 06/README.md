@@ -29,7 +29,7 @@ gladeにて以下のようにメニューを作成してファイル名「06_Men
 > - アイコン右クリック時にメニューを表示
 >   ```go
 >   icon.Connect("popup-menu", func(icon *gtk.StatusIcon, button uint, activateTime uint32) {
->       menu.Popup(nil, nil, nil, button, activateTime)
+>       menu.PopupAtStatusIcon(statusIcon, button, activateTime)
 >   })
 >   ```
 > - メニュー選択時の動作を設定
