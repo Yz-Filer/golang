@@ -5,11 +5,15 @@
 - 自作したカスタムメッセージダイアログ（モーダルダイアログ）
 - カスタムメッセージダイアログを使ったモードレスダイアログ
 
-![](./image/window.jpg)  
+![](image/window.jpg)  
 
 あと、ステータスバーも追加してます。  
 
-![](./image/glade_window.jpg)  
+![](image/glade_window.jpg)  
+
+作成したファイルは、
+[ここ](glade/07_MainWindow.glade)
+に置いてます。  
 
 ## 7.1 標準メッセージダイアログ
 特徴についてGeminiに聞いてみました。  
