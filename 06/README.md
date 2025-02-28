@@ -25,7 +25,7 @@ gladeにて以下のようにメニューを作成してファイル名「06_Men
 >   icon.SetTooltipText("My Application")
 >   ```
 > - メニューの作成  
->   ※gladeから読み込むので省略  
+>   ※gladeから読み込む（メインウィンドウとほぼ同じ）なので省略  
 > - アイコン右クリック時にメニューを表示
 >   ```go
 >   icon.Connect("popup-menu", func(icon *gtk.StatusIcon, button uint, activateTime uint32) {
@@ -48,6 +48,10 @@ gladeにて以下のようにメニューを作成してファイル名「06_Men
 ## 6.3 実行画面
 メインウィンドウ  
 ![](image/window.jpg)  
-最小化ボタンか閉じるボタンを押すとタスクトレイに格納(左図)され、アイコンを右クリックをするとメニューが表示(右図)されます。  
-![](image/taskbar_icon.jpg)　　![](image/taskbar_menu.jpg)  
+最小化ボタンか閉じるボタンを押すとタスクトレイに格納されアイコンが表示されます。（タスクトレイアイコンを表示したところ）  
+![](image/taskbar_icon.jpg)  
+アイコンを右クリックをするとメニューが表示されます。（残念ながら、メニューの外をクリックしても閉じないため、必ず何かを選択する必要がありそうです）  
+![](image/taskbar_menu.jpg)  
+アイコンを左クリックするか、メニュー「Show App」を選択すると、アイコンを消し、メインウィンドウを表示します。  
+実行時のコンソール画面は以下になります。  
 ![](image/console.jpg)
