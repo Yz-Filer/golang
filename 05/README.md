@@ -38,7 +38,7 @@ window1.SetDecorated(false)
 >   win.OverrideBackgroundColor(gtk.STATE_NORMAL, rgba)
 >   ```
 
-残念ながら`SetOpacity()`では透明になりませんでした。（ウィンドウの色を変えるとか追加で何か必要なのかもしれません）  
+残念ながら`SetOpacity()`では透明になりませんでした。  
 `OverrideBackgroundColor()`は、`RGBAParse()`が存在しなかったので、調べてみた所`gdk.NewRGBA()`に置き換えることで上手くいきました。  
 
 ```go
