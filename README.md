@@ -11,30 +11,42 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
 > go言語やgotk3のプログラミング方法や環境構築などの導入部分の解説は端折ってます。
 
 ## コンテンツ
-[1. gotk3を使って、Simple windowを作成する](Contents/01/README.md)  
-<img src="Contents/01/image/window.jpg" height="89" />  
 
-[2. 他のパソコンでも実行したい](Contents/02/README.md)  
-<img src="Contents/02/image/computer_tokui_boy.png" height="89" />  
-
-[3. テーマを使いたい](Contents/03/README.md)  
-<img src="Contents/03/image/window3.jpg" height="89" />  
-
-[4. これに気をつけないとアプリがクラッシュする](Contents/04/README.md)  
-<img src="Contents/04/image/computer_note_bad.png" height="89" />  
-
-[5. 半透明の付箋もどき](Contents/05/README.md)  
-<img src="Contents/05/image/window_multi.jpg" height="89" />  
-
-[6. タスクトレイに格納したい](Contents/06/README.md)  
-<img src="Contents/06/image/taskbar_menu.jpg" height="89" />  
-
-[7. メッセージダイアログとステータスバーを表示したい](Contents/07/README.md)  
-<img src="Contents/07/image/std_dialog.jpg" height="89" />  
-
-[8. ヘッダーバー・ラベル書式・ウィンドウ書式のカスタマイズ](Contents/08/README.md)  
-<img src="Contents/08/image/window.jpg" height="89" /> <img src="Contents/08/image/custom_dialog_markup.jpg" height="89" />  
-
-[9. メニューバー/ツールバー/標準ダイアログを使いたい(前編)](Contents/09/README.md)  
-<img src="Contents/09/image/menu.jpg" height="89" />  
-
+<table>
+<tr>
+  <td> <a href="Contents/01/README.md">1. gotk3を使って、Simple windowを作成する</a> </td>
+  <td align="center"> <img src="Contents/01/image/window.jpg" height="89" />  </td>
+</tr>
+<tr>
+  <td> <a href="Contents/02/README.md">2. 他のパソコンでも実行したい</a> </td>
+  <td align="center"> <img src="Contents/02/image/computer_tokui_boy.png" height="89" />  </td>
+</tr>
+<tr>
+  <td> <a href="Contents/03/README.md">3. テーマを使いたい</a> </td>
+  <td align="center"> <img src="Contents/03/image/window3.jpg" height="89" />  </td>
+</tr>
+<tr>
+  <td> <a href="Contents/04/README.md">4. これに気をつけないとアプリがクラッシュする</a> </td>
+  <td align="center"> <img src="Contents/04/image/computer_note_bad.png" height="89" />  </td>
+</tr>
+<tr>
+  <td> <a href="Contents/05/README.md">5. 半透明の付箋もどき</a> </td>
+  <td align="center"> <img src="Contents/05/image/window_multi.jpg" height="89" />  </td>
+</tr>
+<tr>
+  <td> <a href="Contents/06/README.md">6. タスクトレイに格納したい</a> </td>
+  <td align="center"> <img src="Contents/06/image/taskbar_menu.jpg" height="89" />  </td>
+</tr>
+<tr>
+  <td> <a href="Contents/07/README.md">7. メッセージダイアログとステータスバーを表示したい</a> </td>
+  <td align="center"> <img src="Contents/07/image/std_dialog.jpg" height="89" />  </td>
+</tr>
+<tr>
+  <td> <a href="Contents/08/README.md">8. ヘッダーバー・ラベル書式・ウィンドウ書式のカスタマイズ</a> </td>
+  <td align="center"> <img src="Contents/08/image/window.jpg" height="89" /> </br> <img src="Contents/08/image/custom_dialog_markup.jpg" height="89" /> </td>
+</tr>
+<tr>
+  <td> <a href="Contents/09/README.md">9. メニューバー/ツールバー/標準ダイアログを使いたい(前編)</a> </td>
+  <td align="center"> <img src="Contents/09/image/menu.jpg" height="89" />  </td>
+</tr>
+</table>
