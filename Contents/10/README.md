@@ -40,10 +40,18 @@ func menuOpen(parent *gtk.ApplicationWindow) (string, error) {
 | FILE_CHOOSER_ACTION_CREATE_FOLDER |  
 
 第4～第5引数および第6～第7引数は、ボタンラベルの文字列とレスポンスコードになります。  
+レスポンスコードは、
+[7.1 標準メッセージダイアログ](../07#71-%E6%A8%99%E6%BA%96%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%80%E3%82%A4%E3%82%A2%E3%83%AD%E3%82%B0)
+に一覧を表示してます。  
 
+> [!NOTE]
+> `FileChooserDialogNewWith2Buttons()`は、表示するファイルのフィルタ設定や、複数選択可否、カレントフォルダの指定などの設定も出来ます。  
+> 詳しくは、[gotk3/gtk/FileChooser](https://pkg.go.dev/github.com/gotk3/gotk3/gtk#FileChooser)で確認して下さい。  
 
 ## 10.2 フォント選択ダイアログ
 ![](image/font.jpg)  
+
+コードを以下に示します。  
 
 ```go
 func menuFont(parent *gtk.ApplicationWindow) (string, error) {
@@ -66,6 +74,17 @@ func menuFont(parent *gtk.ApplicationWindow) (string, error) {
 	return "", nil
 }
 ```
+
+`GetFont()`で取得した文字列には色々な物が含まれてるので利用する時は注意してください。  
+例えば、以下のような文字列が返ってきます。  
+- Sans 10  
+- Sans-Serif Oblique Semi-Condensed 10
+- Schneidler Blk BT Heavy Italic 10  
+
+> [!NOTE]
+> `FontChooserDialogNew()`は、カレントフォントの指定などの設定も出来ます。  
+> 詳しくは、[gotk3/gtk/FontChooser](https://pkg.go.dev/github.com/gotk3/gotk3/gtk#FontChooser)で確認して下さい。  
+
 
 ## 10.3 カラー選択ダイアログ
 ![](image/color.jpg)  
