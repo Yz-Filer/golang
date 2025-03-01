@@ -25,4 +25,8 @@
 > [!NOTE]  
 > 「Decoration Layout」に「icon:minimize,maximize,close」と入力した状態が全てのボタンを表示する状態となります。  
 
+プログラムの方は、「[1. gotk3を使って、Simple windowを作成する](../01/README.md)」のままとなります。  
+（今回は実施していませんが、ヘッダーバーのボタンを押した時の処理などの追加が必要です）  
+実行画面は以下のようになります。  
+
 ![](image/window.jpg)  
