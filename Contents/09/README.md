@@ -11,6 +11,10 @@
 gladeでApplicationWindow上に、gtkMenuBarとgtkToolBarを配置します。  
 gtkMenuItemとgtkToolButtonは、左側のペインで親を右クリックし、「Edit...」-「+」で追加できます。  
 
+作成したファイルは、
+[ここ](glade/09_MainWindow.glade)
+に置いてます。  
+
 > [!NOTE]
 > - MenuBarは、「gtkMenuBar」-「gtkMenuItem」-「gtkMenu」-「gtkMenuItem」のような親子関係になります。
 > - MenuItemの「下線を使用する」プロパティは、「ダイアログ(_D)」のようにすると、下線の後ろの文字がニーモニックキーになり、「ALT+D」でメニューが選択出来るようになります。  
