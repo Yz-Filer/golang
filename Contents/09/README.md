@@ -44,7 +44,7 @@ menuItemOpen.Connect("activate", func(){
 })
 ```
 
-
+メニューアイテムの数だけ、上記のようなコードを作成すれば、メニューの完成となります。  
 
 > [!NOTE]
 > `ShowErrorDialog()`は、
