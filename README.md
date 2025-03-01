@@ -29,7 +29,7 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
 [6. タスクトレイに格納したい](06/README.md)  
 <img src="06/image/taskbar_menu.jpg" height="89" />  
 
-[7. メッセージダイアログを表示したい](07/README.md)  
+[7. 7. メッセージダイアログとステータスバーを表示したい](07/README.md)  
 <img src="07/image/std_dialog.jpg" height="89" />  
 
 [8. ヘッダーバー・ラベル書式・ウィンドウ書式のカスタマイズ](08/README.md)  
