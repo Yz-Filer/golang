@@ -49,4 +49,8 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
   <td align="center"> <img src="Contents/09/image/menu.jpg" height="89" width="auto" />  </td>
   <td> <a href="Contents/09/README.md">9. メニューバー/ツールバー/標準ダイアログを使いたい(前編)</a> </td>
 </tr>
+<tr>
+  <td align="center"> <img src="Contents/10/image/color.jpg" height="89" width="auto" />  </td>
+  <td> <a href="Contents/10/README.md">10. メニューバー/ツールバー/標準ダイアログを使いたい(後編)</a> </td>
+</tr>
 </table>
