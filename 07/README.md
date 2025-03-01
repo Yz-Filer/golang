@@ -89,3 +89,10 @@ switch ret {
 | RESPONSE_APPLY | `AddButton()`で追加したボタン押下 |
 | RESPONSE_HELP | `AddButton()`で追加したボタン押下 |
 
+## 7.2 カスタムメッセージダイアログ
+やっぱりアイコンを表示したいので、メッセージダイアログを自作してみました。  
+![](image/glade_dialog.jpg)  
+レスポンスを返す全てのボタンを並べてます。あと、アイコン表示用のImageと処理中表示用のSpinnerも追加しました。  
+作成したファイルは、
+[ここ](glade/07_Dialog.glade)
+に置いてます。  
