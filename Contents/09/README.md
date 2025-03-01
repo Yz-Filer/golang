@@ -22,3 +22,25 @@ gtkMenuItemとgtkToolButtonは、左側のペインで親を右クリックし�
 > - ToolButtonの画像は「画像」-「ストックID」から選択すると標準のアイコンが使用されます。「画像」-「アイコン名」から選択すると、おそらく標準のアイコンテーマから選択されるのだと思います。
 
 ## 9.1 メニューバー
+![](image/menu.jpg) ![](image/menu2.jpg)  
+
+`application.Connect("activate", func() {})`の中で、メインウィンドウの後にgladeから読み込みます。  
+
+```go
+menuItemOpen, _, err := GetObjFromGlade[*gtk.MenuItem](builder, "", "MENUITEM_OPEN")
+if err != nil {
+	return err
+}
+
+menuItemOpen.Connect("activate", func(){
+	ret, err := menuOpen(parent)
+	if err != nil {
+		ShowErrorDialog(parent, err)
+		return
+	}
+	if len(ret) != 0 {
+		log.Println(ret)
+	}
+})
+```
+
