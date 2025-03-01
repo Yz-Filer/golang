@@ -184,6 +184,16 @@ button2.Connect("clicked", func() {
 ダイアログ作成関数は、カスタムメッセージダイアログと同じ関数を使ってるので、呼び出し側のコードのみを以下に示します。  
 
 ```go
+func DoEvents() {
+	for i := 0; i < 100; i++ {
+		if !gtk.EventsPending() {
+			break
+		}
+	    gtk.MainIteration()
+	}
+}
+
+// 以下は、application.Connect("activate", func() {})の中
 button3.Connect("clicked", func() {
 	// REJECT, ACCEPT, OK, CANCEL, CLOSE, YES, NO, APPLY, HELP
 	buttonFlg := [9]string{"", "", "", "", "", "", "", "", ""}
@@ -232,3 +242,5 @@ button3.Connect("clicked", func() {
 	dialog1.SetKeepAbove(false)
 })
 ```
+
+`DoEvents()`
