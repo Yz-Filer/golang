@@ -18,7 +18,7 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
 <img src="Contents/02/image/computer_tokui_boy.png" height="89" />  
 
 [3. テーマを使いたい](Contents/03/README.md)  
-<img src="03/image/window3.jpg" height="89" />  
+<img src="Contents/03/image/window3.jpg" height="89" />  
 
 [4. これに気をつけないとアプリがクラッシュする](Contents/04/README.md)  
 <img src="Contents/04/image/computer_note_bad.png" height="89" />  
