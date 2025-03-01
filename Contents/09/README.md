@@ -86,3 +86,5 @@ toolButtonOpen.Connect("clicked", func(){
 > で作成した関数です。  
 > - `menuOpen()`は、後編で説明します。  
 
+## 9.3 おわりに
+以上で、メニューバー/ツールバー
