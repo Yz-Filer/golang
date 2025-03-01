@@ -6,4 +6,15 @@
 > [!NOTE]  
 > gtk3のウィジェットは「The Python GTK+ 3 Tutorial」の[5. Widget Gallery](https://python-gtk-3-tutorial.readthedocs.io/en/latest/gallery.html)が画像が多くて参考になりました。  
 
-## 9.1 
+![](image/glade.jpg)  
+
+gladeでApplicationWindow上に、gtkMenuBarとgtkToolBarを配置します。  
+gtkMenuItemとgtkToolButtonは、左側のペインで親を右クリックし、「Edit...」-「+」で追加できます。  
+
+> [!NOTE]
+> - MenuBarは、「gtkMenuBar」-「gtkMenuItem」-「gtkMenu」-「gtkMenuItem」のような親子関係になります。
+> - MenuItemの「下線を使用する」プロパティは、「ダイアログ(_D)」のようにすると、下線の後ろの文字がニーモニックキーになり、「ALT+D」でメニューが選択出来るようになります。  
+>   「ダイアログ(_D)」-「開く(_O)」のようにメニューをプルダウンした後のメニューアイテムを選択する場合、「ALT+D」-「O」になります。  
+> - ToolButtonの画像は「画像」-「ストックID」から選択すると標準のアイコンが使用されます。「画像」-「アイコン名」から選択すると、おそらく標準のアイコンテーマから選択されるのだと思います。
+
+## 9.1 メニューバー
