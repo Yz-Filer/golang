@@ -18,6 +18,10 @@
 
 ![](image/glade_headerbar.jpg)  
 
+作成したファイルは、
+[ここ](glade/08_MainWindow.glade)
+に置いてます。  
+
 > [!NOTE]  
 > 「Decoration Layout」に「icon:minimize,maximize,close」と入力した状態が全てのボタンを表示する状態となります。  
 
