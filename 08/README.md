@@ -20,3 +20,5 @@
 
 > [!NOTE]  
 > 「Decoration Layout」に「icon:minimize,maximize,close」と入力した状態が全てのボタンを表示する状態となります。  
+
+![](image/window.jpg)  
