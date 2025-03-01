@@ -8,6 +8,7 @@
 
 ![](image/glade.jpg)  
 
+メインウィンドウの一番上に表示されてる部分がメニューバーで、その下でアイコンが並んでる部分がツールバーとなります。  
 gladeでApplicationWindow上に、gtkMenuBarとgtkToolBarを配置します。  
 gtkMenuItemとgtkToolButtonは、左側のペインで親を右クリックし、「Edit...」-「+」で追加できます。  
 
@@ -44,10 +45,44 @@ menuItemOpen.Connect("activate", func(){
 })
 ```
 
-メニューアイテムの数だけ、上記のようなコードを作成すれば、メニューの完成となります。  
+メニューアイテムの数だけ、上記のようなコードを記述すれば、メニューバーの完成となります。  
 
 > [!NOTE]
-> `ShowErrorDialog()`は、
+> - `ShowErrorDialog()`は、
 > [7.2 カスタムメッセージダイアログ](../07#72-%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%80%E3%82%A4%E3%82%A2%E3%83%AD%E3%82%B0)
 > で作成した関数です。  
-> `menuOpen()`は、後編で説明します。  
+> - `menuOpen()`は、後編で説明します。  
+
+## 9.2 ツールバー
+![](image/window.jpg)  
+
+`application.Connect("activate", func() {})`の中で、メインウィンドウの後にgladeから読み込み、ツールボタン選択時の処理を記述します。  
+
+```go
+toolButtonOpen, _, err := GetObjFromGlade[*gtk.ToolButton](builder, "", "TOOLBUTTON_OPEN")
+if err != nil {
+	return err
+}
+
+toolButtonOpen.Connect("clicked", func(){
+	ret, err := menuOpen(parent)
+	if err != nil {
+		ShowErrorDialog(parent, err)
+		return
+	}
+	if len(ret) != 0 {
+		log.Println(ret)
+	}
+})
+```
+
+ツールボタンの数だけ、上記のようなコードを記述すれば、ツールバーの完成となります。  
+ツールバーには、メニューバーと同じ項目を登録しているので、処理もほとんどメニューアイテムと同じになります。  
+ジェネリックスで共通化出来ないかと思ったのですが、Connect()関数をコールする部分を共通化する方法が見つからなかったので、別々のコードになってます。  
+
+> [!NOTE]
+> - `ShowErrorDialog()`は、
+> [7.2 カスタムメッセージダイアログ](../07#72-%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%80%E3%82%A4%E3%82%A2%E3%83%AD%E3%82%B0)
+> で作成した関数です。  
+> - `menuOpen()`は、後編で説明します。  
+
