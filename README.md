@@ -33,5 +33,5 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
 <img src="Contents/07/image/std_dialog.jpg" height="89" />  
 
 [8. ヘッダーバー・ラベル書式・ウィンドウ書式のカスタマイズ](Contents/08/README.md)  
-<img src="Contents/08/image/window.jpg" height="89" /> <img src="08/image/custom_dialog_markup.jpg" height="89" />  
+<img src="Contents/08/image/window.jpg" height="89" /> <img src="Contents/08/image/custom_dialog_markup.jpg" height="89" />  
 
