@@ -21,6 +21,7 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
 <img src="03/image/window3.jpg" height="89" />  
 
 [4. これに気をつけないとアプリがクラッシュする](04/README.md)  
+<img src="04/image/computer_note_bad.png" height="89" />  
 
 [5. 半透明の付箋もどき](05/README.md)  
 <img src="05/image/window_multi.jpg" height="89" />  
