@@ -24,7 +24,7 @@ gtkMenuItemとgtkToolButtonは、左側のペインで親を右クリックし�
 ## 9.1 メニューバー
 ![](image/menu.jpg) ![](image/menu2.jpg)  
 
-`application.Connect("activate", func() {})`の中で、メインウィンドウの後にgladeから読み込みます。  
+`application.Connect("activate", func() {})`の中で、メインウィンドウの後にgladeから読み込み、メニューアイテム選択時の処理を記述します。  
 
 ```go
 menuItemOpen, _, err := GetObjFromGlade[*gtk.MenuItem](builder, "", "MENUITEM_OPEN")
@@ -44,3 +44,10 @@ menuItemOpen.Connect("activate", func(){
 })
 ```
 
+
+
+> [!NOTE]
+> `ShowErrorDialog()`は、
+> [7.2 カスタムメッセージダイアログ](../07#72-%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%80%E3%82%A4%E3%82%A2%E3%83%AD%E3%82%B0)
+> で作成した関数です。  
+> `menuOpen()`は、後編で説明します。  
