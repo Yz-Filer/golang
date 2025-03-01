@@ -94,5 +94,5 @@ switch ret {
 ![](image/glade_dialog.jpg)  
 レスポンスを返す全てのボタンを並べてます。あと、アイコン表示用のImageと処理中表示用のSpinnerも追加しました。  
 作成したファイルは、
-[ここ](glade/07_Dialog.glade)
+[ここ](glade/07_DIALOG.glade)
 に置いてます。  
