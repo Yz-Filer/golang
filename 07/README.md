@@ -16,6 +16,8 @@
 に置いてます。  
 
 ## 7.1 標準メッセージダイアログ
+![](image/std_dialog.jpg)  
+
 特徴についてGeminiに聞いてみました。  
 
 > - 作成時の戻り値でエラーを返さない。  
@@ -90,9 +92,143 @@ switch ret {
 | RESPONSE_HELP | `AddButton()`で追加したボタン押下 |
 
 ## 7.2 カスタムメッセージダイアログ
+![](image/custom_dialog.jpg)  
+
 やっぱりアイコンを表示したいので、メッセージダイアログを自作してみました。  
+
 ![](image/glade_dialog.jpg)  
+
 レスポンスを返す全てのボタンを並べてます。あと、アイコン表示用のImageと処理中表示用のSpinnerも追加しました。  
 作成したファイルは、
 [ここ](glade/07_DIALOG.glade)
 に置いてます。  
+
+ダイアログ作成の流れは以下のようになります。
+
+- ダイアログを作成  
+- 親と紐づけてアイコンを継承
+- ボタンラベルが指定されてる物は、ラベルを設定。ボタンラベルが指定されてない物は、非表示
+- 指定されたタイプ（MESSAGE_INFOとか）によって、アイコンを表示  
+- 起動時にはスピナーを非表示  
+- メッセージ1行目/2行目を設定  
+
+ダイアログ作成のコードは、
+[ここ](07_library.go)
+にあります。  
+
+上記で作成した関数を呼び出す側のコードは、以下のようになります。  
+
+```go
+func ShowErrorDialog(parent *gtk.ApplicationWindow, err error) {
+	dialog := gtk.MessageDialogNew(parent, gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT, gtk.MESSAGE_ERROR, gtk.BUTTONS_OK, "エラーが発生しました")
+	dialog.FormatSecondaryText("%s", err.Error())
+	dialog.SetTitle ("error")
+	dialog.Run()
+	dialog.Destroy()
+}
+
+// 以下は、application.Connect("activate", func() {})の中
+button2.Connect("clicked", func() {
+	// REJECT, ACCEPT, OK, CANCEL, CLOSE, YES, NO, APPLY, HELP
+	buttonFlg := [9]string{"", "", "OK", "CANCEL", "", "YES", "NO", "", ""}
+
+	// ダイアログの作成
+	dialog1, _, err := CustomMessageDialogNew(window1, "タイトル", gtk.MESSAGE_INFO, buttonFlg, "メッセージダイアログ", "このダイアログは自作のメッセージダイアログです")
+	if err != nil {
+		log.Println("Could not create dialog: ", err)
+		ShowErrorDialog(window1, err)
+		return
+	}
+	defer dialog1.Destroy()
+
+	// ダイアログをモーダルに設定して表示
+	dialog1.SetModal(true)
+	ret := dialog1.Run()
+
+	// カスタムメッセージダイアログの応答処理
+	switch ret {
+		case gtk.RESPONSE_REJECT:
+			log.Println("カスタムメッセージダイアログで、REJECTが押されました")
+		case gtk.RESPONSE_ACCEPT:
+			log.Println("カスタムメッセージダイアログで、ACCEPTが押されました")
+		case gtk.RESPONSE_OK:
+			log.Println("カスタムメッセージダイアログで、OKが押されました")
+		case gtk.RESPONSE_CANCEL:
+			log.Println("カスタムメッセージダイアログで、CANCELが押されました")
+		case gtk.RESPONSE_CLOSE:
+			log.Println("カスタムメッセージダイアログで、CLOSEが押されました")
+		case gtk.RESPONSE_YES:
+			log.Println("カスタムメッセージダイアログで、YESが押されました")
+		case gtk.RESPONSE_NO:
+			log.Println("カスタムメッセージダイアログで、NOが押されました")
+		case gtk.RESPONSE_APPLY:
+			log.Println("カスタムメッセージダイアログで、APPLYが押されました")
+		case gtk.RESPONSE_HELP:
+			log.Println("カスタムメッセージダイアログで、HELPが押されました")
+		case gtk.RESPONSE_DELETE_EVENT:
+			log.Println("カスタムメッセージダイアログが閉じられました")
+		default:
+			log.Println("カスタムメッセージダイアログで、想定してないレスポンスを受信しました")
+	}
+})
+```
+
+標準メッセージダイアログと違って、ダイアログ作成時にエラーを返す可能性があるため、エラー表示のために`ShowErrorDialog()`を作成してます。  
+
+## 7.3 モードレスダイアログ
+![](image/modeless_dialog.jpg)  
+
+ボタンを全て非表示にしたら、なぜか縦幅が大きくなってしまったのですが、モードレスダイアログを作成します。  
+3秒間スピナーが回り続けて、タイトルバーでカウントダウンしてます。  
+
+ダイアログ作成関数は、カスタムメッセージダイアログと同じ関数を使ってるので、呼び出し側のコードのみを以下に示します。  
+
+```go
+button3.Connect("clicked", func() {
+	// REJECT, ACCEPT, OK, CANCEL, CLOSE, YES, NO, APPLY, HELP
+	buttonFlg := [9]string{"", "", "", "", "", "", "", "", ""}
+	
+	// ダイアログの作成
+	// 「gtk.MESSAGE_OTHER」を指定して、アイコンを非表示にする（スピナー表示のため）
+	dialog1, spinner1, err := CustomMessageDialogNew(window1, "タイトル", gtk.MESSAGE_OTHER, buttonFlg, "モードレスダイアログ", "3秒経ったらクローズします")
+	if err != nil {
+		log.Println("Could not create dialog: ", err)
+		ShowErrorDialog(window1, err)
+		return
+	}
+	
+	// ダイアログが表示された時のシグナル処理
+	// 3秒待ってクローズ
+	dialog1.Connect("show", func(dlg *gtk.Dialog) {
+		go func() {
+			for i := 0; i <= 300; i++ {
+				DoEvents()
+				time.Sleep(10 * time.Millisecond)
+				
+				// goルーチン内のUI操作はglib.IdleAddを使って安全に実行
+				glib.IdleAdd(func() {
+					dlg.SetTitle(fmt.Sprintf("%d", 300-i))
+				})
+			}
+			
+			// goルーチン内のUI操作はglib.IdleAddを使って安全に実行
+			glib.IdleAdd(func() {
+				dlg.Destroy()
+			})
+			log.Println("モードレスダイアログが閉じられました")
+		}()
+	})
+	
+	// スピナーをShow・Start
+	spinner1.Show()
+	spinner1.Start()
+	
+	// ダイアログをモードレスに設定して表示
+	dialog1.SetModal(false)
+	dialog1.Show()
+	
+	// モードレスの場合隠れることがあるから、最前面に表示
+	dialog1.SetKeepAbove(true)
+	dialog1.SetKeepAbove(false)
+})
+```
