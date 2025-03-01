@@ -87,4 +87,9 @@ toolButtonOpen.Connect("clicked", func(){
 > - `menuOpen()`は、後編で説明します。  
 
 ## 9.3 おわりに
-以上で、メニューバー/ツールバー
+メニューバー/ツールバーを作成してみました。  
+
+作成したコードは、
+[ここ](09_MenuBar_Toolbar.go)
+に置いてます。 
+
