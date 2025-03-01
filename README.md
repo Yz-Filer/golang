@@ -12,24 +12,24 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
 
 ## コンテンツ
 [1. gotk3を使って、Simple windowを作成する](01/README.md)  
-![](01/image/window.jpg)  
+<img src="01/image/window.jpg" height="89" />  
 
 [2. 他のパソコンでも実行したい](02/README.md)  
 
 [3. テーマを使いたい](03/README.md)  
-![](03/image/window3.jpg)  
+<img src="03/image/window3.jpg" height="89" />  
 
 [4. これに気をつけないとアプリがクラッシュする](04/README.md)  
 
 [5. 半透明の付箋もどき](05/README.md)  
-![](05/image/window_multi.jpg)  
+<img src="05/image/window_multi.jpg" height="89" />  
 
 [6. タスクトレイに格納したい](06/README.md)  
-![](06/image/taskbar_menu.jpg)  
+<img src="06/image/taskbar_menu.jpg" height="89" />  
 
 [7. メッセージダイアログを表示したい](07/README.md)  
-![](07/image/std_dialog.jpg)  
+<img src="07/image/std_dialog.jpg" height="89" />  
 
 [8. ヘッダーバー・ラベル書式・ウィンドウ書式のカスタマイズ](08/README.md)  
-![](08/image/window.jpg) ![](08/image/custom_dialog_markup.jpg)  
+<img src="08/image/window.jpg" height="89" /> <img src="08/image/custom_dialog_markup.jpg" height="89" />  
 
