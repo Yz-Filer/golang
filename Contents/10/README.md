@@ -32,7 +32,7 @@ func menuOpen(parent *gtk.ApplicationWindow) (string, error) {
 
 `FileChooserDialogNewWith2Buttons()`の第3引数は、以下のようになります。  
 
-| 設定値 |  
+| FileChooserAction |  
 | --- |  
 | FILE_CHOOSER_ACTION_OPEN |  
 | FILE_CHOOSER_ACTION_SAVE |  
@@ -82,7 +82,9 @@ func menuFont(parent *gtk.ApplicationWindow) (string, error) {
 - Sans-Serif Oblique Semi-Condensed 10：Sans-Serifフォント、斜体、少し狭い、サイズ10
 - Schneidler Blk BT Heavy Italic 10：Schneidler Blk BTフォント、太め、斜体（筆記体）、サイズ10
 
-サイズ部分以外は、空白区切りや順番もあまり当てにならないため、フォントに使われるキーワードとサイズを除外した部分がフォント名になるというような処理が必要そうです。  
+`フォントファミリー` `[ウエイト]` `[スタイル]` `[文字幅]` `サイズ`  
+という並びなのだと思います。`[]`内は任意指定。  
+フォントファミリーに空白が入るため、後ろからどのオプションが指定されてるかを判定していくしかなさそうです。  
 
 > [!NOTE]
 > `FontChooserDialog`は、カレントフォントの設定なども出来ます。  
