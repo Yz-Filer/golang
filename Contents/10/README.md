@@ -45,7 +45,7 @@ func menuOpen(parent *gtk.ApplicationWindow) (string, error) {
 に一覧を表示してます。  
 
 > [!NOTE]
-> `FileChooserDialogNewWith2Buttons()`は、表示するファイルのフィルタ設定や、複数選択可否、カレントフォルダの指定などの設定も出来ます。  
+> `FileChooserDialog`は、表示するファイルのフィルタ設定や、複数選択可否、カレントフォルダの指定などの設定も出来ます。  
 > 詳しくは、[gotk3/gtk/FileChooser](https://pkg.go.dev/github.com/gotk3/gotk3/gtk#FileChooser)で確認して下さい。  
 
 ## 10.2 フォント選択ダイアログ
@@ -85,7 +85,7 @@ func menuFont(parent *gtk.ApplicationWindow) (string, error) {
 サイズ部分以外は、空白区切りや順番もあまり当てにならないため、フォントに使われるキーワードとサイズを除外した部分がフォント名になるというような処理が必要そうです。  
 
 > [!NOTE]
-> `FontChooserDialogNew()`は、カレントフォントの設定なども出来ます。  
+> `FontChooserDialog`は、カレントフォントの設定なども出来ます。  
 > 詳しくは、[gotk3/gtk/FontChooser](https://pkg.go.dev/github.com/gotk3/gotk3/gtk#FontChooser)で確認して下さい。  
 
 
@@ -119,11 +119,13 @@ func menuColor(parent *gtk.ApplicationWindow) (string, error) {
 今回は`GetRGBA().String()`で文字列を取得してますが、`GetRGBA()`で取得した`*gdk.RGBA`から、`GetRed(), GetGreen(), GetBlue(), GetAlpha()`の各関数でそれぞれの値を取得することも可能です。  
 
 > [!NOTE]
-> `ColorChooserDialogNew()`は、カレントカラーの設定なども出来ます。  
+> `ColorChooserDialog`は、カレントカラーの設定なども出来ます。  
 > 詳しくは、[gotk3/gtk/ColorChooser](https://pkg.go.dev/github.com/gotk3/gotk3/gtk#ColorChooser)で確認して下さい。  
 
 ## 10.4 日付選択ダイアログ
 ![](image/calendar.jpg)  
+
+コードを以下に示します。  
 
 ```go
 func menuCalendar(parent *gtk.ApplicationWindow) (string, error) {
@@ -174,6 +176,23 @@ func menuCalendar(parent *gtk.ApplicationWindow) (string, error) {
 	return "", nil
 }
 ```
+
+`gtk.Calendar`は、標準ダイアログではなく、ウィジェットとなりますので、ダイアログを作成してそこに表示しています。  
+`SetDisplayOptions(CalendarDisplayOptions)`関数を使う事で、以下のオプション指定が可能です。  
+
+| CalendarDisplayOptions |  
+| --- |  
+| CALENDAR_SHOW_HEADING |  
+| CALENDAR_SHOW_DAY_NAMES |  
+| CALENDAR_NO_MONTH_CHANGE |  
+| CALENDAR_SHOW_WEEK_NUMBERS |  
+| CALENDAR_SHOW_DETAILS |  
+
+> [!NOTE]
+> コードに記載の通り、`Calendar`は、カレント日付の設定などが出来ます。  
+> 詳しくは、[gotk3/gtk/Calendar](https://pkg.go.dev/github.com/gotk3/gotk3/gtk#Calendar)で確認して下さい。  
+
+
 
 ## 10.5 ABOUTダイアログ
 ![](image/about1.jpg) ![](image/about2.jpg)  
