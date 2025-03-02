@@ -77,17 +77,22 @@ func menuFont(parent *gtk.ApplicationWindow) (string, error) {
 
 `GetFont()`で取得した文字列には色々な物が含まれてるので利用する時は注意してください。  
 例えば、以下のような文字列が返ってきます。  
-- Sans 10  
-- Sans-Serif Oblique Semi-Condensed 10
-- Schneidler Blk BT Heavy Italic 10  
+
+- Sans 10：Sansフォント、サイズ10  
+- Sans-Serif Oblique Semi-Condensed 10：Sans-Serifフォント、斜体、少し狭い、サイズ10
+- Schneidler Blk BT Heavy Italic 10：Schneidler Blk BTフォント、太め、斜体（筆記体）、サイズ10
+
+サイズ部分以外は、空白区切りや順番もあまり当てにならないため、フォントに使われるキーワードとサイズを除外した部分がフォント名になるというような処理が必要そうです。  
 
 > [!NOTE]
-> `FontChooserDialogNew()`は、カレントフォントの指定などの設定も出来ます。  
+> `FontChooserDialogNew()`は、カレントフォントの設定なども出来ます。  
 > 詳しくは、[gotk3/gtk/FontChooser](https://pkg.go.dev/github.com/gotk3/gotk3/gtk#FontChooser)で確認して下さい。  
 
 
 ## 10.3 カラー選択ダイアログ
 ![](image/color.jpg)  
+
+コードを以下に示します。  
 
 ```go
 func menuColor(parent *gtk.ApplicationWindow) (string, error) {
@@ -110,6 +115,12 @@ func menuColor(parent *gtk.ApplicationWindow) (string, error) {
 	return "", nil
 }
 ```
+
+今回は`GetRGBA().String()`で文字列を取得してますが、`GetRGBA()`で取得した`*gdk.RGBA`から、`GetRed(), GetGreen(), GetBlue(), GetAlpha()`の各関数でそれぞれの値を取得することも可能です。  
+
+> [!NOTE]
+> `ColorChooserDialogNew()`は、カレントカラーの設定なども出来ます。  
+> 詳しくは、[gotk3/gtk/ColorChooser](https://pkg.go.dev/github.com/gotk3/gotk3/gtk#ColorChooser)で確認して下さい。  
 
 ## 10.4 日付選択ダイアログ
 ![](image/calendar.jpg)  
