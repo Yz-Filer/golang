@@ -180,7 +180,7 @@ func menuCalendar(parent *gtk.ApplicationWindow) (string, error) {
 ```
 
 `gtk.Calendar`は、標準ダイアログではなく、ウィジェットとなりますので、ダイアログを作成してそこに表示しています。  
-`SetDisplayOptions(CalendarDisplayOptions)`関数を使う事で、以下のオプション指定が可能です。  
+`SetDisplayOptions(CalendarDisplayOptions)`関数を使う事で、以下のオプションが指定可能です。  
 
 | CalendarDisplayOptions |  
 | --- |  
@@ -194,10 +194,13 @@ func menuCalendar(parent *gtk.ApplicationWindow) (string, error) {
 > コードに記載の通り、`Calendar`は、カレント日付の設定などが出来ます。  
 > 詳しくは、[gotk3/gtk/Calendar](https://pkg.go.dev/github.com/gotk3/gotk3/gtk#Calendar)で確認して下さい。  
 
-
+> [!CAUTION]
+> Monthが0始まりで管理されてるので注意が必要です。  
 
 ## 10.5 ABOUTダイアログ
 ![](image/about1.jpg) ![](image/about2.jpg)  
+
+コードを以下に示します。  
 
 ```go
 func menuAbout(parent *gtk.ApplicationWindow) error {
@@ -241,3 +244,17 @@ func menuAbout(parent *gtk.ApplicationWindow) error {
 	return nil
 }
 ```
+
+コードを読めば、どこに何を記載すれば良いかが分かると思います。  
+
+## 10.6 おわりに
+メニューバー/ツールバー/標準ダイアログについての説明が終わりました。  
+作成したコードは、
+[ここ](../09/09_MenuBar_Toolbar.go)
+に置いてます。 
+
+<!--
+</br>
+
+「[9. メニューバー/ツールバー/標準ダイアログを使いたい(前編)](../09/README.md)」へ  
+-->
