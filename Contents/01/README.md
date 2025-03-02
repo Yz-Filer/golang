@@ -26,6 +26,12 @@ UI作成は基本的にgladeを使います。
 go build -gcflags "-N -l" -tags "gtk_3_12 gtk_3_14 gtk_3_16 gtk_3_18 gtk_3_20 gtk_3_22" -o test.exe
 ```  
 
+> [!CAUTION]
+> 上記のタグ指定は、Ver3.12-3.22の全ての非推奨機能が使えるようになりますが、逆に追加された機能は使えなくなります。  
+> 例えば、Windows標準のファイル選択ダイアログを呼び出す関数`FileChooserNativeDialogNew()`などは使えなくなります。  
+> タスクトレイ格納などの非推奨機能が不要な場合は、タグ指定を見直してください。  
+> （`FileChooserNativeDialogNew()`は、gtk_since_3_20.goにあるので、コピーして動くように組み込むという方法もあるかもしれませんが・・・自己責任で）  
+
 ## 1.2 gtk.Applicationを使うべきなの？
 サンプルコードなどを検索すると、「gtk.Init」を使ってる物と「gtk.Application」を使ってる物があるため、違いを聞いてみました。  
 > gtk.Initは古いGTKのバージョンで使用されていましたが、現在ではgtk.Applicationの使用が推奨されています。
