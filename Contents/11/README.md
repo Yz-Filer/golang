@@ -74,7 +74,7 @@ TreeViewの2列目の子GtkCellRendererTextのプロパティも1列目と同様
 ## 11.2 フィルタの作成
 
 データの追加・削除・更新などの後に持っていきたかったのですが、フィルタがあることでコードに影響が出るため、先に説明します。  
-gladeではフィルタ追加が出来ないようなので、（必要な場合は）コードで追加する必要があります。  
+gladeではフィルタ追加が出来ないようなので、（フィルタが必要な場合は）コードで追加する必要があります。  
 以下にコードを示します。  
 
 ```go
@@ -111,7 +111,7 @@ listFilter.SetVisibleFunc(func(model *gtk.TreeModel, iter *gtk.TreeIter) bool {
 フィルタ関数は、コード中のコメントに記載の通り戻り値が`true`なら表示で`false`なら非表示となります。  
 フィルタON/OFFを制御するため「filterON」変数を定義してます。  
 `ShowErrorDialog`は、[7.2 カスタムメッセージダイアログ](../07#72-%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%80%E3%82%A4%E3%82%A2%E3%83%AD%E3%82%B0)で作成した関数となります。  
-モデルから値を取得している`GetListStoreValue[int]()`は自作関数となりますが、後ほど説明します。  
+モデルから値を取得している`GetListStoreValue[int]()`は自作関数となりますが、「11.6」で説明します。  
 
 ## 11.3 ソートの作成
 
@@ -147,7 +147,7 @@ gladeで設定した「ソート列ID」などは維持されているようで�
 どちらも行を示す物のようですが、pathは階層構造を意識した行ということのようです。  
 
 > [!CAUTION]
-> IterやPathはデータの追加・削除やフィルタ・ソートなどの影響で動的に変わる物なので、ListStoreの行データとIterをグローバル変数のMapなどを使って保持しておいても意味がありません。  
+> Iterやpathはデータの追加・削除やフィルタ・ソートなどの影響で動的に変わる物なので、ListStoreの行データとIterをグローバル変数のMapなどを使って保持しておいても意味がありません。  
 
 モデルへ行の追加をするコードを以下に示します。  
 
@@ -257,4 +257,91 @@ col1, err := GetListStoreValue[int] (model, iter, 0)
 col2, err := GetListStoreValue[string] (model, iter, 1)
 ```
 
+## 11.7 モデルのデータ更新
+
+ちょっと見難くなりましたが、Iter行の値を取得して、2列目の項目の末尾に「*」を追加してデータを更新するコードとなります。  
+
+```go
+/*
+// 1列目の値の取得は、Setで1行分更新する場合に使用
+col1, err := GetListStoreValue[int] (listStore, iter, 0)
+if err != nil {
+	ShowErrorDialog(window1, fmt.Errorf("Failed to retrieve the tree value: %w", err))
+	return
+}
+*/
+
+// 2列目の値を取得
+col2, err := GetListStoreValue[string] (listStore, iter, 1)
+if err != nil {
+	ShowErrorDialog(window1, fmt.Errorf("Failed to retrieve the tree value: %w", err))
+	return
+}
+
+// 2列目の値を更新して上書き
+err = listStore.SetValue(iter, 1, col2 + "*")
+if err != nil {
+	ShowErrorDialog(window1, fmt.Errorf("Failed to update the value: %w", err))
+	return
+}
+
+// Setで1行分更新する場合
+// err = listStore.Set(iter, []int{0, 1}, []interface{}{col1, col2 + "*"})
+```
+
+コメントアウトしてる`Set()`を使う方法は、1行分更新する時に使用するコードです。  
+コメントアウトしてない`SetValue()`を使う方法は、1行のうちの1項目のみ更新する時に使用するコードです。  
+
+MVC構造なので、データを更新すれば、画面の表示にも反映されます。  
+
+## 11.8 モデルからのデータ削除
+
+Iter行を削除するコードを以下に示します。  
+
+```go
+listStore.Remove(iter)
+```
+
+データ更新も同様ですが、11.5で記載したようにIterは、ListStoreのIterにする必要があるので注意して下さい。  
+
+## 11.9 モデル内のデータを検索
+
+Geminiにも聞いてみましたが、サーチ関数などはないようなので、ループで1行1行確認する必要があります。  
+ListStore内をループで1行1行取りだして、1列目が「3」の行を検索するコードを以下に示します。  
+
+```go
+listStore.ForEach(func(model *gtk.TreeModel, path *gtk.TreePath, iter *gtk.TreeIter) bool {
+	// 値を取得
+	col1, err := GetListStoreValue[int] (model, iter, 0)
+	if err != nil {
+		ShowErrorDialog(window1, fmt.Errorf("Failed to retrieve the tree value: %w", err))
+		return true
+	}
+	
+	if col1 == 3 {
+		// listStoreのパスからlistFilterのパスに変換
+		path1 := listFilter.ConvertChildPathToPath(path)
+		
+		// フィルタされておらずTreeviewに表示されてる場合
+		if path1 != nil {
+			// listFilterのパスからlistSortのパスに変換
+			path2 := listSort.ConvertChildPathToPath(path1)
+			
+			// カーソルを移動
+			treeView.SetCursor(path2, nil, false)
+		}
+		// 検索を終了する
+		return true
+	}
+	
+	// 検索を続ける
+	return false
+})
+```
+
+データが見つかった時に、TreeViewのカーソルを移動するために、ListStoreのpathからListSortのpathへ変換してます  
+この時、フィルタのために画面に非表示となってるデータの可能性がありますので、pathがNULLかどうかの判定を行っています。  
+（ソートで非表示になる事はないので、フィルタ部だけ判定してます）  
+
+見つからなかった時にメッセージを出すなどの処理をしたい場合、ForEachの外側のスコープで宣言した変数に対して、値が見つかった時にForEachの中で値を設定し、値が設定されてなければ見つからなかったと判定する方法となります。  
 
