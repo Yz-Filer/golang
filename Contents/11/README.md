@@ -38,6 +38,12 @@ Gladeで「トップレベル」を「GtkApplicationWindow」にし、以下の�
 
 「新規(N)」ボタンを押すと左側のペインにGtkListStoreが追加されます。IDを変える場合は、追加されたGtkListStoreのIDを修正するとTreeview側も自動的に変更されます。  
 
+![](image/glade_liststore.jpg)  
+
+今度はモデルの列追加となります。  
+左側のペインでGtkListStoreを選択して、「項目（横方向のデータ）の追加と削除：」欄に2列分追加します。  
+整数は`gint`、文字列は`gchararray`です。項目の名前は後でglade内で使うので分かる名前をつけて下さい。  
+
 作成したファイルは、
 [ここ](glade/11_MainWindow.glade)
 に置いてます。  
