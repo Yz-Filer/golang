@@ -44,6 +44,28 @@ func menuOpen(parent *gtk.ApplicationWindow) (string, error) {
 [7.1 標準メッセージダイアログ](../07#71-%E6%A8%99%E6%BA%96%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%80%E3%82%A4%E3%82%A2%E3%83%AD%E3%82%B0)
 に一覧を表示してます。  
 
+> [!TIP]
+> ファイル選択ダイアログは、OSの物も使えます。
+> ```go
+> // OSのファイル選択ダイアログを作成
+> fcd, err := gtk.FileChooserNativeDialogNew("開く", parent, gtk.FILE_CHOOSER_ACTION_OPEN, "開く", "やめる")
+> if err != nil {
+> 	log.Fatal(err)
+> }
+> defer fcd.Destroy()
+> 
+> // フィルタの設定などは、FileChooserDialogも同様なため参考までに載せておきます
+> ff, err := gtk.FileFilterNew()
+> if err != nil {
+> 	log.Fatal(err)
+> }
+> ff.AddPattern("*.txt")
+> ff.SetName("text")
+> fcd.AddFilter(ff)
+> 
+> ret := fcd.Run()
+> ```
+
 > [!NOTE]
 > `FileChooserDialog`は、表示するファイルのフィルタ設定や、複数選択可否、カレントフォルダの指定などの設定も出来ます。  
 > 詳しくは、[gotk3/gtk/FileChooser](https://pkg.go.dev/github.com/gotk3/gotk3/gtk#FileChooser)で確認して下さい。  
@@ -78,8 +100,8 @@ func menuFont(parent *gtk.ApplicationWindow) (string, error) {
 `GetFont()`で取得した文字列には色々な物が含まれてるので利用する時は注意してください。  
 以下の関数を使うことで、各項目の値が取得可能です。  
 
-```
-desc:=pango.FontDescriptionFromString(fcd.GetFont())
+```go
+desc := pango.FontDescriptionFromString(fcd.GetFont())
 desc.GetFamily()
 desc.GetSize()
 desc.GetStyle()
