@@ -111,8 +111,30 @@ listFilter.SetVisibleFunc(func(model *gtk.TreeModel, iter *gtk.TreeIter) bool {
 モデルlistStoreにフィルタを追加する形となります。  
 フィルタ関数は、コード中のコメントに記載の通り戻り値が`true`なら表示で`false`なら非表示となります。  
 フィルタON/OFFを制御するため「filterON」変数を定義してます。  
-モデルから値を取得している`GetListStoreValue[int]()`は自作関数となりますが、後で説明します。  
+`ShowErrorDialog`は、[7.2 カスタムメッセージダイアログ](../07#72-%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%80%E3%82%A4%E3%82%A2%E3%83%AD%E3%82%B0)で作成した関数となります。  
+モデルから値を取得している`GetListStoreValue[int]()`は自作関数となりますが、後ほど説明します。  
 
 ## 11.3 ソートの作成
 
-gladeで
+gladeでフィルタが作成出来ないので、フィルタを追加したところソートが上手く動かなくなりました。  
+そのため、コードで作成して追加します。  
+
+```go
+listSort, err := gtk.TreeModelSortNew(listFilter)
+if err != nil {
+	log.Fatal(err)
+}
+
+// TreeViewに追加
+treeView.SetModel(listSort)
+```
+
+11.2で作成したフィルタを持つソートを作成してTreeviewのモデルに設定し直してます。  
+gladeで設定した「ソート列ID」などは維持されているようで、問題なく動作しました。  
+
+> [!TIP]
+> ソートもフィルタのように関数を作って独自に判定させることが出来ます。  
+> `listSort.SetSortFunc(columnNo, func(model *TreeModel, a, b *TreeIter) int {})`  
+> a, bのIterから値を取得して大小比較した結果、負/0/正のいずれかを返す関数を作成することになります。  
+> 昇順の場合、降順の場合で正負を逆にする必要があります。  
+
