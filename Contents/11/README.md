@@ -23,6 +23,10 @@ Gladeで「トップレベル」を「GtkApplicationWindow」にし、以下の�
 
 ![](image/glade.jpg)  
 
+メニュー作成時と同じように、左側のペインのTreeview上で右クリック
+
+![](image/glade_edit.jpg)
+
 作成したファイルは、
 [ここ](glade/11_MainWindow.glade)
 に置いてます。  
