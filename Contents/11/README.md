@@ -302,7 +302,7 @@ Iter行を削除するコードを以下に示します。
 listStore.Remove(iter)
 ```
 
-データ更新も同様ですが、11.5で記載したようにIterは、ListStoreのIterにする必要があるので注意して下さい。  
+データ更新も同様ですが、「11.5」で記載したようにIterは、ListStoreのIterにする必要があるので注意して下さい。  
 
 ## 11.9 モデル内のデータを検索
 
@@ -345,3 +345,17 @@ listStore.ForEach(func(model *gtk.TreeModel, path *gtk.TreePath, iter *gtk.TreeI
 
 見つからなかった時にメッセージを出すなどの処理をしたい場合、ForEachの外側のスコープで宣言した変数に対して、値が見つかった時にForEachの中で値を設定し、値が設定されてなければ見つからなかったと判定する方法となります。  
 
+## 11.10 フィルタ条件の変更
+
+「11.2」で作成したフィルタは、`filterON`変数でフィルタの条件を変更することが出来ます。  
+例えば、ボタンを押したタイミングで、`filterON`変数を更新しても、TreeViewの表示は勝手に変わりません。  
+そのため、以下のようなコードにする必要があります。  
+
+```go
+btnFilter.Connect("clicked", func() {
+	filterON = true
+	listFilter.Refilter()
+})
+```
+
+`filterON`変数を変更した後`listFilter.Refilter()`を実行することで再フィルタを行います。  
