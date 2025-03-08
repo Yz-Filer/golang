@@ -120,6 +120,11 @@ switch ret {
 [ここ](07_library.go)
 にあります。  
 
+> [!CAUTION]
+> 同じオブジェクトは1つのBuilderから、1回しか取得出来なさそうです。
+> そのため、1つのgladeファイルから同じダイアログを複数表示するような場合、`BuilderNewFromString()`から実行する必要があります。  
+> ダイアログ作成コード中の`GetObjFromGlade[*gtk.Dialog](nil, dialog1Glade, "DIALOG")`で第一引数に`nil`を指定しているのは、そのためです。
+
 上記で作成した関数を呼び出す側のコードは、以下のようになります。  
 
 ```go
