@@ -2,7 +2,7 @@
 
 # 11. 表形式にデータを表示したい
 
----- ★window.jpg
+![](image/window.jpg)
 
 表形式のデータを表示する場合、gtk3では、ListBoxかTreeviewを使うようです。
 
@@ -18,3 +18,8 @@
 今回は、分かりやすくはならないのかもしれませんが、ビュー定義を出来るだけgladeで作成して、モデルをコツコツ作ってみたいと思います。  
 
 # 11.1 Gladeでメインウィンドウを作成
+
+Gladeで「トップレベル」を「GtkApplicationWindow」にし、以下の画像のようにオブジェクトを配置したウィンドウ作成後、ファイル名「11_MainWindow.glade」で保存します。  
+
+![](image/glade.jpg)  
+
