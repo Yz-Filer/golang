@@ -18,19 +18,19 @@ UI作成は基本的にgladeを使います。
 - glade（gtk3のUIをGUIで作成するツール）
 
 コンパイルオプション  
-- コンソールに出力しているので、「-H=windowsgui」は使わないで下さい。
-- 今後、非推奨になってる機能も使うので、「-tags "gtk_3_12 gtk_3_14 gtk_3_16 gtk_3_18 gtk_3_20 gtk_3_22"」をつけて下さい。
+- コンソールに出力しているので、「-H=windowsgui」は使わないで下さい。  
+  （アプリ開発時は、gtkが出力するエラーの確認も必要となるため使わずに開発し、完成後につけると良いです）
+- 非推奨になってる機能も使うので、「-tags gtk_deprecated」をつけて下さい。
 
 今回は、以下のコマンドとオプションでコンパイルしてます。  
 ```bat
-go build -gcflags "-N -l" -tags "gtk_3_12 gtk_3_14 gtk_3_16 gtk_3_18 gtk_3_20 gtk_3_22" -o test.exe
+go build -gcflags "-N -l" -tags gtk_deprecated -o test.exe
 ```  
 
 > [!CAUTION]
-> 上記のタグ指定は、Ver3.12-3.22の非推奨機能が使えるようになりますが、逆に追加された機能は使えなくなります。  
-> 例えば、Windows標準のファイル選択ダイアログを呼び出す関数`FileChooserNativeDialogNew()`などは使えなくなります。  
-> タスクトレイ格納などの非推奨機能が不要な場合は、タグ指定を見直してください。  
-> （`FileChooserNativeDialogNew()`は、gtk_since_3_20.goにあるので、コピーして動くように組み込むという方法もあるかもしれませんが・・・自己責任で）  
+> gotk3 v0.6.4の場合、「自分のHOME\go\pkg\mod\github.com\gotk3\gotk3@v0.6.4」配下にある以下のファイルに対応が必要となります。（go言語用に環境変数を設定している場合、ディレクトリが異なる場合があります）  
+> - gdk/gdk_since_3_22.go：githubからDLして差し替え（v0.6.4.1で修正されるそうです）
+> - gtk/gtk_deprecated_since_3_10.go：エラーが出るので、コンパイル対象から除外するため、別フォルダへ退避  
 
 ## 1.2 gtk.Applicationを使うべきなの？
 サンプルコードなどを検索すると、「gtk.Init」を使ってる物と「gtk.Application」を使ってる物があるため、違いを聞いてみました。  
