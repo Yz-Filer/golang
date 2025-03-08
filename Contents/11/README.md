@@ -146,7 +146,10 @@ gladeで設定した「ソート列ID」などは維持されているようで�
 
 どちらも行を示す物のようですが、pathは階層構造を意識した行ということのようです。  
 
-以下に、モデルへ行追加をするコードを示します。  
+> [!CAUTION]
+> IterやPathはデータの追加・削除やフィルタ・ソートなどの影響で動的に変わる物なので、ListStoreの行データとIterをグローバル変数のMapなどを使って保持しておいても意味がありません。  
+
+モデルへ行の追加をするコードを以下に示します。  
 
 ```go
 iter := listStore.Append()
@@ -164,7 +167,52 @@ if err != nil {
 > Iterは他にも、一番前に追加する用の`Prepend()`や挿入用の`Insert()`などで取得できます。  
 > 詳しくは、[gotk3/gtk/ListStore](https://pkg.go.dev/github.com/gotk3/gotk3/gtk#ListStore)で確認して下さい。  
 
-## 11.5 モデルから値の取得
+## 11.5 ListStoreモデル ⇒ Filterモデル ⇒ Sortモデル ⇒ TreeView
+
+ListStoreにデータを追加したら、FilterされてSortされてTreeViewに表示されます。  
+そのため、TreeViewに表示されてる行とListStoreに格納されてるデータの位置には乖離があります。  
+
+例えば、TreeViewカーソル行のモデル（listSort）のIterを取得するのは、以下のコードになります。  
+
+```go
+selection, err := treeView.GetSelection()
+if err != nil {
+	return nil, err
+}
+
+_, iter1, ok := selection.GetSelected()
+if !ok {
+	return nil, fmt.Errorf("Unable to get the selected item.")
+}
+```
+
+これをListStoreのIterに変換するには、以下のようになります。  
+
+```go
+// iter1(listSort) ⇒ iter2(listFilter)
+iter2 := listSort.ConvertIterToChildIter(iter1)
+
+// iter2(listFilter) ⇒ iter(listStore)
+iter := listFilter.ConvertIterToChildIter(iter2)
+```
+
+逆にListStoreから画面に表示されてる行（TreeViewの行）のIterを取得するには、以下のようになります。  
+
+```go
+// iter1(listStore) ⇒ iter2(listFilter)
+iter2 := listFilter.ConvertChildIterToIter(iter1)
+
+// iter2(listFilter) ⇒ iter(listSort)
+iter := listSort.ConvertChildIterToIter(iter2)
+```
+
+pathの場合も同様`ConvertChildPathToPath()``ConvertPathToChildPath()`の対応が必要となります。  
+
+> [!CAUTION]
+> Geminiに聞いても明確な回答がなかったため、モデルの繋がりを考えて設定してみたら動作したという状況です。
+> 間違えてたらすみません。  
+
+## 11.6 モデルから値の取得
 
 モデルから値を取得する場合は、Iterとカラム番号から値を取得後、その値をgo言語の形式に変換する必要があります。  
 以下にジェネリックスを使って作成した関数を示します。
@@ -200,4 +248,5 @@ func GetListStoreValue[T any] (iModel gtk.ITreeModel, iter *gtk.TreeIter, id int
 col1, err := GetListStoreValue[int] (model, iter, 0)
 col2, err := GetListStoreValue[string] (model, iter, 1)
 ```
+
 
