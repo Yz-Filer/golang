@@ -76,15 +76,16 @@ func menuFont(parent *gtk.ApplicationWindow) (string, error) {
 ```
 
 `GetFont()`で取得した文字列には色々な物が含まれてるので利用する時は注意してください。  
-例えば、以下のような文字列が返ってきます。  
+以下の関数を使うことで、各項目の値が取得可能です。  
 
-- Sans 10：Sansフォント、サイズ10  
-- Sans-Serif Oblique Semi-Condensed 10：Sans-Serifフォント、斜体、少し狭い、サイズ10
-- Schneidler Blk BT Heavy Italic 10：Schneidler Blk BTフォント、太め、斜体（筆記体）、サイズ10
-
-`フォントファミリー` `[ウエイト]` `[スタイル]` `[文字幅]` `サイズ`  
-という並びなのだと思います。`[]`内は任意指定。  
-フォントファミリーに空白が入るため、後ろからどのオプションが指定されてるかを判定していくしかなさそうです。  
+```
+desc:=pango.FontDescriptionFromString(fcd.GetFont())
+desc.GetFamily()
+desc.GetSize()
+desc.GetStyle()
+desc.GetWeight()
+desc.GetStretch()
+```
 
 > [!NOTE]
 > `FontChooserDialog`は、カレントフォントの設定なども出来ます。  
