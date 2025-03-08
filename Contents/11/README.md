@@ -23,3 +23,7 @@ Gladeで「トップレベル」を「GtkApplicationWindow」にし、以下の�
 
 ![](image/glade.jpg)  
 
+作成したファイルは、
+[ここ](glade/11_MainWindow.glade)
+に置いてます。  
+
