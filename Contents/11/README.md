@@ -17,7 +17,7 @@
 
 今回は、分かりやすくはならないかもしれませんが、ビュー定義を出来るだけgladeで作成して、モデルをコツコツ作ってみたいと思います。  
 
-# 11.1 Gladeでメインウィンドウを作成
+## 11.1 Gladeでメインウィンドウを作成
 
 Gladeで「トップレベル」を「GtkApplicationWindow」にし、以下の画像のようにオブジェクトを配置したウィンドウ作成後、ファイル名「11_MainWindow.glade」で保存します。  
 ソートを使えるようにしたいので、下図のようにTreeviewのプロパティでは、「ヘッダーの表示可否」「ヘッダーのクリック可否」をチェックしておいて下さい。  
@@ -68,8 +68,51 @@ Treeviewの2列目の子GtkCellRendererTextのプロパティも1列目と同様
 > GtkCellRendererTextのプロパティの中で分かり難いと思ったプロパティは「省略記号で置き換える」でした。これは、文字幅が収まらなかった時に、「aaaa...」のように省略記号を表示して短縮表示する設定となります。
 
 以上でgladeファイルの作成は終了となります。  
-
 作成したファイルは、
 [ここ](glade/11_MainWindow.glade)
 に置いてます。  
 
+## 11.2 フィルタの作成
+
+データの追加・削除・更新などの後に持っていきたかったのですが、フィルタがあることでコードに影響が出るため、先に説明します。  
+gladeではフィルタ追加が出来ないようなので、（必要な場合は）コードで追加する必要があります。  
+以下にコードを示します。  
+
+```go
+filterON := false
+listFilter, err := listStore.FilterNew(nil)
+if err != nil {
+	log.Fatal("Failed to create the list filter: ", err)
+}
+
+// フィルタ関数（trueなら表示。falseなら非表示）
+listFilter.SetVisibleFunc(func(model *gtk.TreeModel, iter *gtk.TreeIter) bool {
+	// フィルタがOFFの場合は全行出力
+	if !filterON {
+		return true
+	}
+	
+	// 値を取得
+	col1, err := GetListStoreValue[int] (model, iter, 0)
+	if err != nil {
+		ShowErrorDialog(window1, fmt.Errorf("Failed to retrieve the tree value: %w", err))
+		return false
+	}
+	
+	// 偶数は出力、奇数は出力しない
+	if col1 % 2 == 0 {
+		return true
+	} else {
+		return false
+	}
+})
+```
+
+モデルlistStoreにフィルタを追加する形となります。  
+フィルタ関数は、コード中のコメントに記載の通り戻り値が`true`なら表示で`false`なら非表示となります。  
+フィルタON/OFFを制御するため「filterON」変数を定義してます。  
+モデルから値を取得している`GetListStoreValue[int]()`は自作関数となりますが、後で説明します。  
+
+## 11.3 ソートの作成
+
+gladeで
