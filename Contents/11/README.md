@@ -161,5 +161,43 @@ if err != nil {
 `[]interface{}{1, "eeeeeeeeeeeeeee"}`は、1列目と2列目に代入するデータを指定しています。  
 
 > [!TIP]
-> Iterは他にも、一番前に追加する用の`Prepend()`や挿入用の`Insert()`などがあります。
+> Iterは他にも、一番前に追加する用の`Prepend()`や挿入用の`Insert()`などで取得できます。  
+> 詳しくは、[gotk3/gtk/ListStore](https://pkg.go.dev/github.com/gotk3/gotk3/gtk#ListStore)で確認して下さい。  
+
+## 11.5 モデルから値の取得
+
+モデルから値を取得する場合は、Iterとカラム番号から値を取得後、その値をgo言語の形式に変換する必要があります。  
+以下にジェネリックスを使って作成した関数を示します。
+
+```go
+func GetListStoreValue[T any] (iModel gtk.ITreeModel, iter *gtk.TreeIter, id int) (T, error) {
+	model := iModel.ToTreeModel()
+
+	// 値を取得
+	colVal, err := model.GetValue(iter, id)
+	if err != nil {
+		return *new(T), err
+	}
+	
+	// 値をgolang形式に変換
+	col, err := colVal.GoValue()
+	if err != nil {
+		return *new(T), err
+	}
+	
+	// interfaceをT型に変換
+	ret, ok := col.(T)
+	if !ok {
+		return *new(T), fmt.Errorf("type assertion failed")
+	}
+	return ret, nil
+}
+```
+
+呼び出し側は、以下のようになります。（エラーハンドリングは省略してます）
+
+```go
+col1, err := GetListStoreValue[int] (model, iter, 0)
+col2, err := GetListStoreValue[string] (model, iter, 1)
+```
 
