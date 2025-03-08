@@ -206,10 +206,18 @@ iter2 := listFilter.ConvertChildIterToIter(iter1)
 iter := listSort.ConvertChildIterToIter(iter2)
 ```
 
-pathの場合も同様`ConvertChildPathToPath()``ConvertPathToChildPath()`の対応が必要となります。  
+pathの場合も同様`ConvertChildPathToPath()`や`ConvertPathToChildPath()`を使った対応が必要となります。  
+例として、TreeViewの行をダブルクリックした時のシグナル処理を以下に示します。  
+
+```go
+treeView.Connect("row-activated", func(tv *gtk.TreeView, path *gtk.TreePath, column *gtk.TreeViewColumn) {})
+```
+
+この時、コールバック関数で渡される第2引数がTreeViewのpathになってます。  
+ダブルクリックされた行を編集するなどの処理をするためにListStoreのデータを取得するためには、上記のような変換処理が必要となります。  
 
 > [!CAUTION]
-> Geminiに聞いても明確な回答がなかったため、モデルの繋がりを考えて設定してみたら動作したという状況です。
+> ここで説明した変換処理は、Geminiに聞いても明確な回答がなかったため、モデルの繋がりを考えて設定してみたら動作したという状況です。
 > 間違えてたらすみません。  
 
 ## 11.6 モデルから値の取得
