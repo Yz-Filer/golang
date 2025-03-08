@@ -276,8 +276,6 @@ func menuAbout(parent *gtk.ApplicationWindow) error {
 [ここ](../09/09_MenuBar_Toolbar.go)
 に置いてます。 
 
-<!--
 </br>
 
-「[9. メニューバー/ツールバー/標準ダイアログを使いたい(前編)](../09/README.md)」へ  
--->
+「[11. 表形式にデータを表示したい](../11/README.md)」へ  
