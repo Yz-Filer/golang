@@ -27,6 +27,7 @@ ldd /mingw64/bin/libgtk-3-0.dll | grep "/mingw64"
 <pre>
 D:\TEST
 ├─gdbus.exe
+├─libLerc.dll
 ├─libatk-1.0-0.dll
 ├─libbrotlicommon.dll
 ├─libbrotlidec.dll
@@ -34,6 +35,7 @@ D:\TEST
 ├─libcairo-2.dll
 ├─libcairo-gobject-2.dll
 ├─libdatrie-1.dll
+├─libdeflate.dll
 ├─libepoxy-0.dll
 ├─libexpat-1.dll
 ├─libffi-8.dll
@@ -52,6 +54,8 @@ D:\TEST
 ├─libharfbuzz-0.dll
 ├─libiconv-2.dll
 ├─libintl-8.dll
+├─libjbig-0.dll
+├─libjpeg-8.dll
 ├─liblzma-5.dll
 ├─libpango-1.0-0.dll
 ├─libpangocairo-1.0-0.dll
@@ -61,11 +65,16 @@ D:\TEST
 ├─libpixman-1-0.dll
 ├─libpng16-16.dll
 ├─librsvg-2-2.dll
+├─libsharpyuv-0.dll
 ├─libstdc++-6.dll
 ├─libthai-0.dll
+├─libtiff-6.dll
+├─libwebp-7.dll
 ├─libwinpthread-1.dll
 ├─libxml2-2.dll
+├─libzstd.dll
 └─zlib1.dll
+
 </pre>
 glib-2.0は必須だそうです。  
 `/mingw64/share/glib-2.0/schemas`を実行ファイルディレクトリ配下の「share/glib-2.0」ディレクトリ配下へコピー
