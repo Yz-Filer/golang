@@ -74,7 +74,6 @@ D:\TEST
 ├─libxml2-2.dll
 ├─libzstd.dll
 └─zlib1.dll
-
 </pre>
 glib-2.0は必須だそうです。  
 `/mingw64/share/glib-2.0/schemas`を実行ファイルディレクトリ配下の「share/glib-2.0」ディレクトリ配下へコピー
