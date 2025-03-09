@@ -111,6 +111,26 @@ window1.SetDecorated(false)
 [ここ](05_SimpleWindow_no_header.go)
 に置いてます。  
 
+> [!CAUTION]
+> なんか動きが変な気がします。`e.MotionVal()`は、ウィドウ座標に対するマウス座標の相対位置だと思うので、常にウィドウとマウスカーソルの相対座標を一定にしようとしているとすると、考え方はあってるんでしょうか？  
+> `e.MotionVal()`と`win.GetPosition()`と`win.Move(winX+dx, winY+dy)`のタイムラグが問題なのかもしれません。  
+> `e.MotionValRoot()`はスクリーン座標が取得できるので、左マウスクリック時にウィンドウのスクリーン座標とマウスカーソルのスクリーン座標を取得して、移動時はマウスカーソルのスクリーン座標の差分のみでウィンドウ移動をした方が良さそうに思います。
+> - 左クリック時（移動開始時）  
+>   ```go
+>   winX, winY = win.GetPosition()
+>   x, y := e.MotionValRoot()
+>   offsetX = int(x)
+>   offsetY = int(y)
+>   ```
+> - マウス移動時
+>   ```go
+>   x, y := e.MotionValRoot()
+>   dx := int(x) - offsetX
+>   dy := int(y) - offsetY
+>   win.Move(winX + dx, winY + dy)
+>   ```
+
+
 ## 5.4 おわりに
 以上で、ヘッダーバーがないウィンドウを半透明にして、マウスで移動させるアプリが出来ました。  
 付箋アプリにするには、  
