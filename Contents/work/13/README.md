@@ -167,3 +167,7 @@ func LoadStickyMap(filename string) error {
 
 `StickyMap`はグローバル変数となります。  
 保存時は、既存のファイルを1面分までバックアップするようにしてます。  
+
+</br>
+
+「[14. カスタムシグナル](../14/README.md)」へ
