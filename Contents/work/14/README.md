@@ -107,7 +107,7 @@ window.Connect("test4", func() bool {
 	：
 // シグナル送信側
 go func() {
-    ret, err := window.Emit("test4", glib.TYPE_BOOLEAN)
+	ret, err := window.Emit("test4", glib.TYPE_BOOLEAN)
 	fmt.Println(ret, err)
 }()
 ```
