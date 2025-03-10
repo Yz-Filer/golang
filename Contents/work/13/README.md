@@ -172,4 +172,4 @@ func LoadStickyMap(filename string) error {
 
 </br>
 
-「[14. カスタムシグナル](../14/README.md)」へ
+「[14. （まとめ）カスタムシグナル](../14/README.md)」へ
