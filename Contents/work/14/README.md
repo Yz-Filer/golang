@@ -18,7 +18,8 @@ if err != nil {
 // シグナル受信側
 window.Connect("test1", func() {
 })
-
+	：
+	：
 // シグナル送信側
 ret, err := window.Emit("test1", glib.TYPE_POINTER)
 ```
@@ -42,7 +43,8 @@ if err != nil {
 window.Connect("test2", func() int {
 	return 200
 })
-
+	：
+	：
 // シグナル送信側
 ret, err := window.Emit("test2", glib.TYPE_INT)
 ```
@@ -66,7 +68,8 @@ window.Connect("test3", func(win *gtk.ApplicationWindow, arg1 int, arg2 string) 
 	fmt.Println(arg1, arg2)
 	return true
 })
-
+	：
+	：
 // シグナル送信側
 ret, err := window.Emit("test3", glib.TYPE_BOOLEAN, 1000, "--arg2--")
 ```
@@ -97,19 +100,24 @@ if err != nil {
 
 // シグナル受信側
 window.Connect("test4", func() bool {
+	// ここでモーダルダイアログを表示
 	return true
 })
-
+	：
+	：
 // シグナル送信側
 go func() {
     ret, err := window.Emit("test4", glib.TYPE_BOOLEAN)
+	fmt.Println(ret, err)
 }()
 ```
 
-goルーチン内でダイアログなどを表示したい場合、`glib.IdleAdd()`を使っても良いのですが`glib.IdleAdd()`は、キューに登録するだけの関数のため、応答を待たずに次の処理を実行してしまいます。`Emit()`であれば、改善するかもしれません。  
-> [!CAUTION]  
-> 試してません  
+試してみた所、モーダルダイアログを表示した瞬間フリーズしました。試しに、`Emit()`を`glib.IdeleAdd()`の中に入れてみた所問題なく動作しました。  
+再度Geminiに聞いてみました。  
 
+> シグナルハンドラ内でモーダルダイアログを表示する場合、ゴルーチン内で Emit() を呼び出す際には glib.IdleAdd() を使用する必要があります。  
+
+ということで、`Emit()`もUI操作と同様に考える必要がありそうです。結論としては、goルーチン内でUI操作を行うためには`glib.IdeleAdd()`が必須であり、「4.4章」で記載した内容はシグナルを使っても改善しそうにないことが分かりました。
 
 </br>
 
