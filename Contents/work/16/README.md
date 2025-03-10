@@ -7,7 +7,7 @@
 
 ## 16.1 `SetSkipTaskbarHint()`を使ってみる
 
-Geminiに聞いてみました。
+どうやってやるのかをGeminiに聞いてみました。
 
 > Windows環境のgotk3でウィンドウのアイコンをタスクバーに表示されないように設定する方法は、SetSkipTaskbarHint()を使用することで実現できます。  
 > ```go
