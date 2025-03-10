@@ -45,7 +45,7 @@ func BuildCSS(st StickyStr, isTextView bool) string {
 
 ## 15.2 CSS文字列を反映  
 
-編集ウィンドウのTextViewと付箋ウィンドウのWindowにそれぞれCSSで書式を設定していきます。
+編集ウィンドウのTextViewと付箋ウィンドウのWindowにそれぞれCSSを使って書式設定をしていきます。
 
 ```go
 func ApplyStyle(widget gtk.IWidget, st StickyStr) error {
