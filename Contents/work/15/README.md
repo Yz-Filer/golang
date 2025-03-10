@@ -47,7 +47,7 @@ func BuildCSS(st StickyStr, isTextView bool) string {
 > FontChooserDialogで取得したフォントサイズは1024で割るとptに変換出来ます。  
 > RGBの指定は0～255ですが、透明度の指定は0.0～1.0になります。  
 
-> [!TIPS]  
+> [!TIP]  
 > gtk3でサポートしているCSSプロパティは、[ここ](https://docs.gtk.org/gtk3/css-properties.html)を参照して下さい。  
 
 ## 15.2 CSS文字列を反映  
