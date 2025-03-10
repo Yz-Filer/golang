@@ -95,4 +95,4 @@ func ApplyStyle(widget gtk.IWidget, st StickyStr) error {
 
 </br>
 
-「[16. タスクバーにアイコンを表示させない方法](../16/README.md)」へ
+「[16. （まとめ）タスクバーにアイコンを表示させない方法](../16/README.md)」へ
