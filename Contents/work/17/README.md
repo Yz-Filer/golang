@@ -162,3 +162,12 @@ TextViewは、Bufferを経由してテキストデータの入出力を行う必
 
 ## 17.5 おわりに  
 
+今まで紹介した内容を使って、付箋アプリの作成が出来ました。  
+
+- メインウィンドウ  
+  ![](image/main_window.jpg)  
+- 編集ウィンドウ  
+  ![](image/edit_window.jpg)  
+- 付箋ウィンドウ  
+  ![](image/sticky_note.jpg)  
+
