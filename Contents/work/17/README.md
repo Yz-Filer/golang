@@ -104,7 +104,7 @@ var StickyMap		map[string]StickyStr
 
 gotk3には、RadioToolButtonがなかったので、ToggleToolButtonで代替してます。そのため、左寄せ/中央寄せ/右寄せのボタンが押されるたびに、選択されなかったボタンを非選択に変更する処理を入れてます。  
 
-TextViewから入力されたテキストを取りだす処理とTextViewへ付箋に表示されていたテキストを反映する処理のコードを以下に示します。  
+TextViewから入力されたテキストを取りだす処理と付箋に表示されていたテキストをTextViewへ反映する処理のコードを以下に示します。  
 
 ```go
 // TextViewから文字列を取得
