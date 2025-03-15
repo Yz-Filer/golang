@@ -367,8 +367,7 @@ btnFilter.Connect("clicked", func() {
 [ここ](11_ListView.go)
 に置いてます。 
 
-<!--
 </br>
 
-「[11. 表形式にデータを表示したい](../11/README.md)」へ  
--->
+「[12. （まとめ）付箋アプリの作成～はじめに～](../12/README.md)」へ
+
