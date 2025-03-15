@@ -76,7 +76,7 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
 </tr>
 <tr>
   <td align="center"> <img src="Contents/15/image/edit_window.jpg" height="89" width="auto" /> </br> <img src="Contents/15/image/sticky_window.jpg" height="89" width="auto" />  </td>
-  <td> <a href="Contents/15/README.md">15. （まとめ）CSSを使った書式設定</a> </td>
+  <td> <a href="Contents/15/README.md">15. （まとめ）CSSを使った書式設定</a> </br> ※背景が青いのはデスクトップの色です </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/16/image/taskbar.jpg" height="89" width="auto" />  </td>
