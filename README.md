@@ -83,7 +83,7 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
   <td> <a href="Contents/16/README.md">16. （まとめ）タスクバーにアイコンを表示させない方法</a> </td>
 </tr>
 <tr>
-  <td align="center"> <img src="Contents/17/image/sticky_note.jpg" height="auto" width="200" /> </br> <img src="Contents/17/image/sticky_image.jpg" height="89" width="auto" />  </td>
+  <td align="center"> <img src="Contents/17/image/sticky_note.jpg" height="auto" width="200" /> </br> <img src="Contents/17/image/sticky_image.jpg" height="69" width="auto" />  </td>
   <td> <a href="Contents/17/README.md">17. （まとめ）付箋アプリの作成</a> </td>
 </tr>
 </table>
