@@ -67,19 +67,19 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
   <td> <a href="Contents/12/README.md">12. （まとめ）付箋アプリの作成～はじめに～</a> </td>
 </tr>
 <tr>
-  <td align="center"> <img src="Contents/13/image/file.jpg" height="auto" width="200" />  </td>
+  <td align="center"> <img src="Contents/13/image/file.jpg" height="89" width="auto" />  </td>
   <td> <a href="Contents/13/README.md">13. （まとめ）ファイルの存在確認とファイル入出力</a> </td>
 </tr>
 <tr>
-  <td align="center"> <img src="Contents/14/image/beacon_denpa_hasshinki.png" height="auto" width="200" />  </td>
+  <td align="center"> <img src="Contents/14/image/beacon_denpa_hasshinki.png" height="89" width="auto" />  </td>
   <td> <a href="Contents/14/README.md">14. （まとめ）カスタムシグナル</a> </td>
 </tr>
 <tr>
-  <td align="center"> <img src="Contents/15/image/edit_window.jpg" height="auto" width="200" /> </br> <img src="Contents/15/image/sticky_window.jpg" height="auto" width="200" />  </td>
+  <td align="center"> <img src="Contents/15/image/edit_window.jpg" height="89" width="auto" /> </br> <img src="Contents/15/image/sticky_window.jpg" height="89" width="auto" />  </td>
   <td> <a href="Contents/15/README.md">15. （まとめ）CSSを使った書式設定</a> </td>
 </tr>
 <tr>
-  <td align="center"> <img src="Contents/16/image/taskbar.jpg" height="auto" width="200" />  </td>
+  <td align="center"> <img src="Contents/16/image/taskbar.jpg" height="89" width="auto" />  </td>
   <td> <a href="Contents/16/README.md">16. （まとめ）タスクバーにアイコンを表示させない方法</a> </td>
 </tr>
 <tr>
