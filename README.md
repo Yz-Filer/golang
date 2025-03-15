@@ -60,30 +60,30 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
 </tr>
 </table>
 
-ここまでの内容を踏まえて次は簡単なアプリを作成します。  
+ここまでの内容を踏まえて次からは簡単なアプリを作成していきます。  
 <table>
 <tr>
-  <td align="center"> <img src="Contents/12/image/window.jpg" height="auto" width="200" />  </td>
+  <td align="center"> <img src="Contents/12/image/image.jpg" height="auto" width="200" />  </td>
   <td> <a href="Contents/12/README.md">12. （まとめ）付箋アプリの作成～はじめに～</a> </td>
 </tr>
 <tr>
-  <td align="center"> <img src="Contents/13/image/window.jpg" height="auto" width="200" />  </td>
+  <td align="center"> <img src="Contents/13/image/file.jpg" height="auto" width="200" />  </td>
   <td> <a href="Contents/13/README.md">13. （まとめ）ファイルの存在確認とファイル入出力</a> </td>
 </tr>
 <tr>
-  <td align="center"> <img src="Contents/14/image/window.jpg" height="auto" width="200" />  </td>
+  <td align="center"> <img src="Contents/14/image/beacon_denpa_hasshinki.png" height="auto" width="200" />  </td>
   <td> <a href="Contents/14/README.md">14. （まとめ）カスタムシグナル</a> </td>
 </tr>
 <tr>
-  <td align="center"> <img src="Contents/15/image/window.jpg" height="auto" width="200" />  </td>
+  <td align="center"> <img src="Contents/15/image/edit_window.jpg" height="auto" width="200" /> </br> <img src="Contents/15/image/sticky_window.jpg" height="auto" width="200" />  </td>
   <td> <a href="Contents/15/README.md">15. （まとめ）CSSを使った書式設定</a> </td>
 </tr>
 <tr>
-  <td align="center"> <img src="Contents/16/image/window.jpg" height="auto" width="200" />  </td>
+  <td align="center"> <img src="Contents/16/image/taskbar.jpg" height="auto" width="200" />  </td>
   <td> <a href="Contents/16/README.md">16. （まとめ）タスクバーにアイコンを表示させない方法</a> </td>
 </tr>
 <tr>
-  <td align="center"> <img src="Contents/17/image/window.jpg" height="auto" width="200" />  </td>
+  <td align="center"> <img src="Contents/17/image/sticky_note.jpg" height="auto" width="200" />  </td>
   <td> <a href="Contents/17/README.md">17. （まとめ）付箋アプリの作成</a> </td>
 </tr>
 </table>
