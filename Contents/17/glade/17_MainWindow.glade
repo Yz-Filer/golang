@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.40.0 -->
+<interface>
+  <requires lib="gtk+" version="3.24"/>
+  <object class="GtkWindow" id="EDIT_WINDOW">
+    <property name="can-focus">False</property>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="margin-start">4</property>
+        <property name="margin-end">4</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkTextView" id="EW_TEXTVIEW">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="wrap-mode">char</property>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <child>
+              <object class="GtkToolbar" id="EW_TOOLBAR">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <child>
+                  <object class="GtkToolButton" id="BG_COLOR">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">background color</property>
+                    <property name="use-underline">True</property>
+                    <property name="stock-id">gtk-select-color</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSeparatorToolItem">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkToolButton" id="FONT">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">font</property>
+                    <property name="use-underline">True</property>
+                    <property name="stock-id">gtk-select-font</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkToolButton" id="FG_COLOR">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">font color</property>
+                    <property name="use-underline">True</property>
+                    <property name="icon-name">font-x-generic</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkToggleToolButton" id="ALIGN_LEFT">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">AlignLeft</property>
+                    <property name="use-underline">True</property>
+                    <property name="stock-id">gtk-justify-left</property>
+                    <property name="active">True</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkToggleToolButton" id="ALIGN_CENTER">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">AlignCenter</property>
+                    <property name="use-underline">True</property>
+                    <property name="stock-id">gtk-justify-center</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkToggleToolButton" id="ALIGN_RIGHT">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">AlignRight</property>
+                    <property name="use-underline">True</property>
+                    <property name="stock-id">gtk-justify-right</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkToolbar">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <child>
+                  <object class="GtkToolButton" id="EW_BUTTON_OK">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">OK(_O)</property>
+                    <property name="use-underline">True</property>
+                    <property name="stock-id">gtk-apply</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkToolButton" id="EW_BUTTON_CANCEL">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Cancel(_C)</property>
+                    <property name="use-underline">True</property>
+                    <property name="stock-id">gtk-cancel</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="homogeneous">True</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="pack-type">end</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <child type="titlebar">
+      <object class="GtkHeaderBar" id="EW_HEADERBAR">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="has-subtitle">False</property>
+        <property name="show-close-button">True</property>
+        <property name="decoration-layout">icon:close</property>
+        <child>
+          <object class="GtkButton" id="EW_NEW_BUTTON">
+            <property name="label" translatable="yes">+</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkListStore" id="LISTSTORE">
+    <columns>
+      <!-- column-name datetime -->
+      <column type="gchararray"/>
+      <!-- column-name note -->
+      <column type="gchararray"/>
+    </columns>
+  </object>
+  <object class="GtkApplicationWindow" id="MAIN_WINDOW">
+    <property name="can-focus">False</property>
+    <child>
+      <object class="GtkScrolledWindow">
+        <property name="visible">True</property>
+        <property name="can-focus">True</property>
+        <property name="hscrollbar-policy">never</property>
+        <property name="shadow-type">in</property>
+        <child>
+          <object class="GtkTreeView" id="TREEVIEW">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="model">LISTSTORE</property>
+            <property name="enable-search">False</property>
+            <property name="show-expanders">False</property>
+            <property name="enable-grid-lines">both</property>
+            <child internal-child="selection">
+              <object class="GtkTreeSelection"/>
+            </child>
+            <child>
+              <object class="GtkTreeViewColumn">
+                <property name="sizing">autosize</property>
+                <property name="min-width">16</property>
+                <property name="title" translatable="yes">作成日付</property>
+                <property name="clickable">True</property>
+                <property name="sort-column-id">0</property>
+                <child>
+                  <object class="GtkCellRendererText"/>
+                  <attributes>
+                    <attribute name="text">0</attribute>
+                  </attributes>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkTreeViewColumn">
+                <property name="resizable">True</property>
+                <property name="sizing">fixed</property>
+                <property name="min-width">16</property>
+                <property name="title" translatable="yes">メモ</property>
+                <property name="clickable">True</property>
+                <property name="sort-column-id">1</property>
+                <child>
+                  <object class="GtkCellRendererText">
+                    <property name="ellipsize">end</property>
+                    <property name="wrap-mode">none</property>
+                  </object>
+                  <attributes>
+                    <attribute name="text">1</attribute>
+                  </attributes>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child type="titlebar">
+      <object class="GtkHeaderBar" id="MW_HEADERBAR">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="has-subtitle">False</property>
+        <property name="show-close-button">True</property>
+        <property name="decoration-layout">icon:close</property>
+        <child>
+          <object class="GtkButton" id="MW_NEW_BUTTON">
+            <property name="label" translatable="yes">+</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkMenu" id="STATUSICON_MENU">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="reserve-toggle-size">False</property>
+    <child>
+      <object class="GtkMenuItem" id="MENUITEM_SHOW">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="label" translatable="yes">ウィンドウを表示</property>
+        <property name="use-underline">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="MENUITEM_NEW">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="label" translatable="yes">新規付箋</property>
+        <property name="use-underline">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="MENUITEM_QUIT">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="label" translatable="yes">アプリケーションを終了</property>
+        <property name="use-underline">True</property>
+      </object>
+    </child>
+  </object>
+  <object class="GtkMenu" id="STICKY_MENU">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <child>
+      <object class="GtkMenuItem" id="MENUITEM_NEW_STICKY">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="label" translatable="yes">新規付箋</property>
+        <property name="use-underline">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="MENUITEM_REMOVE_STICKY">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="label" translatable="yes">はがす</property>
+        <property name="use-underline">True</property>
+      </object>
+    </child>
+  </object>
+  <object class="GtkWindow" id="STICKY_WINDOW">
+    <property name="can-focus">False</property>
+    <property name="decorated">False</property>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="margin-start">4</property>
+        <property name="margin-end">4</property>
+        <property name="margin-top">4</property>
+        <property name="margin-bottom">4</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkLabel" id="STICKY_NOTE">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">label</property>
+            <property name="wrap">True</property>
+            <property name="wrap-mode">char</property>
+            <property name="track-visited-links">False</property>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
