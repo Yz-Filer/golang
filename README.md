@@ -63,7 +63,7 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
 ここまでの内容を踏まえて次からは簡単なアプリを作成していきます。  
 <table>
 <tr>
-  <td align="center"> <img src="Contents/12/image/image.jpg" height="auto" width="200" />  </td>
+  <td align="center"> <img src="Contents/12/image/image.jpg" height="auto" width="240" />  </td>
   <td> <a href="Contents/12/README.md">12. （まとめ）付箋アプリの作成～はじめに～</a> </td>
 </tr>
 <tr>
