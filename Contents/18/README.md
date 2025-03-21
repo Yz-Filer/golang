@@ -44,7 +44,7 @@ Windowsメッセージが対象のウィンドウへ通知されるように設�
 
 > [!NOTE]
 > win32のシステムコールが多数収録されてる「[zzl/go-win32api/win32](https://pkg.go.dev/github.com/zzl/go-win32api/win32)」パッケージを使用しています。  
-> 登録されてる関数が多いためHPの表示に時間がかかります  
+> ※登録されてる関数が多いためHPの表示に時間がかかります  
 
 - クリップボード更新通知  
   ```go
@@ -80,17 +80,23 @@ Windowsメッセージが対象のウィンドウへ通知されるように設�
 
 ## 18.3 クリップボード更新/USBドライブの抜き差し通知の解除  
 
-以下のコマンドを使います。必要に応じてエラーハンドリングを行ってください。  
+以下のコマンドを使います。  
 
 - クリップボード更新通知  
 
   ```go
-  win32.RemoveClipboardFormatListener(hwnd)
+  ret, w32err := win32.RemoveClipboardFormatListener(hwnd)
+  if ret == win32.FALSE || w32err != win32.NO_ERROR {
+  	log.Fatal("RemoveClipboardFormatListenerの失敗")
+  }
   ```
 
 - USBドライブの抜き差し通知
   ```go
-  win32.UnregisterDeviceNotification(hDevNotify)
+  ret, w32err := win32.UnregisterDeviceNotification(hDevNotify)
+  if ret == win32.FALSE || w32err != win32.NO_ERROR {
+  	log.Fatal("UnregisterDeviceNotificationの失敗")
+  }
   ```
 
  
