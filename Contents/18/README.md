@@ -5,8 +5,10 @@
 今回からは、gotk3に特化しない機能も説明していきます。  
 - クリップボードの監視  
   クリップボードにデータが書き込まれたかどうかを検知する  
+
 - USBドライブ抜き差し監視  
-  USBメモリやUSB HDDなどがUSBに接続された/USBから取り外されたことを検知する
+  USBメモリやUSB HDDなどがUSBに接続された/USBから取り外されたことを検知する  
+
 - USBドライブイジェクト  
   USBメモリやUSB HDDなどをプログラムから取り外しする  
 
@@ -36,7 +38,7 @@ Windowsのイベント通知に関してGeminiに聞いてみました。
 > 1. GetMessageは、取得したメッセージをアプリケーションに渡し、アプリケーションはDispatchMessage関数を呼び出してメッセージをWndProcに送ります。  
 > 1. WndProcは、受信したメッセージの種類に応じて適切な処理を行い、必要に応じて応答を返します。  
 
-## 18.2 クリップボード更新/USBドライブ抜き差しの通知設定  
+## 18.2 クリップボード更新/USBドライブの抜き差し通知の設定  
 
 Windowsメッセージが対象のウィンドウへ通知されるように設定します。  
 
@@ -55,6 +57,25 @@ Windowsメッセージが対象のウィンドウへ通知されるように設�
   
   win32の`AddClipboardFormatListener()`をコールするだけとなります。  
   `hwnd`は
-    「[16.2 user32.dllを使った方法](../16#162-user32dll%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E6%96%B9%E6%B3%95)」 
-で作成した`GetWindowHandle()`を使う事で取得できます。  
+  「[16.2 user32.dllを使った方法](../16#162-user32dll%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E6%96%B9%E6%B3%95)」 
+  で作成した`GetWindowHandle()`を使う事により取得できます。  
+
+- USBドライブの抜き差し通知
+  ```go
+  notificationFilter := win32.DEV_BROADCAST_DEVICEINTERFACE_{
+  	Dbcc_size:       uint32(unsafe.Sizeof(win32.DEV_BROADCAST_DEVICEINTERFACE_{})),
+  	Dbcc_devicetype: uint32(win32.DBT_DEVTYP_DEVICEINTERFACE),
+  	Dbcc_reserved:   0,
+  	Dbcc_classguid:  win32.GUID_IO_VOLUME_DEVICE_INTERFACE,
+  }
+  hDevNotify, w32err = win32.RegisterDeviceNotification(hwnd, unsafe.Pointer(&notificationFilter), win32.DEVICE_NOTIFY_WINDOW_HANDLE)
+  if hDevNotify == nil || w32err != win32.NO_ERROR {
+  	log.Fatalf("RegisterDeviceNotificationの失敗")
+  }
+  ```
+
+  こちらもwin32の`RegisterDeviceNotification()`をコールするだけですが、引数に渡す`DEV_BROADCAST_DEVICEINTERFACE_`構造体の作成が必要になります。  
+
+> [!NOTE]  
+> `DEV_BROADCAST_DEVICEINTERFACE_`の末尾の「_」はパッケージ側の誤記だと思いますが、定義されてる通りに指定しないと認識しないので、そのまま使用してます  
 
