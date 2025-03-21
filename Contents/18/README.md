@@ -43,11 +43,10 @@ Windowsのイベント通知に関してGeminiに聞いてみました。
 Windowsメッセージが対象のウィンドウへ通知されるように設定します。  
 
 > [!NOTE]
-> win32のシステムコールが多数収録されてる  
-> `github.com/zzl/go-win32api/win32`  
-> パッケージを使用しています。  
+> win32のシステムコールが多数収録されてる「[zzl/go-win32api/win32](https://pkg.go.dev/github.com/zzl/go-win32api/win32)」パッケージを使用しています。  
+> 登録されてる関数が多いためHPの表示に時間がかかります  
 
-- クリップボード更新  
+- クリップボード更新通知  
   ```go
   ret, w32err := win32.AddClipboardFormatListener(hwnd)
   if ret == win32.FALSE || w32err != win32.NO_ERROR {
@@ -70,12 +69,29 @@ Windowsメッセージが対象のウィンドウへ通知されるように設�
   }
   hDevNotify, w32err = win32.RegisterDeviceNotification(hwnd, unsafe.Pointer(&notificationFilter), win32.DEVICE_NOTIFY_WINDOW_HANDLE)
   if hDevNotify == nil || w32err != win32.NO_ERROR {
-  	log.Fatalf("RegisterDeviceNotificationの失敗")
+  	log.Fatal("RegisterDeviceNotificationの失敗")
   }
   ```
 
-  こちらもwin32の`RegisterDeviceNotification()`をコールするだけですが、引数に渡す`DEV_BROADCAST_DEVICEINTERFACE_`構造体の作成が必要になります。  
+  こちらもwin32の`RegisterDeviceNotification()`をコールするだけですが、引数に渡す`DEV_BROADCAST_DEVICEINTERFACE_`構造体の作成が必要となります。  
+  
+  > [!NOTE]  
+  > `DEV_BROADCAST_DEVICEINTERFACE_`の末尾の「_」はパッケージ側の誤記だと思いますが、定義されてる通りに指定しないと認識しないので、そのまま使用してます  
 
-> [!NOTE]  
-> `DEV_BROADCAST_DEVICEINTERFACE_`の末尾の「_」はパッケージ側の誤記だと思いますが、定義されてる通りに指定しないと認識しないので、そのまま使用してます  
+## 18.3 クリップボード更新/USBドライブの抜き差し通知の解除  
+
+以下のコマンドを使います。必要に応じてエラーハンドリングを行ってください。  
+
+- クリップボード更新通知  
+
+  ```go
+  win32.RemoveClipboardFormatListener(hwnd)
+  ```
+
+- USBドライブの抜き差し通知
+  ```go
+  win32.UnregisterDeviceNotification(hDevNotify)
+  ```
+
+ 
 
