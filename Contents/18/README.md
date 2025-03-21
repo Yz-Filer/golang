@@ -76,7 +76,7 @@ Windowsメッセージが対象のウィンドウへ通知されるように設�
   こちらもwin32の`RegisterDeviceNotification()`をコールするだけですが、引数に渡す`DEV_BROADCAST_DEVICEINTERFACE_`構造体の作成が必要となります。  
   
   > [!NOTE]  
-  > `DEV_BROADCAST_DEVICEINTERFACE_`の末尾の「_」はパッケージ側の誤記だと思いますが、定義されてる通りに指定しないと認識しないので、そのまま使用してます。  
+  >  `DEV_BROADCAST_DEVICEINTERFACE_`の末尾の「_」はパッケージ側の誤記だと思いますが、定義されてる通りに指定しないと認識しないので、そのまま使用してます。  
 
 ## 18.3 クリップボード更新/USBドライブの抜き差し通知の解除  
 
