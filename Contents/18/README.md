@@ -10,7 +10,7 @@
   USBメモリやUSB HDDなどがUSBに接続された/USBから取り外されたことを検知する  
 
 - USBドライブイジェクト  
-  USBメモリやUSB HDDなどをプログラムから取り外しする  
+  USBメモリやUSB HDDなどをプログラム側から取り外しする  
 
 ## 18.1 Windowsのイベント通知
 
@@ -44,7 +44,7 @@ Windowsメッセージが対象のウィンドウへ通知されるように設�
 
 > [!NOTE]
 > win32のシステムコールが多数収録されてる「[zzl/go-win32api/win32](https://pkg.go.dev/github.com/zzl/go-win32api/win32)」パッケージを使用しています。  
-> ※登録されてる関数が多いためHPの表示に時間がかかります  
+> ※登録されてる関数が多いためHPの表示には時間がかかります  
 
 - クリップボード更新通知  
   ```go
@@ -76,7 +76,7 @@ Windowsメッセージが対象のウィンドウへ通知されるように設�
   こちらもwin32の`RegisterDeviceNotification()`をコールするだけですが、引数に渡す`DEV_BROADCAST_DEVICEINTERFACE_`構造体の作成が必要となります。  
   
   > [!NOTE]  
-  > `DEV_BROADCAST_DEVICEINTERFACE_`の末尾の「_」はパッケージ側の誤記だと思いますが、定義されてる通りに指定しないと認識しないので、そのまま使用してます  
+  > `DEV_BROADCAST_DEVICEINTERFACE_`の末尾の「_」はパッケージ側の誤記だと思いますが、定義されてる通りに指定しないと認識しないので、そのまま使用してます。  
 
 ## 18.3 クリップボード更新/USBドライブの抜き差し通知の解除  
 
@@ -98,6 +98,9 @@ Windowsメッセージが対象のウィンドウへ通知されるように設�
   	log.Fatal("UnregisterDeviceNotificationの失敗")
   }
   ```
+
+## 18.4 メッセージの受信（メッセージフック）  
+
 
  
 
