@@ -151,43 +151,43 @@ gotk3で作成されてるウィンドウ宛のメッセージをフックして
 - USBドライブの抜き差し通知  
   ```go
   func hookProcW(nCode int, wParam, lParam uintptr) uintptr {
-  	if nCode >= 0 || wParam == 0 {
-  		cwp := (*win32.CWPSTRUCT)(unsafe.Pointer(lParam))
-  		// 自ウィンドウの時だけ処理
-  		if Hwnd == cwp.Hwnd {
-  			switch (cwp.Message) {
-  				case win32.WM_DEVICECHANGE:
-  					hdr := (*win32.DEV_BROADCAST_HDR)(unsafe.Pointer(cwp.LParam))
-  					if hdr == nil {
-  						break
-  					}
-  					if hdr.Dbch_devicetype == win32.DBT_DEVTYP_VOLUME {
-  						// ドライブレターの取得
-  						vol := (*win32.DEV_BROADCAST_VOLUME)(unsafe.Pointer(cwp.LParam))
-  						drvLetter := ""
-  						for i := 0; i < 26; i++ {
-  							if (vol.Dbcv_unitmask >> i) & 1 == 1 {
-  								drvLetter = string('A' + i) + ":"
-  								break
-  							}
-  						}
-  						
-  						// シグナルを送信
-  						switch uint32(cwp.WParam) {
-  							case win32.DBT_DEVICEARRIVAL:			// ドライブが追加された場合
-  								glib.IdleAdd(func() {
-  									window1.Emit("device_add", glib.TYPE_POINTER, drvLetter)
-  								})
-  							case win32.DBT_DEVICEREMOVECOMPLETE:	// ドライブが取り外された場合
-  								glib.IdleAdd(func() {
-  									window1.Emit("device_remove", glib.TYPE_POINTER, drvLetter)
-  								})
-  						}
-  					}
-  			}
-  		}
-  	}
-  	return uintptr(win32.CallNextHookEx(HookHandleW, int32(nCode), wParam, lParam))
+      if nCode >= 0 || wParam == 0 {
+          cwp := (*win32.CWPSTRUCT)(unsafe.Pointer(lParam))
+          // 自ウィンドウの時だけ処理
+          if Hwnd == cwp.Hwnd {
+              switch (cwp.Message) {
+                  case win32.WM_DEVICECHANGE:
+                      hdr := (*win32.DEV_BROADCAST_HDR)(unsafe.Pointer(cwp.LParam))
+                      if hdr == nil {
+                          break
+                      }
+                      if hdr.Dbch_devicetype == win32.DBT_DEVTYP_VOLUME {
+                          // ドライブレターの取得
+                          vol := (*win32.DEV_BROADCAST_VOLUME)(unsafe.Pointer(cwp.LParam))
+                          drvLetter := ""
+                          for i := 0; i < 26; i++ {
+                              if (vol.Dbcv_unitmask >> i) & 1 == 1 {
+                                  drvLetter = string('A' + i) + ":"
+                                  break
+                              }
+                          }
+                          
+                          // シグナルを送信
+                          switch uint32(cwp.WParam) {
+                              case win32.DBT_DEVICEARRIVAL:            // ドライブが追加された場合
+                                  glib.IdleAdd(func() {
+                                      window1.Emit("device_add", glib.TYPE_POINTER, drvLetter)
+                                  })
+                              case win32.DBT_DEVICEREMOVECOMPLETE:    // ドライブが取り外された場合
+                                  glib.IdleAdd(func() {
+                                      window1.Emit("device_remove", glib.TYPE_POINTER, drvLetter)
+                                  })
+                          }
+                      }
+              }
+          }
+      }
+      return uintptr(win32.CallNextHookEx(HookHandleW, int32(nCode), wParam, lParam))
   }
   ```
 
