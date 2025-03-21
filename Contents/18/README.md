@@ -48,14 +48,14 @@ Windowsメッセージが対象のウィンドウへ通知されるように設�
 
 - クリップボード更新通知  
   ```go
-  ret, w32err := win32.AddClipboardFormatListener(hwnd)
+  ret, w32err := win32.AddClipboardFormatListener(Hwnd)
   if ret == win32.FALSE || w32err != win32.NO_ERROR {
   	log.Fatal("AddClipboardFormatListenerの失敗")
   }
   ```
   
   win32の`AddClipboardFormatListener()`をコールするだけとなります。  
-  `hwnd`は
+  `Hwnd`は
   「[16.2 user32.dllを使った方法](../16#162-user32dll%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E6%96%B9%E6%B3%95)」 
   で作成した`GetWindowHandle()`を使う事により取得できます。  
 
@@ -67,7 +67,7 @@ Windowsメッセージが対象のウィンドウへ通知されるように設�
   	Dbcc_reserved:   0,
   	Dbcc_classguid:  win32.GUID_IO_VOLUME_DEVICE_INTERFACE,
   }
-  hDevNotify, w32err = win32.RegisterDeviceNotification(hwnd, unsafe.Pointer(&notificationFilter), win32.DEVICE_NOTIFY_WINDOW_HANDLE)
+  hDevNotify, w32err = win32.RegisterDeviceNotification(Hwnd, unsafe.Pointer(&notificationFilter), win32.DEVICE_NOTIFY_WINDOW_HANDLE)
   if hDevNotify == nil || w32err != win32.NO_ERROR {
   	log.Fatal("RegisterDeviceNotificationの失敗")
   }
@@ -85,7 +85,7 @@ Windowsメッセージが対象のウィンドウへ通知されるように設�
 - クリップボード更新通知  
 
   ```go
-  ret, w32err := win32.RemoveClipboardFormatListener(hwnd)
+  ret, w32err := win32.RemoveClipboardFormatListener(Hwnd)
   if ret == win32.FALSE || w32err != win32.NO_ERROR {
   	log.Fatal("RemoveClipboardFormatListenerの失敗")
   }
