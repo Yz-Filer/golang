@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.40.0 -->
+<interface>
+  <requires lib="gtk+" version="3.24"/>
+  <object class="GtkApplicationWindow" id="MAIN_WINDOW">
+    <property name="can-focus">False</property>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="margin-start">8</property>
+        <property name="margin-end">8</property>
+        <property name="margin-top">8</property>
+        <property name="margin-bottom">8</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkComboBoxText" id="COMBOBOXTEXT">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="margin-bottom">8</property>
+            <property name="active-id">0</property>
+            <items>
+              <item id="0" translatable="yes">A:</item>
+              <item id="1" translatable="yes">B:</item>
+              <item id="2" translatable="yes">C:</item>
+              <item id="3" translatable="yes">D:</item>
+              <item id="4" translatable="yes">E:</item>
+              <item id="5" translatable="yes">F:</item>
+              <item id="6" translatable="yes">G:</item>
+              <item id="7" translatable="yes">H:</item>
+              <item id="8" translatable="yes">I:</item>
+              <item id="9" translatable="yes">J:</item>
+              <item id="10" translatable="yes">K:</item>
+              <item id="11" translatable="yes">L:</item>
+              <item id="12" translatable="yes">M:</item>
+              <item id="13" translatable="yes">N:</item>
+              <item id="14" translatable="yes">O:</item>
+              <item id="15" translatable="yes">P:</item>
+              <item id="16" translatable="yes">Q:</item>
+              <item id="17" translatable="yes">R:</item>
+              <item id="18" translatable="yes">S:</item>
+              <item id="19" translatable="yes">T:</item>
+              <item id="20" translatable="yes">U:</item>
+              <item id="21" translatable="yes">V:</item>
+              <item id="22" translatable="yes">W:</item>
+              <item id="23" translatable="yes">X:</item>
+              <item id="24" translatable="yes">Y:</item>
+              <item id="25" translatable="yes">Z:</item>
+            </items>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="BUTTON">
+            <property name="label" translatable="yes">Eject the USB drive</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
