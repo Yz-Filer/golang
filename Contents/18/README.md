@@ -43,12 +43,17 @@ Windowsメッセージが対象のウィンドウへ通知されるように設�
 > [!NOTE]
 > win32のシステムコールが多数収録されてる  
 > `github.com/zzl/go-win32api/win32`  
-> パッケージを使用します。  
+> パッケージを使用しています。  
 
-1. クリップボード更新  
+- クリップボード更新  
   ```go
-  ret, w32err := win32.AddClipboardFormatListener(Hwnd)
+  ret, w32err := win32.AddClipboardFormatListener(hwnd)
   if ret == win32.FALSE || w32err != win32.NO_ERROR {
   	log.Fatal("AddClipboardFormatListenerの失敗")
   }
   ```
+  
+  win32の`AddClipboardFormatListener`をコールするだけです。  
+  `hwnd`はウィンドウハンドルで
+    「[16.2 user32.dllを使った方法](../16#162-user32dll%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E6%96%B9%E6%B3%95)」  
+
