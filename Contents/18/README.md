@@ -127,20 +127,20 @@ gotk3で作成されてるウィンドウ宛のメッセージをフックして
 - クリップボード更新通知  
   ```go
   func hookProcM(nCode int, wParam, lParam uintptr) uintptr {
-  	if nCode >= 0 {
-  		cwp := (*win32.MSG)(unsafe.Pointer(lParam))
-  		// 自ウィンドウの時だけ処理
-  		if Hwnd == cwp.Hwnd {
-  			switch (cwp.Message) {
-  				case win32.WM_CLIPBOARDUPDATE:
-  					// シグナルを送信
-  					glib.IdleAdd(func() {
-  						window1.Emit("clipboard_update", glib.TYPE_POINTER)
-  					})
-  			}
-  		}
-  	}
-  	return uintptr(win32.CallNextHookEx(HookHandleM, int32(nCode), wParam, lParam))
+      if nCode >= 0 {
+          cwp := (*win32.MSG)(unsafe.Pointer(lParam))
+          // 自ウィンドウの時だけ処理
+          if Hwnd == cwp.Hwnd {
+              switch (cwp.Message) {
+                  case win32.WM_CLIPBOARDUPDATE:
+                      // シグナルを送信
+                      glib.IdleAdd(func() {
+                          window1.Emit("clipboard_update", glib.TYPE_POINTER)
+                      })
+              }
+          }
+      }
+      return uintptr(win32.CallNextHookEx(HookHandleM, int32(nCode), wParam, lParam))
   }
   ```
 
