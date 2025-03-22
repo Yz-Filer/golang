@@ -58,9 +58,10 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
   <td align="center"> <img src="Contents/11/image/window.jpg" height="89" width="auto" />  </td>
   <td> <a href="Contents/11/README.md">11. 表形式にデータを表示したい</a> </td>
 </tr>
-</table>
+</table>  
 
 ここまでの内容を踏まえて次からは簡単なアプリを作成していきます。  
+
 <table>
 <tr>
   <td align="center"> <img src="Contents/12/image/image.jpg" height="auto" width="240" />  </td>
@@ -85,5 +86,14 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
 <tr>
   <td align="center"> <img src="Contents/17/image/sticky_note.jpg" height="auto" width="240" /> </br> <img src="Contents/17/image/sticky_image.jpg" height="69" width="auto" />  </td>
   <td> <a href="Contents/17/README.md">17. （まとめ）付箋アプリの作成</a> </td>
+</tr>  
+</table>  
+
+アプリ作成も一段落したので、ここからはgotk3に特化せず、思いついたテーマを追加していきます。  
+
+<table>
+<tr>
+  <td align="center"> <img src="Contents/18/image/window.jpg" height="89" width="auto" />  </td>
+  <td> <a href="Contents/18/README.md">18. クリップボード監視/USBドライブ抜き差し監視/USBドライブイジェクトがしたい</a> </td>
 </tr>
-</table>
+</table>  
