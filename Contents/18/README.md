@@ -317,3 +317,6 @@ gotk3とは別のウィンドウを作成するのは、あまり良くないの
   作成したファイルは、
   [ここ](18-2_SimpleWindow_clip_usb.go)
   に置いてます。  
+
+> [!NOTE]  
+> WM_DESTROYメッセージの処理を記載してます。`DestroyWindow()`を実行した時に、`GetMessage`に終了を通知するために必要とGeminiに言われたのですが、`GetMessage`を使わなくなったので不要かもしれません。  
