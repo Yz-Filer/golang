@@ -314,9 +314,9 @@ gotk3とは別のウィンドウを作成するのは、あまり良くないの
   }
   ```
 
-  作成したファイルは、
-  [ここ](18-2_SimpleWindow_clip_usb.go)
-  に置いてます。  
+作成したファイルは、
+[ここ](18-2_SimpleWindow_clip_usb.go)
+に置いてます。  
 
 > [!NOTE]  
 > WM_DESTROYメッセージの処理を記載してます。`DestroyWindow()`を実行した時に、`GetMessage`に終了を通知するために必要とGeminiに言われたのですが、`GetMessage`を使わなくなったので不要かもしれません。  
@@ -342,6 +342,10 @@ button.Connect("clicked", func() {
 ```
 
 go言語に移植しようとしたのですが、go言語のパッケージで`SetupDiEnumDeviceInterfaces()`が実装されてる物がなかったので自分でdllをコールするコードを作成してみました。その結果`SetupDiEnumDeviceInterfaces()`がどうやってもエラーになりました。何かしらの理由があってパッケージに実装出来ないのだと理解したので、移植を諦めてCGOにしました。  
+
+コードは「18.4」「18.5」に含まれています。c言語のコードは
+[ここ](usb-ejecter.c)
+に置いてます。 
 
 > [!CAUTION]
 > [USB Ejector](https://github.com/dmitrii-eremin/USB-Ejecter)ですが、他の同様なソースと見比べて似たような事をしていたことと、取り外し自体は`CM_Request_Device_EjectW()`をコールしており独自実装ではないことなどにより、DISKへ損傷を与えるような取り外しはしていないと判断しています。  
