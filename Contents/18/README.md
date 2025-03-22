@@ -320,3 +320,28 @@ gotk3とは別のウィンドウを作成するのは、あまり良くないの
 
 > [!NOTE]  
 > WM_DESTROYメッセージの処理を記載してます。`DestroyWindow()`を実行した時に、`GetMessage`に終了を通知するために必要とGeminiに言われたのですが、`GetMessage`を使わなくなったので不要かもしれません。  
+
+## 18.6 USBドライブイジェクト  
+
+これは説明できることが少ないです。[USB Ejector](https://github.com/dmitrii-eremin/USB-Ejecter)のc言語ソースをGeminiにマルチバイト文字対応／リファクタリング／CGO化して貰っただけとなります。  
+
+![](image/window.jpg)  
+
+上記画面でコンボボックスからドライブレターを選択し、ボタンを押すとUSBドライブの取り外しを行います。  
+ボタン押下時の処理は以下のようになります。
+
+```go
+button.Connect("clicked", func() {
+	str := comboBoxText.GetActiveText()
+	if C.EjectDriveByLetter(C.wchar_t(str[0])) {
+		log.Printf("USBドライブ[%s]が取り外しを行いました。\n", str)
+	} else {
+		log.Printf("USBドライブ[%s]の取り外しに失敗しました。\n", str)
+	}
+})
+```
+
+go言語に移植しようとしたのですが、go言語のパッケージで`SetupDiEnumDeviceInterfaces()`が実装されてる物がなかったので自分でdllをコールするコードを作成してみました。その結果`SetupDiEnumDeviceInterfaces()`がどうやってもエラーになりました。何かしらの理由があってパッケージに実装出来ないのだと理解したので、移植を諦めてCGOにしました。  
+
+> [!NOTE]
+> [USB Ejector](https://github.com/dmitrii-eremin/USB-Ejecter)ですが、他の同様なソースと見比べて似たような事をしていたことと、取り外し自体は`CM_Request_Device_EjectW()`をコールしており独自実装ではないことなどにより、DISKへ損傷を与えるような取り外しはしていないと判断しています。  
