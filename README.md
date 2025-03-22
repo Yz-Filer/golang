@@ -96,4 +96,8 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
   <td align="center"> <img src="Contents/18/image/window.jpg" height="89" width="auto" />  </td>
   <td> <a href="Contents/18/README.md">18. クリップボード監視/USBドライブ抜き差し監視/USBドライブイジェクトがしたい</a> </td>
 </tr>
+<tr>
+  <td align="center"> <img src="Contents/19/image/kaisya_kanshi_joushi_man.png" height="89" width="auto" />  </td>
+  <td> <a href="Contents/19/README.md">19. ディレクトリ配下の更新を監視したい</a> </td>
+</tr>
 </table>  
