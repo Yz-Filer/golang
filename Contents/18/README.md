@@ -200,3 +200,42 @@ gotk3で作成されてるウィンドウ宛のメッセージをフックして
 > [!TIP]  
 > `glib.IdleAdd()`は不要かもしれないので、コメントアウトして動作確認を行った後、フリーズやクラッシュなどが起こらないようなら削除して下さい。  
 > WM_CLIPBOARDUPDATEもWM_DEVICECHANGEもコールバック関数の中ではどちらも1種類のメッセージのみを対象に処理してますが、対象メッセージが増えた時の対応がやりやすいように`switch`を使ってます。  
+
+## 18.5 メッセージの受信（メッセージ用ウィンドウ）  
+
+gotk3で作成されてるウィンドウとは別にメッセージ用ウィンドウを作成し、メッセージ用ウィンドウ宛のメッセージを検知する方法です。  
+「18.4」では、gotk3宛のメッセージを2回フックして、更にgotk3でも処理するため、種類を分けてフックしているとはいえ、メッセージによっては3回処理されてます。  
+gotk3とは別のウィンドウを作成するのは、あまり良くないのかもしれないですが、非表示のメッセージ用ウィンドウを作成することで余計な負荷が減らせるのではないかと思います。  
+
+- メッセージ用ウィンドウ作成  
+  ```go
+  // ウィンドウクラスの登録
+  className := windows.StringToUTF16Ptr("window class")
+  wndClass := win32.WNDCLASSEX{
+      CbSize    : uint32(unsafe.Sizeof(win32.WNDCLASSEX{})),
+      LpfnWndProc   : syscall.NewCallback(WndProc),
+      LpszClassName : className,
+  }
+  _, w32err = win32.RegisterClassEx(&wndClass)
+  if w32err != win32.NO_ERROR {
+      log.Fatal("RegisterClassExの失敗")
+  }
+  
+  // モジュールハンドルを取得
+  hInstance, w32err := win32.GetModuleHandleW(nil)
+  
+  // メッセージ受信用ウィンドウの作成
+  hwnd, w32err := win32.CreateWindowEx(win32.WS_EX_APPWINDOW, className, nil, win32.WS_OVERLAPPEDWINDOW, 0, 0, 0, 0, 0, 0, hInstance, nil)
+  if hwnd == 0 || w32err != win32.NO_ERROR {
+      log.Fatal("CreateWindowExの失敗")
+  }
+  ```
+
+> [!TIP]  
+> `hInstance`は「0」でも動作するので`GetModuleHandleW()`部分は削除できるのですが、dll化する場合などは削除すると動かなくなる可能性があるため、念のために残してます。  
+> また、メッセージ用ウィンドウの場合、以下のようにするのが一般的なようですが、
+> ```go
+> hwnd, w32err := win32.CreateWindowEx(0, className, nil, 0, 0, 0, 0, 0, win32.HWND_MESSAGE, 0, 0, nil)
+> ```
+> WM_DEVICECHANGEメッセージでDBT_DEVTYP_VOLUMEのメッセージが通知されるのはトップレベルウィンドウだけなので、普通のウィンドウを作成しています。  
+> ※`Show`してないので画面には表示されません。  
