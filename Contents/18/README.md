@@ -194,12 +194,12 @@ gotk3で作成されてるウィンドウ宛のメッセージをフックして
   WM_DEVICECHANGEがデバイス変更通知のWindowsメッセージとなります。  
   その中でメッセージタイプがDBT_DEVTYP_VOLUMEの物が対象となります。  
   `nCode < 0`及び`wParam != 0`は処理不要だということなので処理対象外にしてます。  
-  ウィンドウハンドルをグローバル変数として保持し、自分宛のメッセージのみを対象としています。  
+  また、ウィンドウハンドルをグローバル変数として保持し、自分宛のメッセージのみを対象としています。  
   あとは、変化があったドライブレターの取得と、追加か取り外しかを判定してシグナル送信を行っています。  
 
 > [!TIP]  
 > `glib.IdleAdd()`は不要かもしれないので、コメントアウトして動作確認を行った後、フリーズやクラッシュなどが起こらないようなら削除して下さい。  
-> WM_CLIPBOARDUPDATEもWM_DEVICECHANGEもコールバック関数の中ではどちらも1種類のメッセージのみを対象に処理してますが、対象メッセージが増えた時の対応がやりやすいように`switch`を使ってます。  
+> WM_CLIPBOARDUPDATEもWM_DEVICECHANGEもコールバック関数の中ではどちらも1種類のメッセージのみを対象に処理してますが、対象メッセージが増えた時の追加がやりやすいように`switch`を使ってます。  
 
 ## 18.5 メッセージの受信（メッセージ用ウィンドウ）  
 
@@ -207,7 +207,7 @@ gotk3で作成されてるウィンドウとは別にメッセージ用ウィン
 「18.4」では、gotk3宛のメッセージを2回フックして、更にgotk3でも処理するため、種類を分けてフックしているとはいえ、メッセージによっては3回処理されてます。  
 gotk3とは別のウィンドウを作成するのは、あまり良くないのかもしれないですが、非表示のメッセージ用ウィンドウを作成することで余計な負荷が減らせるのではないかと思います。  
 
-- メッセージ用ウィンドウ作成  
+- メッセージ用ウィンドウの作成  
   ```go
   // ウィンドウクラスの登録
   className := windows.StringToUTF16Ptr("window class")
@@ -230,6 +230,8 @@ gotk3とは別のウィンドウを作成するのは、あまり良くないの
       log.Fatal("CreateWindowExの失敗")
   }
   ```
+  
+  「ウィンドウクラスの登録」時に、`WndProc`をコールバック関数に指定してます。  
 
 > [!TIP]  
 > `hInstance`は「0」でも動作するので`GetModuleHandleW()`部分は削除できるのですが、dll化する場合などは削除すると動かなくなる可能性があるため、念のために残してます。  
@@ -239,3 +241,70 @@ gotk3とは別のウィンドウを作成するのは、あまり良くないの
 > ```
 > WM_DEVICECHANGEメッセージでDBT_DEVTYP_VOLUMEのメッセージが通知されるのはトップレベルウィンドウだけなので、普通のウィンドウを作成しています。  
 > ※`Show`してないので画面には表示されません。  
+
+- メッセージ用ウィンドウの破棄  
+  ```go
+  win32.DestroyWindow(hwnd)
+  ```
+
+- メッセージの受信  
+
+  「18.1」のGeminiの説明では、以下のように記載されてます。  
+
+  > 3. GetMessageは、取得したメッセージをアプリケーションに渡し、アプリケーションはDispatchMessage関数を呼び出してメッセージをWndProcに送ります。  
+
+  ここで、問題が発生します。  
+
+  `GetMessage`は処理を停止してメッセージを待つので、gotk3のウィンドウがフリーズしてしまいます。では、goルーチンを使って`GetMessage`を実行した場合はどうなるのかというと、`GetMessage`は同一スレッドで作成したウィンドウのメッセージしか受信できないため、goルーチン内では作成したウィンドウへのメッセージは受信出来ません。  
+  また、goルーチン内でウィンドウ作成もやってしまえば良いかと思ったのですが、gotk3ウィンドウ終了時に上手く解放できなかったので、この方法も難しそうでした。  
+
+  Geminiの回答では`GetMessage`→`DispatchMessage`がないと`WndProc`がコールされないように読めるのですが、実際には「ウィンドウクラスの登録」時にコールバック関数を登録しているので`GetMessage`→`DispatchMessage`の処理をしなくても`WndProc`はコールされているようです。  
+
+  以上の結果より、`GetMessage`→`DispatchMessage`を使わずコールされた`WndProc`で処理することにしました。Geminiに聞いたら、「そんなコードは見たことない」「`WndProc`にメッセージが送られなくなる」「やめた方が良い」など否定的な回答しかなかったので、この方法が問題だと思う人は使わない方が良いです。  
+
+- コールバック関数  
+  コールバック関数の内容は、「18.4」とあまり変わりません。  
+  メッセージ用ウィンドウのみにメッセージが送信されるため、2つのコールバック関数が1つに統合されてます。  
+  ```go
+  func WndProc(hwnd win32.HWND, msg uint32, wParam, lParam uintptr) uintptr {
+      switch (msg) {
+          case win32.WM_CLIPBOARDUPDATE:
+              // シグナルを送信
+              glib.IdleAdd(func() {
+                  window1.Emit("clipboard_update", glib.TYPE_POINTER)
+              })
+          case win32.WM_DEVICECHANGE:
+              hdr := (*win32.DEV_BROADCAST_HDR)(unsafe.Pointer(lParam))
+              if hdr == nil {
+                  break
+              }
+  
+              if hdr.Dbch_devicetype == win32.DBT_DEVTYP_VOLUME {
+                  // ドライブレターの取得
+                  vol := (*win32.DEV_BROADCAST_VOLUME)(unsafe.Pointer(lParam))
+                  drvLetter := ""
+                  for i := 0; i < 26; i++ {
+                      if (vol.Dbcv_unitmask >> i) & 1 == 1 {
+                          drvLetter = string('A' + i) + ":"
+                          break
+                      }
+                  }
+                  
+                  // シグナルを送信
+                  switch uint32(wParam) {
+                      case win32.DBT_DEVICEARRIVAL:            // ドライブが追加された場合
+                          glib.IdleAdd(func() {
+                              window1.Emit("device_add", glib.TYPE_POINTER, drvLetter)
+                          })
+                      case win32.DBT_DEVICEREMOVECOMPLETE:    // ドライブが取り外された場合
+                          glib.IdleAdd(func() {
+                              window1.Emit("device_remove", glib.TYPE_POINTER, drvLetter)
+                          })
+                  }
+              }
+          case win32.WM_DESTROY:
+              win32.PostQuitMessage(0)
+      }
+      return win32.DefWindowProc(hwnd, msg, wParam, lParam)
+  }
+```
