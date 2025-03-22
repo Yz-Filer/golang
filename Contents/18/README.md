@@ -323,7 +323,7 @@ gotk3とは別のウィンドウを作成するのは、あまり良くないの
 
 ## 18.6 USBドライブイジェクト  
 
-これは説明できることが少ないです。[USB Ejector](https://github.com/dmitrii-eremin/USB-Ejecter)のc言語ソースをGeminiにマルチバイト文字対応／リファクタリング／CGO化して貰っただけとなります。  
+これは説明できることが少ないです。[USB Ejector](https://github.com/dmitrii-eremin/USB-Ejecter)のc言語ソースをGeminiにワイド文字対応／リファクタリング／CGO化して貰っただけとなります。  
 
 ![](image/window.jpg)  
 
