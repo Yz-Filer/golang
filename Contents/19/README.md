@@ -120,6 +120,9 @@ window1.Connect("directory_changed", func(parent *gtk.ApplicationWindow, directo
 
 「19.2」で説明した監視登録のコードを関数`DirWatchStart()`としてコールしてます。  
 
+> [!NOTE]  
+> `DirWatchStart()`までは非監視状態であることをステータス管理するなどの制御をした方が良いかもしれません。  
+
 ## 19.4 ファイルハンドルをクローズして監視を終了  
 
 ファイルハンドルをクローズすると、ディレクトリ更新監視は終了します。  
