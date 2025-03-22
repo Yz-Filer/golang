@@ -1,7 +1,3 @@
-// https://github.com/dmitrii-eremin/USB-Ejecter
-// をマルチバイト文字対応にしてリファクタリングして
-// cgoに対応させただけ
-
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
