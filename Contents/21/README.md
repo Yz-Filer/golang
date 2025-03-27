@@ -78,7 +78,7 @@ window1.Connect("key-release-event", func(win *gtk.ApplicationWindow, event *gdk
 
 キーが離された時も`event`から、キーコードとModifierKey（shiftキー, ctrlキー, altキー）を取得して`switch`で分岐処理するところは同じなので、端折ってます。  
 
-`case gdk.KEY_Shift_L, gdk.KEY_Shift_R`と`gdk.KEY_Control_L, gdk.KEY_Control_R`と`case gdk.KEY_Alt_L, gdk.KEY_Alt_R`はshiftキー, ctrlキー, altキーが単体で押された時の処理となります。
+`case gdk.KEY_Shift_L, gdk.KEY_Shift_R`と`case gdk.KEY_Control_L, gdk.KEY_Control_R`と`case gdk.KEY_Alt_L, gdk.KEY_Alt_R`はshiftキー, ctrlキー, altキーが単体で押された時の処理となります。
 `case gdk.KEY_Alt_L, gdk.KEY_Alt_R`だけ、shiftキーやctrlキーと違う場所で判定していますので注意して下さい。  
 
 他のシグナルハンドラでModifierKeyが押されてるかどうかを検知したい場合があります。例えば、「ctrlキーを押しながらボタンをクリックした時だけ特別な処理をしたい」というような場合、上記のshiftキー, ctrlキー, altキーが単体で押された時の処理の中で、グローバル変数などに値を設定することでModifierKeyの状態を知ることが出来ます。  
