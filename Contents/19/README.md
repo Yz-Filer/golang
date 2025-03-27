@@ -156,3 +156,7 @@ if ret == win32.FALSE || w32err != win32.NO_ERROR {
 [ここ](19_SimpleWindow_directory.go)と[ここ](19_library.go)
 に置いてます。   
 「Caution」で記載した確認処理なども盛り込んで関数化しています。  
+
+</br>
+
+「[20. クリップボードを使いたい](../20/README.md)」へ
