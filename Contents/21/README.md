@@ -15,60 +15,60 @@
 // キーが押された時
 //-----------------------------------------------------------
 window1.Connect("key-press-event", func(win *gtk.ApplicationWindow, event *gdk.Event) bool {
-	keyEvent := &gdk.EventKey{event}
-	keyVal := keyEvent.KeyVal()
-	keyState := gdk.ModifierType(keyEvent.State() & 0x0F)
-	
-	switch keyState {
-		case gdk.SHIFT_MASK:	// SHIFTキー
-			switch keyVal {
-				case gdk.KEY_a, gdk.KEY_A:				fmt.Println(" [shift + a] が押されました")
-				case gdk.KEY_Shift_L, gdk.KEY_Shift_R:	fmt.Println(" [shift] が押されました")
-				default:
-					// 押されたキーを表示
-					keyName := gdk.KeyValName(keyVal)
-					fmt.Printf(" [shift + %s] が押されました\n", keyName)
-			}
-		case gdk.CONTROL_MASK:	// CTRLキー
-			switch keyVal {
-				case gdk.KEY_a, gdk.KEY_A:					fmt.Println(" [ctrl + a] が押されました")
-				case gdk.KEY_Control_L, gdk.KEY_Control_R:	fmt.Println(" [ctrl] が押されました")
-				default:
-					// 押されたキーを表示
-					keyName := gdk.KeyValName(keyVal)
-					fmt.Printf(" [ctrl + %s] が押されました\n", keyName)
-			}
-		case gdk.MOD1_MASK:		// ALTキー
-			switch keyVal {
-				case gdk.KEY_a, gdk.KEY_A:				fmt.Println(" [alt + a] が押されました")
-				default:
-					// 押されたキーを表示
-					keyName := gdk.KeyValName(keyVal)
-					fmt.Printf(" [alt + %s] が押されました\n", keyName)
-			}
-		default:
-			switch keyVal {
-				case gdk.KEY_a, gdk.KEY_A:		fmt.Println(" [a] が押されました")
-				case gdk.KEY_Alt_L, gdk.KEY_Alt_R:		fmt.Println(" [alt] が押されました")
-				default:
-					// 押されたキーを表示
-					keyName := gdk.KeyValName(keyVal)
-					fmt.Printf(" [%s] が押されました\n", keyName)
-			}
-	}
-	
-	// イベントを伝播
-	return false
+    keyEvent := &gdk.EventKey{event}
+    keyVal := keyEvent.KeyVal()
+    keyState := gdk.ModifierType(keyEvent.State() & 0x0F)
+    
+    switch keyState {
+        case gdk.SHIFT_MASK:    // SHIFTキー
+            switch keyVal {
+                case gdk.KEY_a, gdk.KEY_A:                 fmt.Println(" [shift + a] が押されました")
+                case gdk.KEY_Shift_L, gdk.KEY_Shift_R:     fmt.Println(" [shift] が押されました")
+                default:
+                    // 押されたキーを表示
+                    keyName := gdk.KeyValName(keyVal)
+                    fmt.Printf(" [shift + %s] が押されました\n", keyName)
+            }
+        case gdk.CONTROL_MASK:    // CTRLキー
+            switch keyVal {
+                case gdk.KEY_a, gdk.KEY_A:                 fmt.Println(" [ctrl + a] が押されました")
+                case gdk.KEY_Control_L, gdk.KEY_Control_R: fmt.Println(" [ctrl] が押されました")
+                default:
+                    // 押されたキーを表示
+                    keyName := gdk.KeyValName(keyVal)
+                    fmt.Printf(" [ctrl + %s] が押されました\n", keyName)
+            }
+        case gdk.MOD1_MASK:        // ALTキー
+            switch keyVal {
+                case gdk.KEY_a, gdk.KEY_A:                 fmt.Println(" [alt + a] が押されました")
+                default:
+                    // 押されたキーを表示
+                    keyName := gdk.KeyValName(keyVal)
+                    fmt.Printf(" [alt + %s] が押されました\n", keyName)
+            }
+        default:
+            switch keyVal {
+                case gdk.KEY_a, gdk.KEY_A:                 fmt.Println(" [a] が押されました")
+                case gdk.KEY_Alt_L, gdk.KEY_Alt_R:         fmt.Println(" [alt] が押されました")
+                default:
+                    // 押されたキーを表示
+                    keyName := gdk.KeyValName(keyVal)
+                    fmt.Printf(" [%s] が押されました\n", keyName)
+            }
+    }
+    
+    // イベントを伝播
+    return false
 })
 
 //-----------------------------------------------------------
 // キーが離された時
 //-----------------------------------------------------------
 window1.Connect("key-release-event", func(win *gtk.ApplicationWindow, event *gdk.Event) bool {
-	fmt.Println("キーが離されました")
-	
-	// イベントを伝播
-	return false
+    fmt.Println("キーが離されました")
+    
+    // イベントを伝播
+    return false
 })
 ```
 
