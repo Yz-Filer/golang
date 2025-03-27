@@ -100,4 +100,8 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
   <td align="center"> <img src="Contents/19/image/kaisya_kanshi_joushi_man.png" height="89" width="auto" />  </td>
   <td> <a href="Contents/19/README.md">19. ディレクトリ配下の更新を監視したい</a> </td>
 </tr>
+<tr>
+  <td align="center"> <img src="Contents/20/image/window.jpg" height="89" width="auto" />  </td>
+  <td> <a href="Contents/20/README.md">20. クリップボードを使いたい</a> </td>
+</tr>
 </table>  
