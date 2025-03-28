@@ -294,7 +294,58 @@ window1.Connect("motion-notify-event", func(win *gtk.ApplicationWindow, event *g
 
 > [!NOTE]  
 > 「WH_KEYBOARD_LL」と「WH_GETMESSAGE」の「WM_KEYDOWN」（hwnd判定なし）の実装が同じくらいのシンプルさで負荷もそれほど差はないように思えますので、どちらかを使えば良いように思いました。  
-> 「WH_GETMESSAGE」の「WM_INPUT」はコード量が増えるので、拡張キー判定に限定した使い方をする場合は、あまり良い選択とは思えませんでした。  
+> 「WH_GETMESSAGE」の「WM_INPUT」はコード量が増えるので、拡張キー判定に限定した使い方をする場合は、あまりお勧め出来ない気がします。  
 
+## 21.4 IMEのON/OFF制御  
 
+IMEをプログラム側からON/OFFするコードは以下のようになります。  
 
+```go
+var (
+	Imm32				= windows.NewLazyDLL("imm32.dll")
+	ImmGetContext		= Imm32.NewProc("ImmGetContext")
+	ImmSetOpenStatus	= Imm32.NewProc("ImmSetOpenStatus")
+	ImmReleaseContext	= Imm32.NewProc("ImmReleaseContext")
+)
+
+// IMEコンテキストのハンドルを取得
+himc, _, err := ImmGetContext.Call(uintptr(hwnd))
+if himc == 0 || err.Error() != "The operation completed successfully." {
+	ShowErrorDialog(window1, err)
+	return
+}
+
+// IMEをOFFにする
+ret, _, err := ImmSetOpenStatus.Call(uintptr(himc), uintptr(win32.FALSE))
+if win32.BOOL(ret) == win32.FALSE || err.Error() != "The operation completed successfully." {
+	ShowErrorDialog(window1, err)
+	return
+}
+
+// IMEをONにする
+ret, _, err := ImmSetOpenStatus.Call(uintptr(himc), uintptr(win32.TRUE))
+if win32.BOOL(ret) == win32.FALSE || err.Error() != "The operation completed successfully." {
+	ShowErrorDialog(window1, err)
+	return
+}
+
+// IMEコンテキストの解放
+ret, _, err = ImmReleaseContext.Call(uintptr(hwnd), uintptr(himc))
+if win32.BOOL(ret) == win32.FALSE || err.Error() != "The operation completed successfully." {
+	ShowErrorDialog(window1, err)
+	return
+}
+```
+
+`ImmSetOpenStatus`関数の第2引数で`FALSE`を渡すとOFF、`TRUE`を渡すとONになります。  
+win32.TRUE/win32.FALSEを使ってますが、「win32.TRUE = 1」「win32.FALSE = 0」で定義されてますので、win32パッケージは無理に使わずに数字をいれても良いです。  
+
+## 21.5 おわりに  
+
+キー入力判定の方法、「shift + テンキー」に割り当てられたキーの判別方法、IMEのON/OFFについての説明は異常となります。  
+
+作成したファイルは、
+[ここ](21_gotk3_key.go)
+に置いてますが、一番コード量が多い「WM_INPUT」用になってます。  
+また、メッセージフック側の表示とシグナルハンドラ側の表示が両方行われるので、出力が見難くなってます。  
+ウィンドウは前章の使いまわしなので、IMEのON/OFFがテキストのクリップボード格納/抽出内にあるなど、分かり難い実装になってます。  
