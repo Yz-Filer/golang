@@ -116,3 +116,57 @@ window1.Connect("motion-notify-event", func(win *gtk.ApplicationWindow, event *g
 
 ## 21.3 「shiftキー + テンキー0」と「insertキー」を判別したい  
 
+WEBで検索すると、「WH_KEYBOARD_LL」をフックするというHPが見つかるのですが、これは実行中のアプリがactiveかどうかに関係なくメッセージを受信してしまうので使い難いと思いました。参考までにコードは以下のようになります。  
+
+```go
+var HookHandle win32.HHOOK
+
+//-----------------------------------------------------------------------------
+// WH_KEYBOARD_LL用のコールバック関数
+//-----------------------------------------------------------------------------
+func hookProc(nCode int, wParam, lParam uintptr) uintptr {
+	if nCode >= 0 {
+		kbdll := (*win32.KBDLLHOOKSTRUCT)(unsafe.Pointer(lParam))
+
+		switch uint32(wParam) {
+			case win32.WM_KEYDOWN:
+				if (kbdll.Flags & 0x01) == 0x01 {
+					fmt.Print("拡張キー：")
+				} else {
+					fmt.Print("キー：")
+				}
+				// 例としてInsertキーのみ判別。他はキーコード表示。
+				if kbdll.VkCode == uint32(win32.VK_INSERT) {
+					fmt.Println("Insertキーが押されました")
+				} else {
+					fmt.Println(kbdll.VkCode, "が押されました")
+				}
+			case win32.WM_KEYUP:
+		}
+	}
+	return uintptr(win32.CallNextHookEx(HookHandle, int32(nCode), wParam, lParam))
+}
+　：
+　：
+メイン関数の中
+	//-----------------------------------------------------------
+	// Windowsメッセージのhook
+	//-----------------------------------------------------------
+	HookHandle, w32err = win32.SetWindowsHookEx(win32.WH_KEYBOARD_LL, uintptr(syscall.NewCallback(hookProc)), 0, 0)
+	if HookHandle == 0 || w32err != win32.NO_ERROR {
+		log.Fatalf("SetWindowsHookEx failed: %v", win32.GetLastError())
+	}
+　：
+　：
+終了時
+	// WindowsメッセージのUnhook
+	win32.UnhookWindowsHookEx(HookHandle)
+```
+
+メッセージのフックは「[18.4 メッセージの受信（メッセージフック）](../18#184-%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%81%AE%E5%8F%97%E4%BF%A1%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%83%95%E3%83%83%E3%82%AF)」で説明しているので説明は端折ります。  
+
+`fmt.Print("拡張キー：")`の前行で拡張キーかどうかを判定してます。「拡張キー」とは「Insertキー」や「Homeキー」などです。  
+
+> [!CAUTION]  
+> WH_GETMESSAGEを同時にフックすると機能しなくなるようです。`CallNextHookEx`以外にもメッセージをディスパッチするコードが必要なのかと思ったのですがGeminiに聞いても解決しませんでした。  
+
