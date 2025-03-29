@@ -84,7 +84,7 @@ fmt.Println(context.Cause(ctx))
 ```
 
 `time.Now().Add(1 * time.Second)`にて現在時刻の1秒後に中断するように設定しています。中断時に渡すerrorも`WithDeadlineCause`の引数で指定しています。  
-`cancel()`は実行する必要があるようなので`defer`で最後に実行するようにしています。もちろん、`cancel()`を実行することでも中断できます。  
+`cancel()`は実行する必要があるようなので`defer`で最後に実行するようにしています。もちろん、`cancel()`を使って中断することもできます。  
 
 ## 25.4 指定時間経過後に中断する：WithTimeout/WithTimeoutCause  
 
