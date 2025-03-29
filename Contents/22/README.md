@@ -149,8 +149,7 @@ entryText2.Connect("drag-data-received", func(entry *gtk.Entry, context *gdk.Dra
 	switch info {
 		case 0:
 			// 受信したデータをEntryに設定
-			// ※Entryの場合は、自動的に設定される。変更は出来なさそう
-//					entryText2.SetText(data.GetText())
+//			entryText2.SetText(data.GetText())
 			fmt.Printf("text/plain:\n  %s\n", data.GetText())
 		case 1:
 			entryText2.SetText(strings.ReplaceAll(string(data.GetData()), "\r\n",", "))
