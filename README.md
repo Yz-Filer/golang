@@ -120,4 +120,8 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
   <td align="center"> <img src="Contents/24/image/copy.png" height="89" width="auto" />  </td>
   <td> <a href="Contents/24/README.md">24. win32 apiのクリップボードを使いたい（送信）</a> </br> ※ファイルのcopy/move(cut)対応可 </td>
 </tr>
+<tr>
+  <td align="center"> <img src="Contents/25/image/stopwatch.png" height="89" width="auto" />  </td>
+  <td> <a href="Contents/25/README.md">25. コンテキストの使い方メモ</a> </td>
+</tr>
 </table>  
