@@ -103,7 +103,7 @@ func main() {
 		// Drag側の設定
 		//-----------------------------------------------------------
 		
-		// Dragソースの設定(text)
+		// Dragソースの設定
 		entryText1.DragSourceSet(gdk.BUTTON1_MASK, targetEntriesText, gdk.ACTION_COPY | gdk.ACTION_MOVE)
 		
 

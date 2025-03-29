@@ -137,7 +137,7 @@ Drop側のコードは以下のようになります。
 DragのターゲットとDropのターゲットは同じものを使ってますが、「text/uri-list」はDrop側にしか使わないので、別の物を定義した方が良いです。  
 
 > [!NOTE]  
-> Windows環境でのファイルのDnD形式は「CF_HDROP」形式のため、「text/uri-list」をDragして渡してもファイルエクスプローラーなどでは受け取ってもらえません。ただ、「CF_HDROP」形式を「text/uri-list」としてDropされることは可能なようです。  
+> Windows環境でのファイルのDnD形式は「CF_HDROP」形式のため、「text/uri-list」をDragで渡してもファイルエクスプローラーなどでは受け取ってもらえません。ただ、「CF_HDROP」形式を「text/uri-list」としてDropされることは可能なようです。  
 
 ```go
 // Drop先の設定
