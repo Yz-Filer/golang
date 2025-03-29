@@ -163,6 +163,9 @@ entryText2.Connect("drag-data-received", func(entry *gtk.Entry, context *gdk.Dra
 Drop側は、自アプリの別のEntryから「text/plain」のDropを受け付けます。これは、デフォルト動作でデータの反映まで行われるので、コメントアウトしてます。但し、`DragDestSet()`を設定した時点でデフォルト動作とDrop操作と2つのデータを受信してしまうらしく、Dropされるデータが2重になってしまいます。  
 また、外部アプリからも「text/uri-list」を受信します。こちらは、Entryに自動設定されないため、コードで設定しています。  
 
+> [!NOTE]  
+> `switch`内のinfoに入る値は、「22.2」で説明している第3引数です。
+
 ## 22.5 おわりに  
 
 実行画面は以下のようになります。  
