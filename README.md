@@ -112,4 +112,8 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
   <td align="center"> <img src="Contents/22/image/window.jpg" height="auto" width="240" />  </td>
   <td> <a href="Contents/22/README.md">22. Drag and Dropが使い難い</a> </td>
 </tr>
+<tr>
+  <td align="center"> <img src="Contents/23/image/copy.png" height="89" width="auto" />  </td>
+  <td> <a href="Contents/23/README.md">23. win32 apiのクリップボードを使いたい（受信）</a> </td>
+</tr>
 </table>  
