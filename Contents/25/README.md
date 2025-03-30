@@ -5,7 +5,7 @@
 外部コマンド実行を備忘として追加しようとしていたのですが、コンテキストを使う関数があったので、先にコンテキストをテーマにしようと思います。  
 コンテキストは、WEB検索すると色々難しい事が書いてある場合が多いので、使い方に絞った紹介をしていきます。  
 
-詳しい方からするとズレてるかもしれませんが、コンテキストは、サーバー接続のタイムアウトなど、コンテキストに対応した処理を中断するために使えます。但し、外部コマンド実行などのように強制中断が出来ない物は、最後まで実行されるけど異常終了（中断）のような扱いになるようです。  
+詳しい方からするとズレてるかもしれませんが、コンテキストは、サーバー接続のタイムアウトなど、コンテキストに対応した処理を中断するために使えます。但し、子プロセスがある外部コマンドなどのように強制中断が出来ない物は、最後まで実行されるけど異常終了（中断）のような扱いになるようです。  
 
 ## 25.1 空のコンテキストを作成  
 
@@ -40,7 +40,7 @@ go func() {
 	}
 }()
 
-// 1秒後に中断（強制終了ではない）
+// 1秒後に中断
 time.Sleep(1 * time.Second) 
 cancel(errors.New("canceled by CancelCauseFunc"))
 
@@ -49,7 +49,7 @@ time.Sleep(3 * time.Second)
 fmt.Println(context.Cause(ctx))
 ```
 
-goルーチンで3秒間待機するコマンドを実行した1秒後に中断しています。但し、実行中の処理は3秒経過するまで継続し、強制終了はしないようでした。  
+goルーチンで3秒間待機するコマンドを実行した1秒後に中断しています。但し、実行中の処理は「start」を使ってるため3秒経過するまで継続し、強制終了はしないようでした。  
 最後に`context.Cause(ctx)`にて、中断時に指定したerror内容を取得しています。  
 
 `WithCancel`と`WithCancelCause`は、サーバー接続時などにボタン押下にて接続を中断するような場合に使えそうです。  
@@ -64,7 +64,7 @@ goルーチンで3秒間待機するコマンドを実行した1秒後に中断�
 `WithDeadline`と`WithDeadlineCause`の違いは「25.2」と同様です。  
 
 ```go
-// 「現在時間 + 1秒」の時刻に中断するコンテキスト（強制終了ではない）
+// 「現在時間 + 1秒」の時刻に中断するコンテキスト
 // ※第3引数に指定してるerrorが中断理由になる
 ctx, cancel := context.WithDeadlineCause(context.Background(), time.Now().Add(1 * time.Second), errors.New("canceled by CancelCauseFunc"))
 defer cancel()
@@ -92,7 +92,7 @@ fmt.Println(context.Cause(ctx))
 `WithTimeout`と`WithTimeoutCause`の違いは「25.2」と同様です。  
 
 ```go
-// 1秒後に中断するコンテキスト（強制終了ではない）
+// 1秒後に中断するコンテキスト
 // ※第3引数に指定してるerrorが中断理由になる
 ctx, cancel := context.WithTimeoutCause(context.Background(), 1 * time.Second, errors.New("canceled by CancelCauseFunc"))
 defer cancel()
@@ -118,7 +118,7 @@ fmt.Println(context.Cause(ctx))
 中断後の処理を予め指定するコードは以下のようなコードになります。  
 
 ```go
-// 1秒後に中断するコンテキスト（強制終了ではない）
+// 1秒後に中断するコンテキスト
 ctx, cancel := context.WithTimeoutCause(context.Background(), 1 * time.Second, errors.New("canceled by CancelCauseFunc"))
 defer cancel()
 
@@ -158,20 +158,10 @@ fmt.Println(context.Cause(ctx))
 > [!CAUTION]  
 > `AfterFunc`の第2引数で指定した関数は、goルーチンで実行されます。gotk3を使ったUI操作（中断のダイアログ表示）などを行う場合は、`glib.IdleAdd()`を使うなどの検討が必要となります。  
 
-## 25.6 外部コマンドの中断時に強制終了させる方法  
+## 25.6 子プロセスがある外部コマンド中断時に強制終了させる方法  
 
 `exec.CommandContext`限定になりますが、コンテキストによる中断時に強制終了させる方法を紹介します。  
-子プロセスがない外部アプリケーションの場合のコードは以下のようになります。  
-
-```go
-cmd := exec.CommandContext(ctx, "notepad.exe")
-cmd.Cancel = func() error {
-	return cmd.Process.Kill()
-}
-```
-
-goルーチン内の外部コマンドを定義した後に、`cmd.Cancel`関数にプロセスをkillする関数を設定します。コンテキストにより中断された時に、`cmd.Cancel`が自動的に実行されます。  
-子プロセスがある外部アプリケーションの場合のコードは以下のようになります。  
+子プロセスがある外部アプリケーションを中断する場合のコードは以下のようになります。  
 
 ```go
 cmd := exec.CommandContext(ctx, "cmd", "/c", "start", "/WAIT", "timeout", "/T", "3", "/NOBREAK")
@@ -183,7 +173,8 @@ cmd.Cancel = func() error {
 }
 ```
 
-「taskkill /T」コマンドを使って、子プロセスも含めてkillするよう設定します。  
+goルーチン内の外部コマンドを定義した後に、`cmd.Cancel`関数にプロセスをkillする関数を設定します。コンテキストにより中断された時に、`cmd.Cancel`が自動的に実行されます。  
+プロセスのkillは「taskkill /T」コマンドを使って、子プロセスも含めてkillするように設定します。  
 
 ## 25.7 おわりに  
 
