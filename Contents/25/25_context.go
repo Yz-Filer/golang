@@ -126,8 +126,7 @@ func WithTimeoutCause2() {
 		cmd.Cancel = func() error {
 			pidStr := strconv.Itoa(cmd.Process.Pid)
 			killCmd := exec.Command("taskkill", "/PID", pidStr, "/F", "/T")
-			_, err := killCmd.CombinedOutput()
-			return err
+			return killCmd.Run()
 		}
 		output, err := cmd.CombinedOutput()
 		if err != nil {
