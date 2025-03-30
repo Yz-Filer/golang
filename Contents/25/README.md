@@ -162,7 +162,7 @@ fmt.Println(context.Cause(ctx))
 ## 25.6 子プロセスがある外部コマンド中断時に強制終了させる方法  
 
 `exec.CommandContext`限定になりますが、コンテキストによる中断時に強制終了させる方法を紹介します。  
-子プロセスがある外部アプリケーションを中断する場合のコードは以下のようになります。  
+子プロセスがある外部コマンドを中断する場合のコードは以下のようになります。  
 
 ```go
 cmd := exec.CommandContext(ctx, "cmd", "/c", "start", "/WAIT", "timeout", "/T", "3", "/NOBREAK")
