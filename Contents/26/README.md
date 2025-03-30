@@ -169,10 +169,6 @@ fmt.Println(stderrBuf2.String())
 [ここ](26_exec_cmd.go)
 に置いてます。  
 
-</br>
-
-「[27.](../27/README.md)」へ
-
 > [!TIP]  
 > 外部コマンド起動時に一瞬コンソール画面が表示される場合は、cmdに以下の設定をすれば解消します。
 > ```go
@@ -183,3 +179,7 @@ fmt.Println(stderrBuf2.String())
 > ```go
 > exec.Command("cmd", "/C", "start", "cmd", "/K", "dir")
 > ```
+
+</br>
+
+「[27.](../27/README.md)」へ
