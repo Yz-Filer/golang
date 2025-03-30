@@ -158,7 +158,34 @@ fmt.Println(context.Cause(ctx))
 > [!CAUTION]  
 > `AfterFunc`の第2引数で指定した関数は、goルーチンで実行されます。gotk3を使ったUI操作（中断のダイアログ表示）などを行う場合は、`glib.IdleAdd()`を使うなどの検討が必要となります。  
 
-## 25.6 おわりに  
+## 25.6 外部コマンドの中断時に強制終了させる方法  
+
+`exec.CommandContext`限定になりますが、中断時に強制終了させる方法を紹介します。  
+子プロセスがない外部アプリケーションの場合のコードは以下のようになります。  
+
+```go
+cmd := exec.CommandContext(ctx, "notepad.exe")
+cmd.Cancel = func() error {
+	return cmd.Process.Kill()
+}
+```
+
+goルーチン内の外部コマンドを定義した後に、`cmd.Cancel`関数にプロセスをkillする関数を設定します。  
+子プロセスがある外部アプリケーションの場合のコードは以下のようになります。  
+
+```go
+cmd := exec.CommandContext(ctx, "cmd", "/c", "start", "/WAIT", "timeout", "/T", "3", "/NOBREAK")
+cmd.Cancel = func() error {
+	pidStr := strconv.Itoa(cmd.Process.Pid)
+	killCmd := exec.Command("taskkill", "/PID", pidStr, "/F", "/T")
+	_, err := killCmd.CombinedOutput()
+	return err
+}
+```
+
+「taskkill /T」コマンドを使って、子プロセスも含めてkillするよう設定します。  
+
+## 25.7 おわりに  
 
 コンテキストの使い方の説明は以上となります。  
 作成したファイルは、
