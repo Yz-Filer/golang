@@ -32,7 +32,7 @@ func WithCancelCause() {
 		}
 	}()
 	
-	// 1秒後に中断（強制終了ではない）
+	// 1秒後に中断
 	time.Sleep(1 * time.Second) 
 	cancel(errors.New("canceled by CancelCauseFunc"))
 	
@@ -43,7 +43,7 @@ func WithCancelCause() {
 
 // WithDeadlineCauseを使ったサンプル
 func WithDeadlineCause() {
-	// 「現在時間 + 1秒」の時刻に中断するコンテキスト（強制終了ではない）
+	// 「現在時間 + 1秒」の時刻に中断するコンテキスト
 	// ※第3引数に指定してるerrorが中断理由になる
 	ctx, cancel := context.WithDeadlineCause(context.Background(), time.Now().Add(1 * time.Second), errors.New("canceled by CancelCauseFunc"))
 	defer cancel()
@@ -64,7 +64,7 @@ func WithDeadlineCause() {
 
 // WithTimeoutCauseを使ったサンプル
 func WithTimeoutCause() {
-	// 1秒後に中断するコンテキスト（強制終了ではない）
+	// 1秒後に中断するコンテキスト
 	// ※第3引数に指定してるerrorが中断理由になる
 	ctx, cancel := context.WithTimeoutCause(context.Background(), 1 * time.Second, errors.New("canceled by CancelCauseFunc"))
 	defer cancel()
@@ -85,7 +85,7 @@ func WithTimeoutCause() {
 
 // AfterFuncを使ったサンプル
 func AfterFunc() {
-	// 1秒後に中断するコンテキスト（強制終了ではない）
+	// 1秒後に中断するコンテキスト
 	ctx, cancel := context.WithTimeoutCause(context.Background(), 1 * time.Second, errors.New("canceled by CancelCauseFunc"))
 	defer cancel()
 	
@@ -113,7 +113,7 @@ func AfterFunc() {
 
 // WithTimeoutCause時に外部コマンドを強制終了させるサンプル
 func WithTimeoutCause2() {
-	// 1秒後に中断するコンテキスト（強制終了ではない）
+	// 1秒後に中断するコンテキスト
 	// ※第3引数に指定してるerrorが中断理由になる
 	ctx, cancel := context.WithTimeoutCause(context.Background(), 1 * time.Second, errors.New("canceled by CancelCauseFunc"))
 	defer cancel()
