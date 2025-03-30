@@ -172,3 +172,14 @@ fmt.Println(stderrBuf2.String())
 </br>
 
 「[27.](../27/README.md)」へ
+
+> [!TIP]  
+> 外部コマンド起動時に一瞬コンソール画面が表示される場合は、cmdに以下の設定をすれば解消します。
+> ```go
+> cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
+> ```
+> 
+> 新しいDOS窓を開いてコマンドを実行する場合は、以下のようになります。  
+> ```go
+> exec.Command("cmd", "/C", "start", "cmd", "/K", "dir")
+> ```
