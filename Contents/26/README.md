@@ -175,7 +175,7 @@ fmt.Println(stderrBuf2.String())
 > cmd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
 > ```
 > 
-> 新しいDOS窓を開いてコマンドを実行する場合は、以下のようになります。  
+> 新しいDOS窓を開いてコマンドを実行し、DOS窓を閉じたくない場合は、以下のようになります。  
 > ```go
 > exec.Command("cmd", "/C", "start", "cmd", "/K", "dir")
 > ```
