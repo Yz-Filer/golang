@@ -280,10 +280,10 @@ public class NamedPipeClient
 
 ## 27.6 おわりに  
 
-プロセス間通信について紹介しました。サーバー/クライアントは、両方ともgoアプリにも出来ます。
+プロセス間通信について紹介しました。サーバー/クライアントは、両方ともgoアプリにすることも出来ます。
 
 作成したファイルは、  
-[C#サーバー](27_winio_server.cs) / [goクライアント](27_winio_client.cs)  
+[C#サーバー](27_winio_server.cs) / [goクライアント](27_winio_client.go)  
 [goサーバー](27_winio_server.go) / [C#クライアント](27_winio_client.cs)  
 に置いてます。  
 
