@@ -182,4 +182,4 @@ fmt.Println(stderrBuf2.String())
 
 </br>
 
-「[27.](../27/README.md)」へ
+「[27. プロセス間通信（名前付きパイプ）のメモ](../27/README.md)」へ
