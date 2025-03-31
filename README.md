@@ -128,4 +128,8 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
   <td align="center"> <img src="Contents/26/image/window.png" height="89" width="auto" />  </td>
   <td> <a href="Contents/26/README.md">26. 外部コマンドの実行方法メモ</a> </td>
 </tr>
+<tr>
+  <td align="center"> <img src="Contents/27/image/beacon.png" height="89" width="auto" />  </td>
+  <td> <a href="Contents/27/README.md">27. プロセス間通信（名前付きパイプ）のメモ</a> </br> ※C#アプリとの通信 </td>
+</tr>
 </table>  
