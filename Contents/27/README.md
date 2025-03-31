@@ -4,11 +4,11 @@
 
 "github.com/Microsoft/go-winio"パッケージを使って、C#アプリとプロセス間通信を実施するための自分用のメモとなります。  
 
-「go-winio」はHPに関数の説明などがないため、関数の説明も軽くしておきますが、全ての関数は試してなく、Geminiの説明そのままの物もあります。実際に使用する場合は、想定通りの挙動をするかどうかの確認をしてから使用して下さい。  
+「go-winio」はH.P.に関数の説明などがないため、関数の説明も軽くしておきますが、全ての関数は試してなく、Geminiの説明そのままの物もあります。実際に使用する場合は、想定通りの挙動をするかどうかを確認してから使用して下さい。  
 
 ## 27.1 サーバー側で使う関数  
 
-- func ListenPipe(path string, c *PipeConfig) (net.Listener, error)  
+- `func ListenPipe(path string, c *PipeConfig) (net.Listener, error)`  
   指定されたパス (名前) を持つ名前付きパイプのリスナーを作成します。  
   Windows における名前付きパイプのパスは通常`\\.\pipe\パイプ名`の形式です。  
   第2引数のPipeConfigは以下のメンバーを持ちます。(nilで指定なし)  
@@ -17,32 +17,32 @@
   - InputBufferSize: 入力バッファのサイズ (バイト単位) を指定します。0 の場合はシステムデフォルトが使用されます。  
   - OutputBufferSize: 出力バッファのサイズ (バイト単位) を指定します。0 の場合はシステムデフォルトが使用されます。  
 
-- func (l *win32PipeListener) Accept() (net.Conn, error)  
+- `func (l *win32PipeListener) Accept() (net.Conn, error)`  
   クライアントからの接続を受け付けます。  
 
-- func (l *win32PipeListener) Close() error  
+- `func (l *win32PipeListener) Close() error`  
   ListenPipe 関数によって作成された名前付きパイプのリスナーを閉じます。  
 
-- func (l *win32PipeListener) Addr() net.Addr  
+- `func (l *win32PipeListener) Addr() net.Addr`  
   リスナーがリッスンしているネットワークアドレスを返します。  
 
 ## 27.2 クライアント側で使う関数  
 
-- func DialPipe(path string, timeout *time.Duration) (net.Conn, error)  
+- `func DialPipe(path string, timeout *time.Duration) (net.Conn, error)`  
   指定されたパスを持つ名前付きパイプへの接続を試みます。  
   第2引数はタイムアウト期間を指定します。nilを指定すると無期限に待機します。  
 
-- func DialPipeContext(ctx context.Context, path string) (net.Conn, error)  
+- `func DialPipeContext(ctx context.Context, path string) (net.Conn, error)`  
   コンテキストを使用して名前付きパイプへの接続を試みます。  
 
-- func DialPipeAccess(ctx context.Context, path string, access uint32) (net.Conn, error)  
+- `func DialPipeAccess(ctx context.Context, path string, access uint32) (net.Conn, error)`  
   特定のアクセス権限を指定して名前付きパイプへの接続を試みます。コンテキストも使用できます。  
   accessは通常「golang.org/x/sys/windows」の以下の権限を指定します。  
   - windows.GENERIC_READ：読み取り権限  
   - windows.GENERIC_WRITE：書き込み権限  
   - windows.GENERIC_READ | windows.GENERIC_WRITE：読み取り/書き込み権限  
 
-- func DialPipeAccessImpLevel(ctx context.Context, path string, access uint32, impLevel PipeImpLevel) (net.Conn, error)  
+- `func DialPipeAccessImpLevel(ctx context.Context, path string, access uint32, impLevel PipeImpLevel) (net.Conn, error)`  
   特定のアクセス権限と偽装レベルを指定して名前付きパイプへの接続を試みます。コンテキストも使用できます。  
   クライアントAPから同一マシン上のサーバーAPへ、ファイルなどのアクセス権限を名前付きパイプと偽装の仕組みを通じて間接的に委譲するために使えます。  
   - winio.PipeImpLevelAnonymous  
@@ -57,31 +57,31 @@
 ## 27.3 共通の関数  
 
 1. 取得したnet.Connで使える関数  
-   - func (f *win32Pipe) LocalAddr() net.Addr  
+   - `func (f *win32Pipe) LocalAddr() net.Addr`  
      ローカルの名前付きパイプのパスを取得します。（LocalAddrもRemoteAddrも同じパイプ名）  
 
-   - func (f *win32Pipe) RemoteAddr() net.Addr  
+   - `func (f *win32Pipe) RemoteAddr() net.Addr`  
      接続先の名前付きパイプのパスを取得します。（LocalAddrもRemoteAddrも同じパイプ名）  
 
-   - func (f *win32Pipe) SetDeadline(t time.Time) error  
+   - `func (f *win32Pipe) SetDeadline(t time.Time) error`  
      パイプ通信が一定時間内に完了しない場合に、処理を中断してリソースを解放したい場合に利用します。  
      例えば、クライアントが一定時間応答しない場合に、サーバー側で接続をタイムアウトさせるといった処理を実装できます。  
 
-   - func (f *win32Pipe) Disconnect() error  
+   - `func (f *win32Pipe) Disconnect() error`  
      サーバー側からクライアント側との間の接続を切断します。サーバー側は閉じられないためクライアント側から再度接続出来ます。  
      サーバー側を閉じるためにはClose()メソッドを呼び出す必要があります。  
      クライアント側からこのメソッドを実行しても期待する動作はしません。Close()メソッドを呼び出すべきです。  
 
 1. 取得したnet.Connで使える関数(メッセージモード専用の関数）  
    通常はバイトストリームモードを使うようなので、メッセージモードの説明は省略します。  
-   - func (f *win32MessageBytePipe) CloseWrite() error  
-   - func (f *win32MessageBytePipe) Write(b []byte) (int, error)  
-   - func (f *win32MessageBytePipe) Read(b []byte) (int, error)  
+   - `func (f *win32MessageBytePipe) CloseWrite() error`  
+   - `func (f *win32MessageBytePipe) Write(b []byte) (int, error)`  
+   - `func (f *win32MessageBytePipe) Read(b []byte) (int, error)`  
 
 1. 取得したnet.Addrで使える関数  
-   - func (pipeAddress) Network() string  
+   - `func (pipeAddress) Network() string`  
      "pipe"文字列を返します。  
-   - func (s pipeAddress) String() string  
+   - `func (s pipeAddress) String() string`  
      名前付きパイプのパス文字列を返します。  
 
 ## 27.4 C#がサーバー側、goがクライアント側のコード  
