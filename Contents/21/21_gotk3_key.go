@@ -221,7 +221,7 @@ func main() {
 		// ※「SHIFT + 0」が「Insert」になるなどキーボードの割り当てが優先される
 		//-----------------------------------------------------------
 		window1.Connect("key-press-event", func(win *gtk.ApplicationWindow, event *gdk.Event) bool {
-			keyEvent := &gdk.EventKey{event}
+			keyEvent := gdk.EventKeyNewFromEvent(event)
 			keyVal := keyEvent.KeyVal()
 			keyState := gdk.ModifierType(keyEvent.State() & 0x0F)
 			

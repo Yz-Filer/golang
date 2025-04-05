@@ -15,7 +15,7 @@
 // キーが押された時
 //-----------------------------------------------------------
 window1.Connect("key-press-event", func(win *gtk.ApplicationWindow, event *gdk.Event) bool {
-    keyEvent := &gdk.EventKey{event}
+    keyEvent := gdk.EventKeyNewFromEvent(event)
     keyVal := keyEvent.KeyVal()
     keyState := gdk.ModifierType(keyEvent.State() & 0x0F)
     
