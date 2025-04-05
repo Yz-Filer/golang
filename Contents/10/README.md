@@ -48,22 +48,49 @@ func menuOpen(parent *gtk.ApplicationWindow) (string, error) {
 > ファイル選択ダイアログは、OSの物も使えます。
 > ```go
 > // OSのファイル選択ダイアログを作成
-> fcd, err := gtk.FileChooserNativeDialogNew("開く", parent, gtk.FILE_CHOOSER_ACTION_OPEN, "開く", "やめる")
+> fcd, err := gtk.FileChooserNativeDialogNew("オープン", parent, gtk.FILE_CHOOSER_ACTION_OPEN, "OK (_O)", "Cancel (_C)")
 > if err != nil {
-> 	log.Fatal(err)
+> 	return "", err
 > }
 > defer fcd.Destroy()
 > 
-> // フィルタの設定などは、FileChooserDialogも同様なため参考までに載せておきます
-> ff, err := gtk.FileFilterNew()
-> if err != nil {
-> 	log.Fatal(err)
-> }
-> ff.AddPattern("*.txt")
-> ff.SetName("text")
-> fcd.AddFilter(ff)
+> // 追加のオプション選択項目を2つ設定
+> // リストボックスのラベルに"Choice1/2"が表示され、
+> // リストボックスのリストに"op_label1/2"が追加される
+> fcd.AddChoice("id1", "Choice1", []string{"op1", "op2"}, []string{"op_label1", "op_label2"})
+> fcd.AddChoice("id2", "Choice2", []string{"op1", "op2"}, []string{"op_label1", "op_label2"})
 > 
-> ret := fcd.Run()
+> // オプション選択項目の初期値を設定
+> fcd.SetChoice("id1", "op1")
+> fcd.SetChoice("id2", "op1")
+> 
+> // txt拡張子のフィルタを追加
+> fileFilterTxt, err := gtk.FileFilterNew()
+> if err != nil {
+> 	return "", err
+> }
+> fileFilterTxt.AddPattern("*.txt")
+> fileFilterTxt.SetName("text")
+> fcd.AddFilter(fileFilterTxt)
+> 
+> // png拡張子のフィルタを追加
+> fileFilterPng, err := gtk.FileFilterNew()
+> if err != nil {
+> 	return "", err
+> }
+> fileFilterPng.AddPattern("*.png")
+> fileFilterPng.SetName("png")
+> fcd.AddFilter(fileFilterPng)
+> 
+> // ダイアログを起動し、選択結果を表示
+> if fcd.Run() == int(gtk.RESPONSE_ACCEPT) {
+> 	// オプション選択項目の選択結果"op1/2"を表示
+> 	fmt.Printf("Choice1:%s\n", fcd.GetChoice("id1"))
+> 	fmt.Printf("Choice2:%s\n", fcd.GetChoice("id2"))
+> 	
+> 	// 選択したファイルパスを表示
+> 	fmt.Printf("File path:%s\n", fcd.GetFilename())
+> }
 > ```
 
 > [!NOTE]
