@@ -133,3 +133,16 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
   <td> <a href="Contents/27/README.md">27. プロセス間通信（名前付きパイプ）のメモ</a> </br> ※C#アプリとの通信 </td>
 </tr>
 </table>  
+
+次からは、簡単なアプリとしてタブ切り替え型の簡易メモ帳を作成していきます。
+
+<table>
+<tr>
+  <td align="center"> <img src="Contents/28/image/window.jpg" height="89" width="auto" />  </td>
+  <td> <a href="Contents/28/README.md">28. （まとめ2）タブ切り替え型の簡易メモ帳～はじめに～</a> </td>
+</tr>
+<tr>
+  <td align="center"> <img src="Contents/29/image/window.jpg" height="89" width="auto" />  </td>
+  <td> <a href="Contents/28/README.md">29. （まとめ2）動的に追加するTabControl（Notebook）</a> </td>
+</tr>
+</table>  
