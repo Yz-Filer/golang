@@ -143,6 +143,6 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
 </tr>
 <tr>
   <td align="center"> <img src="Contents/29/image/window.jpg" height="89" width="auto" />  </td>
-  <td> <a href="Contents/28/README.md">29. （まとめ2）動的に追加するTabControl（Notebook）</a> </td>
+  <td> <a href="Contents/29/README.md">29. （まとめ2）動的に追加するTabControl（Notebook）</a> </td>
 </tr>
 </table>  
