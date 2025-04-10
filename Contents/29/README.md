@@ -125,6 +125,7 @@ note.Connect("switch-page", func(notebook *gtk.Notebook, page *gtk.Widget, page_
 ## 29.4 おわりに  
 
 gladeでUIを設定して、タブを動的に追加するNotebookについて説明しました。  
+
 作成したファイルは、
 [ここ](29_Notebook.go)
 に置いてます。  
@@ -132,4 +133,4 @@ gladeでUIを設定して、タブを動的に追加するNotebookについて�
 
 </br>
 
-「[30. ](../30/README.md)」へ
+「[（まとめ2）文字コード判定](../30/README.md)」へ
