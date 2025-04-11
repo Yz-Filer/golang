@@ -153,4 +153,8 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
   <td align="center"> <img src="Contents/31/image/window.jpg" height="89" width="auto" />  </td>
   <td> <a href="Contents/31/README.md">31. （まとめ2）拡大/縮小</a> </td>
 </tr>
+<tr>
+  <td align="center"> <img src="Contents/32/image/window.jpg" height="89" width="auto" />  </td>
+  <td> <a href="Contents/32/README.md">32. （まとめ2）UNDO/REDO</a> </td>
+</tr>
 </table>  
