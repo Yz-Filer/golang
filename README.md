@@ -171,3 +171,12 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
   <td> <a href="Contents/34/README.md">34. （まとめ3）画像ビューア</a> </td>
 </tr>
 </table>  
+
+また、思いついたテーマを追加していきます。  
+
+<table>
+<tr>
+  <td align="center"> <img src="Contents/35/image/window.jpg" height="89" width="auto" />  </td>
+  <td> <a href="Contents/35/README.md">35. dllを使ったDrag and Drop</a> </td>
+</tr>
+</table>  
