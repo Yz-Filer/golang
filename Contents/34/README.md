@@ -9,7 +9,7 @@
 
 ## 34.1 GladeでUIを作成  
 
-![](./image/glade.jpg)  
+![](image/glade.jpg)  
 
 以下のような内容になっています。  
 
