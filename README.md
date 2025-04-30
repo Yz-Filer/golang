@@ -162,3 +162,12 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
   <td> <a href="Contents/33/README.md">33. （まとめ2）タブ切り替え型の簡易メモ帳</a> </td>
 </tr>
 </table>  
+
+続けて、画像ビューアを作成します。  
+
+<table>
+<tr>
+  <td align="center"> <img src="Contents/34/image/window.jpg" height="89" width="auto" />  </td>
+  <td> <a href="Contents/34/README.md">34. （まとめ3）画像ビューア</a> </td>
+</tr>
+</table>  
