@@ -11,7 +11,7 @@
 cl /LD OleDragDrop.c uuid.lib ole32.lib user32.lib shell32.lib
 ```
 
-> [!CAUTION]  
+> [!NOTE]  
 > `cl`はVisualStudioのコンパイラです。64bitでdllをコンパイルできれば、`cl`以外でコンパイルしても良いと思いますので自分の環境にあったコンパイラを調べてみて下さい。 
 
 ## 35.1 GladeでUIを作成  
