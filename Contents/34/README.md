@@ -566,9 +566,6 @@ func ShowScaledImage(parent *gtk.ApplicationWindow, drawingArea *gtk.DrawingArea
 [ここ](34_ImageViewer.go)
 に置いてます。  
 
-<!--
 </br>
 
-「[34. （まとめ3）画像ビューア](../34/README.md)」へ
-
--->
+「[35. dllを使ったDrag and Drop](../35/README.md)」へ
