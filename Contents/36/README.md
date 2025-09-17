@@ -52,6 +52,8 @@ if (selectedCmd > 0) {
 
 ![](image/window.jpg)  
 
+ウィンドウを右クリックしたら上図のようにファイルエクスプローラーのコンテキストメニューが表示されます。  
+
 ## 36.3 GladeでUIを作成  
 
 ![](image/glade.jpg)  
