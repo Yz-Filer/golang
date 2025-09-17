@@ -180,4 +180,8 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
   <td align="center"> <img src="Contents/35/image/window.jpg" height="89" width="auto" />  </td>
   <td> <a href="Contents/35/README.md">35. dllを使ったDrag and Drop</a> </td>
 </tr>
+<tr>
+  <td align="center"> <img src="Contents/36/image/window.jpg" height="89" width="auto" />  </td>
+  <td> <a href="Contents/36/README.md">36. ファイルエクスプローラーのコンテキストメニューを表示</a> </td>
+</tr>
 </table>  

@@ -24,7 +24,7 @@ import (
 	"github.com/gotk3/gotk3/gdk"
 )
 
-//go:embed glade/01_MainWindow.glade
+//go:embed glade/36_MainWindow.glade
 var window1Glade string
 
 //go:embed resources/icon.ico
