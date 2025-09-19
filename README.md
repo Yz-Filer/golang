@@ -1,6 +1,6 @@
 # [go言語 & gotk3をちょっとやり直してみたい](https://github.com/Yz-Filer/golang)  
 > [!NOTE]  
-> 「https://yz-filer.github.io/golang/」のURLが表示されてて表示が崩れてる場合は、上記リンクからオリジナルページ「https://github.com/Yz-Filer/golang」にアクセスして下さい。  
+> `https://yz-filer.github.io/golang/`のURLが表示されていて表示が崩れてる場合は、上記リンクからオリジナルページ`https://github.com/Yz-Filer/golang`にアクセスして下さい。  
 
 ## はじめに
 Go言語とgotk3を用いてGoogle検索で調べながらファイラーを作成してみたりしたのですが、動作が不安定な時があったため、ちゃんと調べ直したいと考えてました。  
