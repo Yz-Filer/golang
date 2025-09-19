@@ -47,7 +47,8 @@ go build -gcflags "-N -l" -tags gtk_deprecated -o test.exe
 
 ## 1.3 gtk.ApplicationWindowを使うべきなの？
 「gtk.Init」のサンプルコードでは、「gtk.Window」を使ってる例が多いように思いましたが、「gtk.Application」では「gtk.ApplicationWindow」を使ってる物があるため、違いを聞いてみました。
-> 基本的にはgtk.ApplicationWindowを使用することを推奨します。
+> 基本的にはgtk.ApplicationWindowを使用することを推奨します。  
+> 
 > | 機能 | gtk.Window | gtk.ApplicationWindow | 
 > | --- | --- | --- | 
 > | 基本機能 | ウィンドウの基本的な要素を提供 | gtk.Windowの機能を拡張 | 
