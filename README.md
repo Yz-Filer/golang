@@ -20,43 +20,43 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
 </tr>
 <tr>
   <td align="center"> <img src="Contents/02/image/computer_tokui_boy.png" height="89" width="auto" />  </td>
-  <td> <a href="Contents/02/README.md">2. 他のパソコンでも実行したい</a> </td>
+  <td> <a href="Contents/02/">2. 他のパソコンでも実行したい</a> </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/03/image/window3.jpg" height="89" width="auto" />  </td>
-  <td> <a href="Contents/03/README.md">3. テーマを使いたい</a> </td>
+  <td> <a href="Contents/03/">3. テーマを使いたい</a> </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/04/image/computer_note_bad.png" height="89" width="auto" />  </td>
-  <td> <a href="Contents/04/README.md">4. これに気をつけないとアプリがクラッシュする</a> </td>
+  <td> <a href="Contents/04/">4. これに気をつけないとアプリがクラッシュする</a> </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/05/image/window_multi.jpg" height="auto" width="200" />  </td>
-  <td> <a href="Contents/05/README.md">5. 半透明の付箋もどき</a> </td>
+  <td> <a href="Contents/05/">5. 半透明の付箋もどき</a> </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/06/image/taskbar_menu.jpg" height="89" width="auto" />  </td>
-  <td> <a href="Contents/06/README.md">6. タスクトレイに格納したい</a> </td>
+  <td> <a href="Contents/06/">6. タスクトレイに格納したい</a> </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/07/image/std_dialog.jpg" height="auto" width="200" />  </td>
-  <td> <a href="Contents/07/README.md">7. メッセージダイアログとステータスバーを表示したい</a> </td>
+  <td> <a href="Contents/07/">7. メッセージダイアログとステータスバーを表示したい</a> </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/08/image/window.jpg" height="auto" width="200" /> <br> <img src="Contents/08/image/custom_dialog_markup.jpg" height="auto" width="200" /> </td>
-  <td> <a href="Contents/08/README.md">8. ヘッダーバー・ラベル書式・ウィンドウ書式のカスタマイズ</a> </td>
+  <td> <a href="Contents/08/">8. ヘッダーバー・ラベル書式・ウィンドウ書式のカスタマイズ</a> </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/09/image/menu.jpg" height="89" width="auto" />  </td>
-  <td> <a href="Contents/09/README.md">9. メニューバー/ツールバー/標準ダイアログを使いたい(前編)</a> </td>
+  <td> <a href="Contents/09/">9. メニューバー/ツールバー/標準ダイアログを使いたい(前編)</a> </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/10/image/color.jpg" height="89" width="auto" />  </td>
-  <td> <a href="Contents/10/README.md">10. メニューバー/ツールバー/標準ダイアログを使いたい(後編)</a> </td>
+  <td> <a href="Contents/10/">10. メニューバー/ツールバー/標準ダイアログを使いたい(後編)</a> </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/11/image/window.jpg" height="89" width="auto" />  </td>
-  <td> <a href="Contents/11/README.md">11. 表形式にデータを表示したい</a> </td>
+  <td> <a href="Contents/11/">11. 表形式にデータを表示したい</a> </td>
 </tr>
 </table>  
 
@@ -65,27 +65,27 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
 <table>
 <tr>
   <td align="center"> <img src="Contents/12/image/image.jpg" height="auto" width="240" />  </td>
-  <td> <a href="Contents/12/README.md">12. （まとめ）付箋アプリの作成～はじめに～</a> </td>
+  <td> <a href="Contents/12/">12. （まとめ）付箋アプリの作成～はじめに～</a> </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/13/image/file.jpg" height="89" width="auto" />  </td>
-  <td> <a href="Contents/13/README.md">13. （まとめ）ファイルの存在確認とファイル入出力</a> </td>
+  <td> <a href="Contents/13/">13. （まとめ）ファイルの存在確認とファイル入出力</a> </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/14/image/beacon_denpa_hasshinki.png" height="89" width="auto" />  </td>
-  <td> <a href="Contents/14/README.md">14. （まとめ）カスタムシグナル</a> </td>
+  <td> <a href="Contents/14/">14. （まとめ）カスタムシグナル</a> </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/15/image/edit_window.jpg" height="89" width="auto" /> <br> <img src="Contents/15/image/sticky_window.jpg" height="89" width="auto" />  </td>
-  <td> <a href="Contents/15/README.md">15. （まとめ）CSSを使った書式設定</a> </br> ※背景が青いのはデスクトップの色です </td>
+  <td> <a href="Contents/15/">15. （まとめ）CSSを使った書式設定</a> </br> ※背景が青いのはデスクトップの色です </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/16/image/taskbar.jpg" height="89" width="auto" />  </td>
-  <td> <a href="Contents/16/README.md">16. （まとめ）タスクバーにアイコンを表示させない方法</a> </br> ※背景が青いのはデスクトップの色です </td>
+  <td> <a href="Contents/16/">16. （まとめ）タスクバーにアイコンを表示させない方法</a> </br> ※背景が青いのはデスクトップの色です </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/17/image/sticky_note.jpg" height="auto" width="240" /> <br> <img src="Contents/17/image/sticky_image.jpg" height="69" width="auto" />  </td>
-  <td> <a href="Contents/17/README.md">17. （まとめ）付箋アプリの作成</a> </td>
+  <td> <a href="Contents/17/">17. （まとめ）付箋アプリの作成</a> </td>
 </tr>  
 </table>  
 
@@ -94,43 +94,43 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
 <table>
 <tr>
   <td align="center"> <img src="Contents/18/image/window.jpg" height="89" width="auto" />  </td>
-  <td> <a href="Contents/18/README.md">18. クリップボード監視/USBドライブ抜き差し監視/USBドライブイジェクトがしたい</a> </td>
+  <td> <a href="Contents/18/">18. クリップボード監視/USBドライブ抜き差し監視/USBドライブイジェクトがしたい</a> </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/19/image/kaisya_kanshi_joushi_man.png" height="89" width="auto" />  </td>
-  <td> <a href="Contents/19/README.md">19. ディレクトリ配下の更新を監視したい</a> </td>
+  <td> <a href="Contents/19/">19. ディレクトリ配下の更新を監視したい</a> </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/20/image/window.jpg" height="89" width="auto" />  </td>
-  <td> <a href="Contents/20/README.md">20. クリップボードを使いたい</a> </td>
+  <td> <a href="Contents/20/">20. クリップボードを使いたい</a> </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/21/image/window.jpg" height="89" width="auto" />  </td>
-  <td> <a href="Contents/21/README.md">21. キー入力の検知、IMEのON/OFF制御をしたい</a> </td>
+  <td> <a href="Contents/21/">21. キー入力の検知、IMEのON/OFF制御をしたい</a> </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/22/image/window.jpg" height="auto" width="240" />  </td>
-  <td> <a href="Contents/22/README.md">22. Drag and Dropが使い難い</a> </td>
+  <td> <a href="Contents/22/">22. Drag and Dropが使い難い</a> </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/23/image/copy.png" height="89" width="auto" />  </td>
-  <td> <a href="Contents/23/README.md">23. win32 apiのクリップボードを使いたい（受信）</a> </br> ※ファイルのcopy/move(cut)対応可 </td>
+  <td> <a href="Contents/23/">23. win32 apiのクリップボードを使いたい（受信）</a> </br> ※ファイルのcopy/move(cut)対応可 </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/24/image/copy.png" height="89" width="auto" />  </td>
-  <td> <a href="Contents/24/README.md">24. win32 apiのクリップボードを使いたい（送信）</a> </br> ※ファイルのcopy/move(cut)対応可 </td>
+  <td> <a href="Contents/24/">24. win32 apiのクリップボードを使いたい（送信）</a> </br> ※ファイルのcopy/move(cut)対応可 </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/25/image/stopwatch.png" height="89" width="auto" />  </td>
-  <td> <a href="Contents/25/README.md">25. コンテキストの使い方メモ</a> </td>
+  <td> <a href="Contents/25/">25. コンテキストの使い方メモ</a> </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/26/image/window.png" height="89" width="auto" />  </td>
-  <td> <a href="Contents/26/README.md">26. 外部コマンドの実行方法メモ</a> </td>
+  <td> <a href="Contents/26/">26. 外部コマンドの実行方法メモ</a> </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/27/image/beacon.png" height="89" width="auto" />  </td>
-  <td> <a href="Contents/27/README.md">27. プロセス間通信（名前付きパイプ）のメモ</a> </br> ※C#アプリとの通信 </td>
+  <td> <a href="Contents/27/">27. プロセス間通信（名前付きパイプ）のメモ</a> </br> ※C#アプリとの通信 </td>
 </tr>
 </table>  
 
@@ -139,27 +139,27 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
 <table>
 <tr>
   <td align="center"> <img src="Contents/28/image/window.jpg" height="89" width="auto" />  </td>
-  <td> <a href="Contents/28/README.md">28. （まとめ2）タブ切り替え型の簡易メモ帳～はじめに～</a> </td>
+  <td> <a href="Contents/28/">28. （まとめ2）タブ切り替え型の簡易メモ帳～はじめに～</a> </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/29/image/window.jpg" height="89" width="auto" />  </td>
-  <td> <a href="Contents/29/README.md">29. （まとめ2）動的に追加するTabControl（Notebook）</a> </td>
+  <td> <a href="Contents/29/">29. （まとめ2）動的に追加するTabControl（Notebook）</a> </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/30/image/window.jpg" height="89" width="auto" />  </td>
-  <td> <a href="Contents/30/README.md">30. （まとめ2）文字コード判定</a> </td>
+  <td> <a href="Contents/30/">30. （まとめ2）文字コード判定</a> </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/31/image/window.jpg" height="89" width="auto" />  </td>
-  <td> <a href="Contents/31/README.md">31. （まとめ2）拡大/縮小</a> </td>
+  <td> <a href="Contents/31/">31. （まとめ2）拡大/縮小</a> </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/32/image/window.jpg" height="89" width="auto" />  </td>
-  <td> <a href="Contents/32/README.md">32. （まとめ2）UNDO/REDO</a> </td>
+  <td> <a href="Contents/32/">32. （まとめ2）UNDO/REDO</a> </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/33/image/window.jpg" height="89" width="auto" />  </td>
-  <td> <a href="Contents/33/README.md">33. （まとめ2）タブ切り替え型の簡易メモ帳</a> </td>
+  <td> <a href="Contents/33/">33. （まとめ2）タブ切り替え型の簡易メモ帳</a> </td>
 </tr>
 </table>  
 
@@ -168,7 +168,7 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
 <table>
 <tr>
   <td align="center"> <img src="Contents/34/image/window.jpg" height="89" width="auto" />  </td>
-  <td> <a href="Contents/34/README.md">34. （まとめ3）画像ビューア</a> </td>
+  <td> <a href="Contents/34/">34. （まとめ3）画像ビューア</a> </td>
 </tr>
 </table>  
 
@@ -178,10 +178,10 @@ go言語の知識と根気さえあれば、Windows環境でファイラーが�
 <table>
 <tr>
   <td align="center"> <img src="Contents/35/image/window.jpg" height="89" width="auto" />  </td>
-  <td> <a href="Contents/35/README.md">35. dllを使ったDrag and Drop</a> </td>
+  <td> <a href="Contents/35/">35. dllを使ったDrag and Drop</a> </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/36/image/window.jpg" height="89" width="auto" />  </td>
-  <td> <a href="Contents/36/README.md">36. ファイルエクスプローラーのコンテキストメニューを表示</a> </td>
+  <td> <a href="Contents/36/">36. ファイルエクスプローラーのコンテキストメニューを表示</a> </td>
 </tr>
 </table>  
