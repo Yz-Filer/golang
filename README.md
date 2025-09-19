@@ -77,11 +77,19 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
 </tr>
 <tr>
   <td align="center"> <img src="Contents/15/image/edit_window.jpg" height="89" width="auto" /> <br> <img src="Contents/15/image/sticky_window.jpg" height="89" width="auto" />  </td>
-  <td> <a href="Contents/15/">15. （まとめ）CSSを使った書式設定</a> </br> ※背景が青いのはデスクトップの色です </td>
+<<<<<<< HEAD
+  <td> <a href="Contents/15/README.md">15. （まとめ）CSSを使った書式設定</a> <br> ※背景が青いのはデスクトップの色です </td>
+=======
+  <td> <a href="Contents/15/">15. （まとめ）CSSを使った書式設定</a> <br> ※背景が青いのはデスクトップの色です </td>
+>>>>>>> 7afd90808c778258d2db5e424905abdfc7c83b17
 </tr>
 <tr>
   <td align="center"> <img src="Contents/16/image/taskbar.jpg" height="89" width="auto" />  </td>
-  <td> <a href="Contents/16/">16. （まとめ）タスクバーにアイコンを表示させない方法</a> </br> ※背景が青いのはデスクトップの色です </td>
+<<<<<<< HEAD
+  <td> <a href="Contents/16/README.md">16. （まとめ）タスクバーにアイコンを表示させない方法</a> <br> ※背景が青いのはデスクトップの色です </td>
+=======
+  <td> <a href="Contents/16/">16. （まとめ）タスクバーにアイコンを表示させない方法</a> <br> ※背景が青いのはデスクトップの色です </td>
+>>>>>>> 7afd90808c778258d2db5e424905abdfc7c83b17
 </tr>
 <tr>
   <td align="center"> <img src="Contents/17/image/sticky_note.jpg" height="auto" width="240" /> <br> <img src="Contents/17/image/sticky_image.jpg" height="69" width="auto" />  </td>
@@ -114,11 +122,19 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
 </tr>
 <tr>
   <td align="center"> <img src="Contents/23/image/copy.png" height="89" width="auto" />  </td>
-  <td> <a href="Contents/23/">23. win32 apiのクリップボードを使いたい（受信）</a> </br> ※ファイルのcopy/move(cut)対応可 </td>
+<<<<<<< HEAD
+  <td> <a href="Contents/23/README.md">23. win32 apiのクリップボードを使いたい（受信）</a> <br> ※ファイルのcopy/move(cut)対応可 </td>
+=======
+  <td> <a href="Contents/23/">23. win32 apiのクリップボードを使いたい（受信）</a> <br> ※ファイルのcopy/move(cut)対応可 </td>
+>>>>>>> 7afd90808c778258d2db5e424905abdfc7c83b17
 </tr>
 <tr>
   <td align="center"> <img src="Contents/24/image/copy.png" height="89" width="auto" />  </td>
-  <td> <a href="Contents/24/">24. win32 apiのクリップボードを使いたい（送信）</a> </br> ※ファイルのcopy/move(cut)対応可 </td>
+<<<<<<< HEAD
+  <td> <a href="Contents/24/README.md">24. win32 apiのクリップボードを使いたい（送信）</a> <br> ※ファイルのcopy/move(cut)対応可 </td>
+=======
+  <td> <a href="Contents/24/">24. win32 apiのクリップボードを使いたい（送信）</a> <br> ※ファイルのcopy/move(cut)対応可 </td>
+>>>>>>> 7afd90808c778258d2db5e424905abdfc7c83b17
 </tr>
 <tr>
   <td align="center"> <img src="Contents/25/image/stopwatch.png" height="89" width="auto" />  </td>
@@ -130,7 +146,11 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
 </tr>
 <tr>
   <td align="center"> <img src="Contents/27/image/beacon.png" height="89" width="auto" />  </td>
-  <td> <a href="Contents/27/">27. プロセス間通信（名前付きパイプ）のメモ</a> </br> ※C#アプリとの通信 </td>
+<<<<<<< HEAD
+  <td> <a href="Contents/27/README.md">27. プロセス間通信（名前付きパイプ）のメモ</a> <br> ※C#アプリとの通信 </td>
+=======
+  <td> <a href="Contents/27/">27. プロセス間通信（名前付きパイプ）のメモ</a> <br> ※C#アプリとの通信 </td>
+>>>>>>> 7afd90808c778258d2db5e424905abdfc7c83b17
 </tr>
 </table>  
 
