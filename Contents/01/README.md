@@ -34,7 +34,8 @@ go build -gcflags "-N -l" -tags gtk_deprecated -o test.exe
 
 ## 1.2 gtk.Applicationを使うべきなの？
 サンプルコードなどを検索すると、「gtk.Init」を使ってる物と「gtk.Application」を使ってる物があるため、違いを聞いてみました。  
-> gtk.Initは古いGTKのバージョンで使用されていましたが、現在ではgtk.Applicationの使用が推奨されています。
+> gtk.Initは古いGTKのバージョンで使用されていましたが、現在ではgtk.Applicationの使用が推奨されています。  
+> 
 > | 機能 | gtk.Init | gtk.Application |
 > | --- | --- | --- | 
 > | 初期化 | GTKの基本的な機能を初期化 | アプリケーション全体のライフサイクルを管理 |
