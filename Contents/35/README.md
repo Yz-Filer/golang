@@ -144,7 +144,7 @@ window1.Connect("button-release-event", func(win *gtk.ApplicationWindow, event *
 - WM_DROPDRAGEND：Drop終了結果を通知するWindowメッセージ  
 - &cf[0]：対象とするクリップボード形式リストが格納されてる配列のアドレス  
 - 1：対象とするクリップボード形式リストが格納されてる配列の要素数  
-- win32.DROPEFFECT_COPY | ･･･：対象とするDropEffect  
+- `win32.DROPEFFECT_COPY | ･･･`：対象とするDropEffect  
 
 > [!NOTE]  
 > 今回は、`window1`のシグナルハンドラでDragを開始してますが、表（TreeView）からDragを開始する場合は、TreeViewのシグナルハンドラでDragを開始して下さい。  
