@@ -148,6 +148,6 @@ btnImgFrom.Connect("clicked", func() {
 [ここ](20_gotk3_Clipboard.go)
 に置いてます。  
 
-</br>
+<br>
 
 「[21. キー入力の検知、IMEのON/OFF制御をしたい](../21/README.md)」へ
