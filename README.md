@@ -16,7 +16,7 @@ gtk3へ割り切ることで、非推奨となった機能（タスクトレイ�
 <table>
 <tr>
   <td align="center"> <img src="Contents/01/image/window.jpg" height="auto" width="200" />  </td>
-  <td> <a href="Contents/01/">1. gotk3を使って、Simple windowを作成する</a> </td>
+  <td> <a href="https://github.com/Yz-Filer/golang/blob/main/Contents/01/">1. gotk3を使って、Simple windowを作成する</a> </td>
 </tr>
 <tr>
   <td align="center"> <img src="Contents/02/image/computer_tokui_boy.png" height="89" width="auto" />  </td>
