@@ -826,6 +826,6 @@ EventBoxは、Notebookのタブになり、LabelとButtonを配置していま�
 [ここ](33_editor.go)と[ここ](33_page.go)
 に置いてます。  
 
-</br>
+<br>
 
 「[34. （まとめ3）画像ビューア](../34/README.md)」へ

@@ -119,6 +119,6 @@ TextViewの拡大/縮小を説明しました。
 [ここ](31_Scale.go)
 に置いてます。  
 
-</br>
+<br>
 
 「[32. （まとめ2）UNDO/REDO](../32/README.md)」へ

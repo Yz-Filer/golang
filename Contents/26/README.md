@@ -180,6 +180,6 @@ fmt.Println(stderrBuf2.String())
 > exec.Command("cmd", "/C", "start", "cmd", "/K", "dir")
 > ```
 
-</br>
+<br>
 
 「[27. プロセス間通信（名前付きパイプ）のメモ](../27/README.md)」へ

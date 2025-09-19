@@ -69,6 +69,6 @@ func DetectJpCharacterSet(data []byte) string {
 [ここ](30_Detect_CharacterSet.go)
 に置いてます。  
 
-</br>
+<br>
 
 「[31. （まとめ2）拡大/縮小](../31/README.md)」へ

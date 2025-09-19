@@ -188,6 +188,6 @@ Entryではデフォルト動作が邪魔をするので、TreeViewか何かを�
 > [!TIP]  
 > 「[35. dllを使ったDrag and Drop](../35/README.md)」でdllを使ってファイルをDrag and Dropする方法を説明しています。  
 
-</br>
+<br>
 
 「[23. win32 apiのクリップボードを使いたい（受信）](../23/README.md)」へ

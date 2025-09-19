@@ -168,7 +168,7 @@ win32.OleUninitialize()
 に置いてます。
 
 <!--
-</br>
+<br>
 
 「[35. dllを使ったDrag and Drop](../35/README.md)」へ
 -->

@@ -264,6 +264,6 @@ dllを使ったDrag and Dropを説明しました。「[OleDragDrop.dll](https:/
 [ここ](35_DnD_with_dll.go)
 に置いてます。  
 
-</br>
+<br>
 
 「[36. ファイルエクスプローラーのコンテキストメニューを表示](../36/README.md)」へ

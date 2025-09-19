@@ -303,6 +303,6 @@ func menuAbout(parent *gtk.ApplicationWindow) error {
 [ここ](../09/09_MenuBar_Toolbar.go)
 に置いてます。 
 
-</br>
+<br>
 
 「[11. 表形式にデータを表示したい](../11/README.md)」へ  

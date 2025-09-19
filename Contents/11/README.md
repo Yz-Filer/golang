@@ -367,7 +367,7 @@ btnFilter.Connect("clicked", func() {
 [ここ](11_ListView.go)
 に置いてます。 
 
-</br>
+<br>
 
 「[12. （まとめ）付箋アプリの作成～はじめに～](../12/README.md)」へ
 

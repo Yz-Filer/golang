@@ -288,6 +288,6 @@ public class NamedPipeClient
 に置いてます。  
 
 
-</br>
+<br>
 
 「[28. （まとめ2）タブ切り替え型の簡易メモ帳～はじめに～](../28/README.md)」へ
