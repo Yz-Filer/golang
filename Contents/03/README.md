@@ -33,7 +33,8 @@ D:\TEST
 > （暗いテーマを指定している時に、このオプションを指定すると、真っ白なウィンドウになる等）
 
 ## 3.2 カスタムテーマ
-1. テーマ  
+
+### 3.2.1 テーマ  
    Geminiにgtk3テーマを無料で公開しているサイトを聞いてみました。
    > [GNOME Look](https://www.gnome-look.org/): GNOMEデスクトップ環境向けのテーマが豊富に公開されています。GTK3テーマも多数あります。  
 
@@ -54,10 +55,8 @@ D:\TEST
 > [!CAUTION]  
 > ダウンロードしたテーマがサイズ別の画像や他の名前の画像をシンボリックリンクを使って代替している場合、Windows環境では解凍時に大量のエラーが出ることがあります。
 > また、サイズ0の画像ファイルが出来てしまい、「画像が読み込めない」というようなgtkエラーが出る可能性があります。
-  
-<br>
-  
-2. アイコンテーマ  
+ 
+### 3.2.2 アイコンテーマ  
    公開されてるテーマの中からアイコンを含んでるテーマを探す必要があります。  
    （「icon theme」とついてる物か、ファイルサイズが大きい物に含まれてる可能性があります）  
    テーマをダウンロードし、アイコンテーマを以下のディレクトリに配置します。  
@@ -106,6 +105,45 @@ D:\TEST
 
 > [!CAUTION]  
 > Win11-darkへのディレクトリ構成変更の対応が正しいかどうかは分かりません。
+
+## 3.3 カスタムテーマの修正  
+
+カスタムテーマを修正して、背景を半透明にしてみます。  
+
+![](image/window_transparent.jpg)  
+
+> [!NOTE]  
+> 「[5. 半透明の付箋もどき](../05/README.md)」や「[15. （まとめ）CSSを使った書式設定](../15/README.md)」のやり方もありますが、テーマを使ったやり方になります。  
+
+3.2.1でsimplewaitaに設定していることを前提とします。  
+以下のファイルをテキストエディタで開きます。
+
+ <pre>
+ D:\TEST
+ └─share
+     └─themes
+         └─simplewaita
+             └─gtk-3.0
+                 └─gtk.css
+ </pre>
+
+「Base States」の下にある`.background {}`内の  
+`background-color: #3f3e3e;`  
+の部分を  
+`background-color: rgba(63, 62, 62, 0.8);`  
+に置き換え、`.view, iconview, .view text, iconview text, textview text {}`内の
+`background-color: #323232;`  
+の部分を  
+`background-color: transparent;`  
+に置き換えます。  
+ButtonやNotebookなどもカスタマイズしたい場合は、各項目の「background-color」をtransparentにしてどこに影響が出るかを確認してみて下さい。  
+
+> [!NOTE]  
+> 「e17gtk-revolved」テーマでは、各色が宣言されてるので、「theme_bg_color」と「view_color」を`transparent`に設定して、「Base States」の下にある`.background {}`内の  
+> `background-color: @theme_bg_color;`  
+> の部分を  
+> `background-color: rgba(61, 61, 62, 0.8);`  
+> に置き換えることで半透明になりました。
 
 <br>
 
