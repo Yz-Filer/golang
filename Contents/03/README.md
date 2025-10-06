@@ -142,11 +142,15 @@ Windowの背景色を半透明にし、Windowの上に重ねて表示されて�
 ButtonやNotebookなどもカスタマイズしたい場合は、各項目の「background-color」をtransparentにしてどこに影響が出るかを確認してみて下さい。  
 
 > [!NOTE]  
-> 「e17gtk-revolved」テーマの場合でも、設定ファイルの頭で各色が宣言されてるので、「theme_bg_color」と「view_color」を`transparent`に設定して、「Base States」の下にある`.background {}`内の  
+> 「e17gtk-revolved」テーマの場合は、設定ファイルの頭で各色が宣言されてるので、「theme_bg_color」と「view_color」を`transparent`に設定して、「Base States」の下にある`.background {}`内の  
 > `background-color: @theme_bg_color;`  
 > の部分を  
 > `background-color: rgba(61, 61, 62, 0.8);`  
-> に置き換えることで半透明になりました。
+> に置き換えることで半透明になりました。  
+> 他のテーマでも似たような方法で変更できるのではないかと思います。  
+
+> [!CAUTION]  
+> Linuxで同じように設定しても、トップレベルのウィンドウは半透明になりませんでした。
 
 <br>
 
