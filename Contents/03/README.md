@@ -131,7 +131,8 @@ D:\TEST
 `background-color: #3f3e3e;`  
 の部分を  
 `background-color: rgba(63, 62, 62, 0.8);`  
-に置き換え、`.view, iconview, .view text, iconview text, textview text {}`内の
+に置き換え、  
+`.view, iconview, .view text, iconview text, textview text {}`内の  
 `background-color: #323232;`  
 の部分を  
 `background-color: transparent;`  
