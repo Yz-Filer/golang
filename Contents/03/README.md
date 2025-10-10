@@ -108,6 +108,8 @@ D:\TEST
 
 ## 3.3 カスタムテーマの修正  
 
+### 3.3.1 背景を半透明に修正  
+
 カスタムテーマを修正して、背景を半透明にしてみます。  
 
 ![](image/window_transparent.jpg)  
@@ -151,6 +153,35 @@ ButtonやNotebookなどもカスタマイズしたい場合は、各項目の「
 
 > [!CAUTION]  
 > Linuxで同じように設定しても、トップレベルのウィンドウは半透明になりませんでした。
+
+### 3.3.2 背景に画像を表示するように修正
+
+カスタムテーマを修正して、背景に画像を表示してみます。  
+
+![](image/window_bgimage.jpg)  
+
+「3.3.1」と同様`gtk.css`を修正します。  
+「Base States」の下にある`.background {}`を以下の様に変更します。  
+
+```css
+.background {
+	color: #EDF0F5;
+	background-image:url("../../../../resources/AIDSpkts_ai108400235_TP_V4.jpg");
+	background-color:rgba(63, 62, 62, 0.8);
+	background-blend-mode: darken;
+	background-size: cover;
+}
+```
+
+画像そのままだと文字などが読みにくくなるため、暗くなるように設定します。  
+`../../../../resources`は、画像ファイルを置くために、実行ファイルの下に「resources」フォルダを作成した物です。`gtk.css`からの相対パスを指定しています。  
+`background-color`は、暗めの半透明にしてます。  
+`background-blend-mode`は、暗い方を優先して合成する`darken`を指定しています。  
+`background-size`によりWindowを覆うように画像を表示してます。  
+
+
+> [!NOTE]  
+> 画像は、[ぱくたそ](http://www.pakutaso.com/)さんのフリー素材を使用しています。  
 
 <br>
 
